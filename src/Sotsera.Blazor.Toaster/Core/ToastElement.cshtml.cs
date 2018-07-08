@@ -21,6 +21,7 @@ namespace Sotsera.Blazor.Toaster.Core
         {
             base.OnParametersSet();
             Toast.OnUpdate += ToastUpdated;
+            Toast.EnsureInitialized();
         }
 
         private void ToastUpdated() => StateHasChanged();

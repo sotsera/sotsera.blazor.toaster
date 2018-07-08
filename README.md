@@ -1,5 +1,7 @@
 # Sotsera.Blazor.Toaster
-A Blazor port of [Toaster.js](https://raw.githubusercontent.com/CodeSeven/toastr/)
+A Blazor port of [Toaster.js](https://raw.githubusercontent.com/CodeSeven/toastr/).
+
+The project is in its very early stage.
 
 ## Configuration
 

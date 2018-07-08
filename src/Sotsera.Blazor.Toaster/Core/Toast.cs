@@ -5,8 +5,9 @@ namespace Sotsera.Blazor.Toaster.Core
 {
     public class Toast : IDisposable
     {
-        private ToastTimer Timer { get; }
-        private decimal Opacity { get; set; } = 0.8m;
+        public ToastState State { get; set; }
+        private Opacity Opacity { get; set; }
+        private TransitionTimer Timer { get; }
 
         public ToastOptions Options { get; }
         public string Title { get; }
@@ -22,17 +23,40 @@ namespace Sotsera.Blazor.Toaster.Core
             Title = title;
             Message = message;
             Options = options;
-
-            Timer = new ToastTimer(state => TimerElapsed());
+            
+            State = ToastState.Init;
+            Opacity = new Opacity(options.MaximumOpacity);
+            Timer = new TransitionTimer(TimerElapsed);
         }
 
-        private void TimerElapsed()
+        private void TimerElapsed(decimal transitionPercentage)
         {
-
+            switch (State)
+            {
+                case ToastState.Showing:
+                    Opacity.SetPercentage(transitionPercentage);
+                    if(transitionPercentage < 100) Timer.Step();
+                    else TransitionTo(ToastState.Visible);
+                    break;
+                case ToastState.Visible:
+                    TransitionTo(ToastState.Hiding);
+                    break;
+                case ToastState.Hiding:
+                    Opacity.SetPercentage(100 - transitionPercentage);
+                    if (transitionPercentage < 100) Timer.Step();
+                    else OnClose?.Invoke(this);
+                    break;
+            }
+            
+            OnUpdate?.Invoke();
         }
 
-        public void MouseEnter() => TransitionTo(ToastState.Visible);
-        public void MouseLeave() => TransitionTo(ToastState.Hiding);
+        public void MouseEnter() => TransitionTo(ToastState.MouseOver);
+        public void MouseLeave()
+        {
+            if (State == ToastState.Hiding) return;
+            TransitionTo(ToastState.Hiding);
+        }
 
         public void Clicked()
         {
@@ -40,15 +64,34 @@ namespace Sotsera.Blazor.Toaster.Core
             TransitionTo(ToastState.Hiding);
         }
 
+        public void EnsureInitialized()
+        {
+            if(State == ToastState.Init) TransitionTo(ToastState.Showing);
+        }
+
         private void TransitionTo(ToastState state)
         {
-            Console.WriteLine($"Transitioning to {state}");
+            Timer.Stop();
             switch (state)
             {
-                case ToastState.Clicked:
-                    Options.Onclick?.Invoke(this);
+                case ToastState.Showing:
+                    State = ToastState.Showing;
+                    Opacity.SetPercentage(0);
+                    Timer.Start(Options.ShowTransitionDuration, Options.ShowStepDuration);
                     break;
-                default:
+                case ToastState.Visible:
+                    State = ToastState.Visible;
+                    Opacity.SetPercentage(100);
+                    Timer.Start(Options.VisibleStateDuration);
+                    break;
+                case ToastState.Hiding:
+                    State = ToastState.Hiding;
+                    Opacity.SetPercentage(100);
+                    Timer.Start(Options.HideTransitionDuration, Options.HideStepDuration);
+                    break;
+                case ToastState.MouseOver:
+                    State = ToastState.MouseOver;
+                    Opacity.SetPercentage(100);
                     break;
             }
         }

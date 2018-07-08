@@ -12,7 +12,7 @@ namespace Sotsera.Blazor.Toaster
         private IToaster Toaster { get; set; }
 
         public IList<Toast> Toasts => Toaster.Toasts;
-        public string Class => Toaster.Configuration.Position;
+        public string Class => Toaster.Configuration.PositionClass;
 
         protected override void OnInit()
         {

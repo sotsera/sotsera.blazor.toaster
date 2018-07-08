@@ -12,7 +12,15 @@ namespace Sotsera.Blazor.Toaster.Core.Models
             Type = type;
             ToastClass = configuration.ToastClass;
             IconClasses = configuration.IconClasses.Clone();
-            Position = configuration.Position;
+            PositionClass = configuration.PositionClass;
+
+            MaximumOpacity = configuration.MaximumOpacity;
+
+            VisibleStateDuration = configuration.VisibleStateDuration;
+            ShowTransitionDuration = configuration.ShowTransitionDuration;
+            ShowStepDuration = configuration.ShowStepDuration;
+            HideTransitionDuration = configuration.HideTransitionDuration;
+            HideStepDuration = configuration.HideStepDuration;
         }
 
         public string ToastTypeClass()

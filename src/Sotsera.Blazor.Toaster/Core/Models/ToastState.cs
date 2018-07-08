@@ -6,9 +6,6 @@
         Showing,
         Hiding,
         Visible,
-        ContinueTransition,
-        MouseOver,
-        Closing,
-        Clicked
+        MouseOver
     }
 }

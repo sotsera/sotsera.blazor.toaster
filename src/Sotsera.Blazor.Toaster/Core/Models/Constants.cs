@@ -8,7 +8,14 @@
 
             public class Position
             {
+                public const string TopCenter = "toast-top-center";
+                public const string BottomCenter = "toast-bottom-center";
+                public const string TopFullWidth = "toast-top-full-width";
+                public const string BottomFullWidth = "toast-bottom-full-width";
+                public const string TopLeft = "toast-top-left";
                 public const string TopRight = "toast-top-right";
+                public const string BottomRight = "toast-bottom-right";
+                public const string BottomLeft = "toast-bottom-left";
             }
 
             public class Icons
