@@ -7,4 +7,12 @@
         Warning,
         Error
     }
+
+    public static class ToastTypeExtensions
+    {
+        public static string Class(this ToastType position)
+        {
+            return $"toast-{position.ToString().ToLower()}";
+        }
+    }
 }

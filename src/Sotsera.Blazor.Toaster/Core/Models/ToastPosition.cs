@@ -5,7 +5,7 @@
         TopRight
     }
 
-    public static class ToastrPositionClassExtensions
+    public static class ToastrPositionExtensions
     {
         public static string Class(this ToastPosition position)
         {

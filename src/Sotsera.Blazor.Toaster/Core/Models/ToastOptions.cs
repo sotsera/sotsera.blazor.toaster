@@ -12,7 +12,6 @@ namespace Sotsera.Blazor.Toaster.Core.Models
         {
             Type = type;
             ToastClass = configuration.ToastClass;
-            IconClass = configuration.IconClass;
             Position = configuration.Position;
         }
     }

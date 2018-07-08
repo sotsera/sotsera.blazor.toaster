@@ -6,21 +6,19 @@ namespace Sotsera.Blazor.Toaster.Core
     public class Toast : IDisposable
     {
         private ToastTimer Timer { get; }
-        private decimal Opacity { get; set; } = 1;
+        private decimal Opacity { get; set; } = 0.8m;
 
-        public event Action<Toast> OnClose;
-        public event Action OnUpdate;
-        public ToastType Type { get; }
         public ToastOptions Options { get; }
         public string Title { get; }
         public string Message { get; }
+        public event Action<Toast> OnClose;
+        public event Action OnUpdate;
         
-        public string ContainerClass => $"{Options.ToastClass} {Options.IconClass}";
+        public string ContainerClass => $"{Options.ToastClass} {Options.Type.Class()}";
         public string ContainerStyle => $"opacity: {Opacity};";
 
-        public Toast(ToastType type, string title, string message, ToastOptions options)
+        public Toast(string title, string message, ToastOptions options)
         {
-            Type = type;
             Title = title;
             Message = message;
             Options = options;
