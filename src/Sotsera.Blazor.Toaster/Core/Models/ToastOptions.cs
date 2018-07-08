@@ -1,5 +1,4 @@
 ﻿using System;
-using Sotsera.Blazor.Toaster.Core.Configuration;
 
 namespace Sotsera.Blazor.Toaster.Core.Models
 {
@@ -12,7 +11,20 @@ namespace Sotsera.Blazor.Toaster.Core.Models
         {
             Type = type;
             ToastClass = configuration.ToastClass;
+            IconClasses = configuration.IconClasses.Clone();
             Position = configuration.Position;
+        }
+
+        public string ToastTypeClass()
+        {
+            switch (Type)
+            {
+                case ToastType.Info: return IconClasses.Info;
+                case ToastType.Error: return IconClasses.Error;
+                case ToastType.Success: return IconClasses.Success;
+                case ToastType.Warning: return IconClasses.Warning;
+                default: return IconClasses.Info;
+            }
         }
     }
 }

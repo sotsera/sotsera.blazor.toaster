@@ -14,7 +14,7 @@ namespace Sotsera.Blazor.Toaster.Core
         public event Action<Toast> OnClose;
         public event Action OnUpdate;
         
-        public string ContainerClass => $"{Options.ToastClass} {Options.Type.Class()}";
+        public string ContainerClass => $"{Options.ToastClass} {Options.ToastTypeClass()}";
         public string ContainerStyle => $"opacity: {Opacity};";
 
         public Toast(string title, string message, ToastOptions options)
@@ -36,10 +36,8 @@ namespace Sotsera.Blazor.Toaster.Core
 
         public void Clicked()
         {
-            if (Options.Onclick == null) return;
-
             Options.Onclick?.Invoke(this);
-            TransitionTo(ToastState.Closing);
+            TransitionTo(ToastState.Hiding);
         }
 
         private void TransitionTo(ToastState state)

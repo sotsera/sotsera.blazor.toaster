@@ -1,10 +1,16 @@
-﻿using Sotsera.Blazor.Toaster.Core.Models;
-
-namespace Sotsera.Blazor.Toaster.Core.Configuration
+﻿namespace Sotsera.Blazor.Toaster.Core.Models
 {
     public class ToasterConfiguration
     {
-        public string ToastClass { get; set; } = "toast";
-        public ToastPosition Position { get; set; } = ToastPosition.TopRight;
+        public string ToastClass { get; set; }
+        public ToastIconClasses IconClasses;
+        public string Position { get; set; }
+
+        public ToasterConfiguration()
+        {
+            ToastClass = Constants.Classes.Toast;
+            IconClasses = new ToastIconClasses();
+            Position = Constants.Classes.Position.TopRight;
+        }
     }
 }

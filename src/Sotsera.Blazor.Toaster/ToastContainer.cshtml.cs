@@ -9,20 +9,20 @@ namespace Sotsera.Blazor.Toaster
     public class ToastContainerModel : BlazorComponent, IDisposable
     {
         [Inject]
-        private IToaster Toastr { get; set; }
+        private IToaster Toaster { get; set; }
 
-        public IList<Toast> Toasts => Toastr.Toasts;
-        public string Class => Toastr.Configuration.Position.Class();
+        public IList<Toast> Toasts => Toaster.Toasts;
+        public string Class => Toaster.Configuration.Position;
 
         protected override void OnInit()
         {
             base.OnInit();
-            Toastr.OnToastsUpdated += StateHasChanged;
+            Toaster.OnToastsUpdated += StateHasChanged;
         }
 
         public void Dispose()
         {
-            Toastr.OnToastsUpdated -= StateHasChanged;
+            Toaster.OnToastsUpdated -= StateHasChanged;
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using Sotsera.Blazor.Toaster;
 using Sotsera.Blazor.Toaster.Core;
-using Sotsera.Blazor.Toaster.Core.Configuration;
+using Sotsera.Blazor.Toaster.Core.Models;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
