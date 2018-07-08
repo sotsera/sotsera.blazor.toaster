@@ -11,7 +11,7 @@ namespace Sample
         {
             var serviceProvider = new BrowserServiceProvider(services =>
             {
-                // Add any custom services here
+                services.AddToaster();
             });
 
             new BrowserRenderer(serviceProvider).AddComponent<App>("app");

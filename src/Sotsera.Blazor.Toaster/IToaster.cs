@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Sotsera.Blazor.Toaster.Configuration;
+using Sotsera.Blazor.Toaster.Core;
+using Sotsera.Blazor.Toaster.Core.Configuration;
+using Sotsera.Blazor.Toaster.Core.Models;
 
 namespace Sotsera.Blazor.Toaster
 {

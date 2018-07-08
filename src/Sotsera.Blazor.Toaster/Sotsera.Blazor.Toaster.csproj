@@ -32,4 +32,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="0.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Core\ToastElement.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
 </Project>

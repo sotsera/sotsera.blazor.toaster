@@ -1,4 +1,19 @@
 ﻿@page "/"
+@inject Sotsera.Blazor.Toaster.IToaster toaster;
 
-<h3>Sotsera.Blazor.Toaster</h3>
+<h2>Sotsera.Blazor.Toastr</h2>
+
+<input bind="@title" placeholder="Title" />
+<input bind="@message" placeholder="Message" />
+
+<button class="btn btn-primary" onclick="@(() => toaster.Info(message, $"{title} ({++id})"))">Info</button>
+<button class="btn btn-primary" onclick="@(() => toaster.Success(message, $"{title} ({++id})"))">Success</button>
+<button class="btn btn-primary" onclick="@(() => toaster.Warning(message, $"{title} ({++id})"))">Warning</button>
+<button class="btn btn-primary" onclick="@(() => toaster.Error(message, $"{title} ({++id})"))">Error</button>
+
+@functions {
+  private int id;
+  private string title = "Test Title";
+  private string message = "Test Message";
+}
 

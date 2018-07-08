@@ -1,0 +1,13 @@
+﻿@inherits ToastElementModel
+<div class="@ContainerClass" style="@ContainerStyle" onmouseenter="@MouseEnter" onmouseleave="@MouseLeave" onclick="@Clicked">
+  <div class="toast-message">
+    @if (Title.IsNonEmpty())
+    {
+      <div class="toast-title">@Title</div>
+    }
+    @if (Message.IsNonEmpty())
+    {
+      <div class="toast-message">@Message</div>
+    }
+  </div>
+</div>
