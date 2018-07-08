@@ -37,9 +37,7 @@ namespace Sotsera.Blazor.Toaster.Core.Models
             DueTime = DateTime.Now.AddMilliseconds(totalDuration);
             TotalDuration = totalDuration;
             StepDuration = stepDuration;
-
-            Console.WriteLine($"Total duraton: {totalDuration} - Due date: {DueTime}");
-
+            
             Step();
         }
 

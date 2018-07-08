@@ -7,6 +7,7 @@ namespace Sotsera.Blazor.Toaster.Core
     {
         public ToastState State { get; set; }
         private Opacity Opacity { get; set; }
+        public decimal TransitionPercentage { get; set; }
         private TransitionTimer Timer { get; }
 
         public ToastOptions Options { get; }
@@ -17,6 +18,7 @@ namespace Sotsera.Blazor.Toaster.Core
         
         public string ContainerClass => $"{Options.ToastClass} {Options.ToastTypeClass()}";
         public string ContainerStyle => $"opacity: {Opacity};";
+        public string ProgressBarStyle => $"width: {100 - TransitionPercentage}%;";
 
         public Toast(string title, string message, ToastOptions options)
         {
@@ -31,6 +33,7 @@ namespace Sotsera.Blazor.Toaster.Core
 
         private void TimerElapsed(decimal transitionPercentage)
         {
+            TransitionPercentage = transitionPercentage;
             switch (State)
             {
                 case ToastState.Showing:
@@ -39,7 +42,8 @@ namespace Sotsera.Blazor.Toaster.Core
                     else TransitionTo(ToastState.Visible);
                     break;
                 case ToastState.Visible:
-                    TransitionTo(ToastState.Hiding);
+                    if (transitionPercentage < 100) Timer.Step();
+                    else TransitionTo(ToastState.Hiding);
                     break;
                 case ToastState.Hiding:
                     Opacity.SetPercentage(100 - transitionPercentage);
@@ -86,7 +90,8 @@ namespace Sotsera.Blazor.Toaster.Core
                 case ToastState.Visible:
                     State = ToastState.Visible;
                     Opacity.SetPercentage(100);
-                    Timer.Start(Options.VisibleStateDuration);
+                    TransitionPercentage = 100;
+                    Timer.Start(Options.VisibleStateDuration, Options.VisibleStepDuration);
                     break;
                 case ToastState.Hiding:
                     State = ToastState.Hiding;

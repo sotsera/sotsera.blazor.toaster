@@ -1,9 +1,13 @@
 ﻿@inherits ToastElementModel
 <div class="@ContainerClass" style="@ContainerStyle" onmouseenter="@MouseEnter" onmouseleave="@MouseLeave" onclick="@Clicked">
   <div class="toast-message">
+    @if (ShowProgressBar)
+    {
+      <div class="@ProgressBarClass" style="@ProgressBarStyle"></div>
+    }
     @if (ShowCloseIcon)
     {
-      <button type="button" class="@CloseIconClass" role="button"  onclick="@CloseIconClicked">×</button>
+      <button type="button" class="@CloseIconClass" role="button" onclick="@CloseIconClicked">×</button>
     }
     @if (Title.IsNonEmpty())
     {

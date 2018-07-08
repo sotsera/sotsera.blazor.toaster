@@ -1,6 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Blazor;
 using Microsoft.AspNetCore.Blazor.Components;
+using Sotsera.Blazor.Toaster.Core.Models;
 
 namespace Sotsera.Blazor.Toaster.Core
 {
@@ -12,6 +13,9 @@ namespace Sotsera.Blazor.Toaster.Core
         public string ContainerStyle => Toast.ContainerStyle;
         public bool ShowCloseIcon => Toast.Options.ShowCloseIcon;
         public string CloseIconClass => Toast.Options.CloseIconClass;
+        public bool ShowProgressBar => Toast.Options.ShowProgressBar && Toast.State == ToastState.Visible;
+        public string ProgressBarClass => Toast.Options.ProgressBarClass;
+        public string ProgressBarStyle => Toast.ProgressBarStyle;
         public string Title => Toast.Title;
         public string Message => Toast.Message;
 

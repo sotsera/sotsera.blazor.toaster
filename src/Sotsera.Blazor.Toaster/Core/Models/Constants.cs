@@ -6,6 +6,7 @@
         {
             public const string Toast = "toast";
             public const string CloseIconClass = "toast-close-button";
+            public const string ProgressBarClass = "toast-progress";
 
             public class Position
             {
