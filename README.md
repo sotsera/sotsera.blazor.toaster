@@ -1,7 +1,7 @@
 # Sotsera.Blazor.Toaster
-A Blazor port of [Toaster.js](https://raw.githubusercontent.com/CodeSeven/toastr/).
+A Blazor port of [Toaster.js](https://raw.githubusercontent.com/CodeSeven/toastr/). If there is any credit here it should go to the authors of the original library.
 
-The project is in its very early stage.
+The project is in a very early stage and many features are missing (yep, documentation is among them!).
 
 ## Configuration
 
@@ -56,7 +56,9 @@ toaster.Info("toast body text", "toast title", options =>
 ```
 
 ## Credits
-This is a simple port attempt of [Toastr.js](https://raw.githubusercontent.com/CodeSeven/toastr/).
+This is a simple attempt to port [Toastr.js](https://raw.githubusercontent.com/CodeSeven/toastr/) to Blazor.
+
+Currently the css styles used are literally a COPIED from Toastr.js.
 
 ## License
 Sotsera.Blazor.Toaster is licensed under MIT license - http://www.opensource.org/licenses/mit-license.php
