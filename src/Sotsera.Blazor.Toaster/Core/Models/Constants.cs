@@ -5,6 +5,7 @@
         public class Classes
         {
             public const string Toast = "toast";
+            public const string CloseIconClass = "toast-close-button";
 
             public class Position
             {

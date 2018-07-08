@@ -5,15 +5,19 @@
 
 <input bind="@title" placeholder="Title" />
 <input bind="@message" placeholder="Message" />
+Append id to title: <input bind="@appendId" type="checkbox" />
 
-<button class="btn btn-primary" onclick="@(() => toaster.Info(message, $"{title} ({++id})"))">Info</button>
-<button class="btn btn-primary" onclick="@(() => toaster.Success(message, $"{title} ({++id})"))">Success</button>
-<button class="btn btn-primary" onclick="@(() => toaster.Warning(message, $"{title} ({++id})"))">Warning</button>
-<button class="btn btn-primary" onclick="@(() => toaster.Error(message, $"{title} ({++id})"))">Error</button>
+<button class="btn btn-primary" onclick="@(() => toaster.Info(message, ComposedTitle))">Info</button>
+<button class="btn btn-primary" onclick="@(() => toaster.Success(message, ComposedTitle))">Success</button>
+<button class="btn btn-primary" onclick="@(() => toaster.Warning(message, ComposedTitle))">Warning</button>
+<button class="btn btn-primary" onclick="@(() => toaster.Error(message, ComposedTitle))">Error</button>
 
 @functions {
   private int id;
   private string title = "Test Title";
   private string message = "Test Message";
+  private bool appendId = true;
+
+  private string ComposedTitle => appendId ? $"{title} ({++id})" : $"{title}";
 }
 

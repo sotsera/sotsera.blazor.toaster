@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Blazor.Components;
 using Sotsera.Blazor.Toaster.Core;
 using Sotsera.Blazor.Toaster.Core.Models;
@@ -11,7 +12,19 @@ namespace Sotsera.Blazor.Toaster
         [Inject]
         private IToaster Toaster { get; set; }
 
-        public IList<Toast> Toasts => Toaster.Toasts;
+        public IEnumerable<Toast> Toasts
+        {
+            get
+            {
+                var newestOnTop = Toaster.Configuration.NewestOnTop;
+                var numberOfToasts = Toaster.Configuration.MaxDisplayedToasts;
+
+                return newestOnTop
+                    ? Toaster.Toasts.Reverse().Take(numberOfToasts)
+                    : Toaster.Toasts.Take(numberOfToasts);
+            }
+        }
+
         public string Class => Toaster.Configuration.PositionClass;
 
         protected override void OnInit()

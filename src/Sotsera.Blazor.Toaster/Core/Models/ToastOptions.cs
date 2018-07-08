@@ -13,6 +13,8 @@ namespace Sotsera.Blazor.Toaster.Core.Models
             ToastClass = configuration.ToastClass;
             IconClasses = configuration.IconClasses.Clone();
             PositionClass = configuration.PositionClass;
+            ShowCloseIcon = configuration.ShowCloseIcon;
+            CloseIconClass = configuration.CloseIconClass;
 
             MaximumOpacity = configuration.MaximumOpacity;
 

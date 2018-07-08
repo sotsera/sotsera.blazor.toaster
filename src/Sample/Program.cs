@@ -11,7 +11,7 @@ namespace Sample
         {
             var serviceProvider = new BrowserServiceProvider(services =>
             {
-                services.AddToaster();
+                services.AddToaster(config => { config.NewestOnTop = true; });
             });
 
             new BrowserRenderer(serviceProvider).AddComponent<App>("app");

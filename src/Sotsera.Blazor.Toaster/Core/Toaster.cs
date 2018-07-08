@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Sotsera.Blazor.Toaster.Core.Models;
+using System.Linq;
 using Sotsera.Blazor.Toaster.Core.Models;
 
 namespace Sotsera.Blazor.Toaster.Core
@@ -54,7 +54,15 @@ namespace Sotsera.Blazor.Toaster.Core
 
         private void Add(ToastType type, string message, string title, Action<ToastOptions> configure)
         {
-            if (string.IsNullOrEmpty(message)) return;
+            if (message.IsEmpty()) return;
+
+            message = message.Trimmed();
+            title = title.Trimmed();
+
+            if (Configuration.PreventDuplicates  && ToastAlreadyPresent(message, title, type))
+            {
+                return;
+            }
 
             var options = new ToastOptions(type, Configuration);
             configure?.Invoke(options);
@@ -64,6 +72,11 @@ namespace Sotsera.Blazor.Toaster.Core
             Toasts.Add(toast);
 
             OnToastsUpdated?.Invoke();
+        }
+
+        private bool ToastAlreadyPresent(string message, string title, ToastType type)
+        {
+            return Toasts.Any(t => string.Equals(t.Message, message) && string.Equals(t.Title, title) && type.Equals(t.Options.Type));
         }
 
         public void Dispose()

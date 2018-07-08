@@ -5,6 +5,8 @@
         public string ToastClass { get; set; }
         public ToastIconClasses IconClasses;
         public string PositionClass { get; set; }
+        public bool ShowCloseIcon { get; set; }
+        public string CloseIconClass { get; set; }
 
         public decimal MaximumOpacity { get; set; } = 0.8m;
 
@@ -14,11 +16,17 @@
         public int HideTransitionDuration { get; set; } = 2000;
         public int HideStepDuration { get; set; } = 100;
 
+        public bool NewestOnTop { get; set; }
+        public bool PreventDuplicates { get; set; } = true;
+        public int MaxDisplayedToasts { get; set; } = 5;
+
         public ToasterConfiguration()
         {
             ToastClass = Constants.Classes.Toast;
             IconClasses = new ToastIconClasses();
             PositionClass = Constants.Classes.Position.TopRight;
+            ShowCloseIcon = true;
+            CloseIconClass = Constants.Classes.CloseIconClass;
         }
     }
 }

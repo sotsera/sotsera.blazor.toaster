@@ -58,10 +58,14 @@ namespace Sotsera.Blazor.Toaster.Core
             TransitionTo(ToastState.Hiding);
         }
 
-        public void Clicked()
+        public void Clicked(bool fromCloseIcon)
         {
             Options.Onclick?.Invoke(this);
-            TransitionTo(ToastState.Hiding);
+
+            if (fromCloseIcon || !Options.ShowCloseIcon)
+            {
+                TransitionTo(ToastState.Hiding);
+            }
         }
 
         public void EnsureInitialized()

@@ -10,10 +10,13 @@ namespace Sotsera.Blazor.Toaster.Core
         private Toast Toast { get; set; }
         public string ContainerClass => Toast.ContainerClass;
         public string ContainerStyle => Toast.ContainerStyle;
+        public bool ShowCloseIcon => Toast.Options.ShowCloseIcon;
+        public string CloseIconClass => Toast.Options.CloseIconClass;
         public string Title => Toast.Title;
         public string Message => Toast.Message;
 
-        public void Clicked(UIEventArgs args) => Toast.Clicked();
+        public void Clicked(UIEventArgs args) => Toast.Clicked(false);
+        public void CloseIconClicked(UIEventArgs args) => Toast.Clicked(true);
         public void MouseEnter(UIEventArgs args) => Toast.MouseEnter();
         public void MouseLeave(UIEventArgs args) => Toast.MouseLeave();
 
