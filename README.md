@@ -1,7 +1,7 @@
 # Sotsera.Blazor.Toaster
 A Blazor port of [Toastr.js](https://raw.githubusercontent.com/CodeSeven/toastr/). If there is any credit here it should go to the authors of the original library.
 
-The project is in a very early stage and many features are missing (yep, documentation is among them!).
+See the sample project for a basic usage guide.
 
 ## Configuration
 
