@@ -8,7 +8,7 @@
     <LangVersion>7.3</LangVersion>
     <AssemblyName>Sotsera.Blazor.Toaster</AssemblyName>
     <RootNamespace>Sotsera.Blazor.Toaster</RootNamespace>
-    <Version>0.1.0</Version>
+    <Version>0.2.0</Version>
     <Authors>Alessandro Ghidini</Authors>
     <Company></Company>
     <Description>Blazor Toaster (heavily inspired by Toastr.js)</Description>
