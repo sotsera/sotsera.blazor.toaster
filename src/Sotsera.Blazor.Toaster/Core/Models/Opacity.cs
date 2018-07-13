@@ -6,7 +6,7 @@ namespace Sotsera.Blazor.Toaster.Core.Models
     public class Opacity
     {
         public decimal Max { get; }
-        public decimal Value { get; set; }
+        public decimal Value { get; private set; }
 
         public Opacity(decimal max)
         {

@@ -1,23 +1,73 @@
-﻿@page "/"
+﻿@using Microsoft.AspNetCore.Blazor
+@page "/"
 @inject Sotsera.Blazor.Toaster.IToaster toaster;
 
 <h2>Sotsera.Blazor.Toaster</h2>
 
-<input bind="@title" placeholder="Title" />
-<input bind="@message" placeholder="Message" />
-Append id to title: <input bind="@appendId" type="checkbox" />
-
-<button class="btn btn-primary" onclick="@(() => toaster.Info(message, ComposedTitle))">Info</button>
-<button class="btn btn-primary" onclick="@(() => toaster.Success(message, ComposedTitle))">Success</button>
-<button class="btn btn-primary" onclick="@(() => toaster.Warning(message, ComposedTitle))">Warning</button>
-<button class="btn btn-primary" onclick="@(() => toaster.Error(message, ComposedTitle))">Error</button>
+<div class="form-row">
+  <div class="col-5">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input id="title" class="form-control col-11" bind="@title" />
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <input id="message" class="form-control col-11" bind="@message" />
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="showProgressbar" bind="@toaster.Configuration.ShowProgressBar" />
+      <label class="form-check-label" for="showProgressbar">
+        Progress bar
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="ShowCloseIcon" bind="@toaster.Configuration.ShowCloseIcon" />
+      <label class="form-check-label" for="ShowCloseIcon">
+        Close icon
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="NewestOnTop" bind="@toaster.Configuration.NewestOnTop" />
+      <label class="form-check-label" for="NewestOnTop">
+        Newest on top
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="PreventDuplicates" bind="@toaster.Configuration.PreventDuplicates" />
+      <label class="form-check-label" for="PreventDuplicates">
+        Prevent duplicates
+      </label>
+    </div>
+  </div>
+  <div class="col-5">
+    <div class="form-group">
+      <label for="position">Position</label>
+      <select id="position" class="form-control col-5" bind="@toaster.Configuration.PositionClass">
+        <option value="toast-top-left">Top left</option>
+        <option value="toast-top-center">Top center</option>
+        <option value="toast-top-right">Top right</option>
+        <option value="toast-top-full-width">Top full width</option>
+        <option value="toast-bottom-right">Bottom right</option>
+        <option value="toast-bottom-center">Bottom center</option>
+        <option value="toast-bottom-left">Bottom left</option>
+        <option value="toast-bottom-full-width">Bottom full width</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="maxDisplayedToasts">Max visible toasts</label>
+      <input type="number" id="maxDisplayedToasts" class="form-control col-5" bind="@toaster.Configuration.MaxDisplayedToasts" />
+    </div>
+    <div class="form-group mt-5">
+      <button class="btn btn-primary" onclick="@(() => toaster.Info(message, title))">Info</button>
+      <button class="btn btn-primary" onclick="@(() => toaster.Success(message, title))">Success</button>
+      <button class="btn btn-primary" onclick="@(() => toaster.Warning(message, title))">Warning</button>
+      <button class="btn btn-primary" onclick="@(() => toaster.Error(message, title))">Error</button>
+    </div>
+  </div>
+</div>
 
 @functions {
-  private int id;
   private string title = "Test Title";
   private string message = "Test Message";
-  private bool appendId = true;
-
-  private string ComposedTitle => appendId ? $"{title} ({++id})" : $"{title}";
 }
 

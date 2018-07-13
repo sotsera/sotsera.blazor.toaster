@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace Sotsera.Blazor.Toaster.Core.Models
+namespace Sotsera.Blazor.Toaster.Core
 {
     public class TransitionTimer : IDisposable
     {
@@ -19,10 +19,10 @@ namespace Sotsera.Blazor.Toaster.Core.Models
 
         private void TransitionCallback(object state)
         {
-            var milliseconds = (DueTime - DateTime.Now).TotalMilliseconds;
-            var ratio = milliseconds / TotalDuration;
+            var dueMilliseconds = (DueTime - DateTime.Now).TotalMilliseconds;
+            var ratio = dueMilliseconds / TotalDuration;
 
-            var percentage = milliseconds <= 0 || ratio >= 0.99 ? 100m : Convert.ToDecimal((1 - ratio) * 100);
+            var percentage = dueMilliseconds <= 0 || ratio >= 0.99 ? 100m : Convert.ToDecimal((1 - ratio) * 100);
 
             Callback(percentage);
         }

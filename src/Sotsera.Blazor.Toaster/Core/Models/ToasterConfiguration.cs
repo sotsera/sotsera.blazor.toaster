@@ -26,12 +26,12 @@
 
         public ToasterConfiguration()
         {
-            ToastClass = Constants.Classes.Toast;
+            ToastClass = Defaults.Classes.Toast;
             IconClasses = new ToastIconClasses();
-            PositionClass = Constants.Classes.Position.TopRight;
+            PositionClass = Defaults.Classes.Position.TopRight;
             ShowCloseIcon = true;
-            CloseIconClass = Constants.Classes.CloseIconClass;
-            ProgressBarClass = Constants.Classes.ProgressBarClass;
+            CloseIconClass = Defaults.Classes.CloseIconClass;
+            ProgressBarClass = Defaults.Classes.ProgressBarClass;
         }
     }
 }

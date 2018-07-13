@@ -16,12 +16,11 @@ namespace Sotsera.Blazor.Toaster
         {
             get
             {
-                var newestOnTop = Toaster.Configuration.NewestOnTop;
-                var numberOfToasts = Toaster.Configuration.MaxDisplayedToasts;
+                var toasts = Toaster.Toasts.Take(Toaster.Configuration.MaxDisplayedToasts);
 
-                return newestOnTop
-                    ? Toaster.Toasts.Reverse().Take(numberOfToasts)
-                    : Toaster.Toasts.Take(numberOfToasts);
+                return Toaster.Configuration.NewestOnTop
+                    ? toasts.Reverse()
+                    : toasts;
             }
         }
 

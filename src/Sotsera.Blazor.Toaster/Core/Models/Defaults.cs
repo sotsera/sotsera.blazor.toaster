@@ -1,6 +1,6 @@
 ﻿namespace Sotsera.Blazor.Toaster.Core.Models
 {
-    public class Constants
+    public class Defaults
     {
         public class Classes
         {
