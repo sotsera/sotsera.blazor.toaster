@@ -16,7 +16,7 @@ namespace Sotsera.Blazor.Toaster.Core
         public event Action<Toast> OnClose;
         public event Action OnUpdate;
         
-        public string ContainerClass => $"{Options.ToastClass} {Options.ToastTypeClass()}";
+        public string ContainerClass => $"{Options.ToastClass} {Options.ToastTypeClass}";
         public string ContainerStyle => $"opacity: {Opacity};";
         public string ProgressBarStyle => $"width: {100 - TransitionPercentage}%;";
 

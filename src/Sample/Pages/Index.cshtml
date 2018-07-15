@@ -2,29 +2,53 @@
 @page "/"
 @inject Sotsera.Blazor.Toaster.IToaster toaster;
 
-<h2>Sotsera.Blazor.Toaster</h2>
+<h3>Data</h3>
+<div class="form-row mb-2">
+  <div class="form-group col-4">
+    <label for="title">Title</label>
+    <input id="title" class="form-control col-11" bind="@title" />
+  </div>
+  <div class="form-group col-6">
+    <label for="message">Message</label>
+    <input id="message" class="form-control col-11" bind="@message" />
+  </div>
+</div>
 
+<h3>Actions</h3>
 <div class="form-row">
-  <div class="col-5">
+  <div class="form-group">
+    <button class="btn btn-primary" onclick="@(() => toaster.Info(message, title))">Info</button>
+    <button class="btn btn-primary" onclick="@(() => toaster.Success(message, title))">Success</button>
+    <button class="btn btn-primary" onclick="@(() => toaster.Warning(message, title))">Warning</button>
+    <button class="btn btn-primary" onclick="@(() => toaster.Error(message, title))">Error</button>
+  </div>
+</div>
+
+<div class="form-row mt-2">
+  <div class="col-4">
     <div class="form-group">
-      <label for="title">Title</label>
-      <input id="title" class="form-control col-11" bind="@title" />
+      <h4>General options</h4>
     </div>
-    <div class="form-group">
-      <label for="message">Message</label>
-      <input id="message" class="form-control col-11" bind="@message" />
+    <div class="form-group row">
+      <label for="position" class="col-sm-5 col-form-label">Position</label>
+      <div class="col-sm-5">
+        <select id="position" class="form-control" bind="@toaster.Configuration.PositionClass">
+          <option value="toast-top-left">Top left</option>
+          <option value="toast-top-center">Top center</option>
+          <option value="toast-top-right">Top right</option>
+          <option value="toast-top-full-width">Top full width</option>
+          <option value="toast-bottom-right">Bottom right</option>
+          <option value="toast-bottom-center">Bottom center</option>
+          <option value="toast-bottom-left">Bottom left</option>
+          <option value="toast-bottom-full-width">Bottom full width</option>
+        </select>
+      </div>
     </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="showProgressbar" bind="@toaster.Configuration.ShowProgressBar" />
-      <label class="form-check-label" for="showProgressbar">
-        Progress bar
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="ShowCloseIcon" bind="@toaster.Configuration.ShowCloseIcon" />
-      <label class="form-check-label" for="ShowCloseIcon">
-        Close icon
-      </label>
+    <div class="form-group row">
+      <label for="maxDisplayedToasts" class="col-sm-5 col-form-label">Max visible toasts</label>
+      <div class="col-sm-5">
+        <input type="number" class="form-control" id="maxDisplayedToasts" bind="@toaster.Configuration.MaxDisplayedToasts" />
+      </div>
     </div>
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="NewestOnTop" bind="@toaster.Configuration.NewestOnTop" />
@@ -39,35 +63,25 @@
       </label>
     </div>
   </div>
-  <div class="col-5">
-    <div class="form-group">
-      <label for="position">Position</label>
-      <select id="position" class="form-control col-5" bind="@toaster.Configuration.PositionClass">
-        <option value="toast-top-left">Top left</option>
-        <option value="toast-top-center">Top center</option>
-        <option value="toast-top-right">Top right</option>
-        <option value="toast-top-full-width">Top full width</option>
-        <option value="toast-bottom-right">Bottom right</option>
-        <option value="toast-bottom-center">Bottom center</option>
-        <option value="toast-bottom-left">Bottom left</option>
-        <option value="toast-bottom-full-width">Bottom full width</option>
-      </select>
+  <div class="col-8">
+    <h4>Toast specific options</h4>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="showProgressbar" bind="@toaster.Configuration.ShowProgressBar" />
+      <label class="form-check-label" for="showProgressbar">
+        Progress bar
+      </label>
     </div>
-    <div class="form-group">
-      <label for="maxDisplayedToasts">Max visible toasts</label>
-      <input type="number" id="maxDisplayedToasts" class="form-control col-5" bind="@toaster.Configuration.MaxDisplayedToasts" />
-    </div>
-    <div class="form-group mt-5">
-      <button class="btn btn-primary" onclick="@(() => toaster.Info(message, title))">Info</button>
-      <button class="btn btn-primary" onclick="@(() => toaster.Success(message, title))">Success</button>
-      <button class="btn btn-primary" onclick="@(() => toaster.Warning(message, title))">Warning</button>
-      <button class="btn btn-primary" onclick="@(() => toaster.Error(message, title))">Error</button>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="ShowCloseIcon" bind="@toaster.Configuration.ShowCloseIcon" />
+      <label class="form-check-label" for="ShowCloseIcon">
+        Close icon
+      </label>
     </div>
   </div>
 </div>
 
 @functions {
-  private string title = "Test Title";
-  private string message = "Test Message";
+private string title = "Test Title";
+private string message = "Test Message";
 }
 

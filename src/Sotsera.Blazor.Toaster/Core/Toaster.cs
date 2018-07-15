@@ -14,6 +14,7 @@ namespace Sotsera.Blazor.Toaster.Core
         public Toaster(ToasterConfiguration configuration)
         {
             Configuration = configuration;
+            Configuration.OnUpdate += ConfigurationUpdated;
         }
 
         public void Info(string message, string title = null, Action<ToastOptions> configure = null)
@@ -79,8 +80,14 @@ namespace Sotsera.Blazor.Toaster.Core
             return Toasts.Any(t => string.Equals(t.Message, message) && string.Equals(t.Title, title) && type.Equals(t.Options.Type));
         }
 
+        private void ConfigurationUpdated()
+        {
+            OnToastsUpdated?.Invoke();
+        }
+
         public void Dispose()
         {
+            Configuration.OnUpdate -= ConfigurationUpdated;
             DisposeToasts(Toasts);
         }
 
