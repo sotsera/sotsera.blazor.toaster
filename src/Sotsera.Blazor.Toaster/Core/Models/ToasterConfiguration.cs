@@ -9,7 +9,7 @@ namespace Sotsera.Blazor.Toaster.Core.Models
         private int _maxDisplayedToasts;
         private string _positionClass;
 
-        public event Action OnUpdate;
+        internal event Action OnUpdate;
 
         public bool NewestOnTop
         {
@@ -73,7 +73,7 @@ namespace Sotsera.Blazor.Toaster.Core.Models
             MaxDisplayedToasts = 5;
         }
 
-        public string ToastTypeClass(ToastType type)
+        internal string ToastTypeClass(ToastType type)
         {
             switch (type)
             {

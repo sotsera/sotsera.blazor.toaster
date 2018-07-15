@@ -14,6 +14,7 @@ app {
     height: 3.5rem;
     display: flex;
     align-items: center;
+    z-index: 2;
 }
 
 .main {
@@ -121,3 +122,11 @@ app {
         display: block;
     }
 }
+
+.configuration {
+    font-size: 14px;
+}
+
+    .configuration .form-group {
+        margin-bottom: 0.5rem;
+    }

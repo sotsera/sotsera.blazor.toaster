@@ -1,38 +1,40 @@
-﻿@using Microsoft.AspNetCore.Blazor
+﻿@using Microsoft.AspNetCore.Blazor.Browser.Interop
+@using Sotsera.Blazor.Toaster.Core.Models
 @page "/"
 @inject Sotsera.Blazor.Toaster.IToaster toaster;
 
 <h3>Data</h3>
-<div class="form-row mb-2">
+<div class="form-row mb-3">
   <div class="form-group col-4">
     <label for="title">Title</label>
-    <input id="title" class="form-control col-11" bind="@title" />
+    <input id="title" class="form-control" bind="@title" />
   </div>
   <div class="form-group col-6">
     <label for="message">Message</label>
-    <input id="message" class="form-control col-11" bind="@message" />
+    <input id="message" class="form-control" bind="@message" />
   </div>
 </div>
 
-<h3>Actions</h3>
+
 <div class="form-row">
-  <div class="form-group">
-    <button class="btn btn-primary" onclick="@(() => toaster.Info(message, title))">Info</button>
-    <button class="btn btn-primary" onclick="@(() => toaster.Success(message, title))">Success</button>
-    <button class="btn btn-primary" onclick="@(() => toaster.Warning(message, title))">Warning</button>
-    <button class="btn btn-primary" onclick="@(() => toaster.Error(message, title))">Error</button>
+  <h3>Actions</h3>
+  <div class="form-group pl-3">
+    <button class="btn btn-primary" onclick="@(() => Show(ToastType.Info))">Info</button>
+    <button class="btn btn-primary" onclick="@(() => Show(ToastType.Success))">Success</button>
+    <button class="btn btn-primary" onclick="@(() => Show(ToastType.Warning))">Warning</button>
+    <button class="btn btn-primary" onclick="@(() => Show(ToastType.Error))">Error</button>
   </div>
 </div>
 
-<div class="form-row mt-2">
+<div class="form-row mt-3 configuration">
   <div class="col-4">
     <div class="form-group">
-      <h4>General options</h4>
+      <h5>General options</h5>
     </div>
     <div class="form-group row">
-      <label for="position" class="col-sm-5 col-form-label">Position</label>
+      <label for="position" class="col-sm-6 col-form-label">Position</label>
       <div class="col-sm-5">
-        <select id="position" class="form-control" bind="@toaster.Configuration.PositionClass">
+        <select id="position" class="form-control form-control-sm" bind="@toaster.Configuration.PositionClass">
           <option value="toast-top-left">Top left</option>
           <option value="toast-top-center">Top center</option>
           <option value="toast-top-right">Top right</option>
@@ -45,9 +47,9 @@
       </div>
     </div>
     <div class="form-group row">
-      <label for="maxDisplayedToasts" class="col-sm-5 col-form-label">Max visible toasts</label>
+      <label for="maxDisplayedToasts" class="col-sm-6 col-form-label">Max visible toasts</label>
       <div class="col-sm-5">
-        <input type="number" class="form-control" id="maxDisplayedToasts" bind="@toaster.Configuration.MaxDisplayedToasts" />
+        <input type="number" class="form-control form-control-sm" id="maxDisplayedToasts" bind="@toaster.Configuration.MaxDisplayedToasts" />
       </div>
     </div>
     <div class="form-check">
@@ -63,25 +65,123 @@
       </label>
     </div>
   </div>
-  <div class="col-8">
-    <h4>Toast specific options</h4>
+  <div class="col-4">
+    <h5>Toast options</h5>
+    <div class="form-group row">
+      <label for="maximumOpacity" class="col-sm-5 col-form-label">Max opacity (%)</label>
+      <div class="col-sm-3">
+        <input type="number" class="form-control form-control-sm" id="maximumOpacity" bind="@maximumOpacity" />
+      </div>
+    </div>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="showProgressbar" bind="@toaster.Configuration.ShowProgressBar" />
+      <input class="form-check-input" type="checkbox" value="" id="showProgressbar" bind="@showProgressBar" />
       <label class="form-check-label" for="showProgressbar">
         Progress bar
       </label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="ShowCloseIcon" bind="@toaster.Configuration.ShowCloseIcon" />
-      <label class="form-check-label" for="ShowCloseIcon">
+      <input class="form-check-input" type="checkbox" value="" id="showCloseIcon" bind="@showCloseIcon" />
+      <label class="form-check-label" for="showCloseIcon">
         Close icon
       </label>
     </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="actionOnClick" bind="@actionOnClick" />
+      <label class="form-check-label" for="actionOnClick">
+        Action on click (message in console)
+      </label>
+    </div>
+  </div>
+  <div class="col-4">
+    <h5>Toast transitions</h5>
+    <div class="form-group row">
+      <label for="showTransitionDuration" class="col-sm-7 col-form-label">Show duration</label>
+      <div class="col-sm-3">
+        <input type="number" class="form-control form-control-sm" id="showTransitionDuration" bind="@showTransitionDuration" />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="showStepDuration" class="col-sm-7 col-form-label">Show step duration</label>
+      <div class="col-sm-3">
+        <input type="number" class="form-control form-control-sm" id="showStepDuration" bind="@showStepDuration" />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="visibleStateDuration" class="col-sm-7 col-form-label">Visible duration</label>
+      <div class="col-sm-3">
+        <input type="number" class="form-control form-control-sm" id="visibleStateDuration" bind="@visibleStateDuration" />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="hideTransitionDuration" class="col-sm-7 col-form-label">Hide duration</label>
+      <div class="col-sm-3">
+        <input type="number" class="form-control form-control-sm" id="hideTransitionDuration" bind="@hideTransitionDuration" />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="hideStepDuration" class="col-sm-7 col-form-label">Hide step duration</label>
+      <div class="col-sm-3">
+        <input type="number" class="form-control form-control-sm" id="hideStepDuration" bind="@hideStepDuration" />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="progressbarStepDuration" class="col-sm-7 col-form-label">Progress bar step duration</label>
+      <div class="col-sm-3">
+        <input type="number" class="form-control form-control-sm" id="progressbarStepDuration" bind="@progressbarStepDuration" />
+      </div>
+    </div>
   </div>
 </div>
-
 @functions {
-private string title = "Test Title";
-private string message = "Test Message";
+    private string title = "Test Title";
+    private string message = "Test Message";
+    private bool showProgressBar;
+    private bool showCloseIcon;
+    private bool actionOnClick;
+    private int maximumOpacity;
+    private string clickMessage;
+
+    private int showTransitionDuration;
+    private int showStepDuration;
+    private int visibleStateDuration;
+    private int hideTransitionDuration;
+    private int hideStepDuration;
+    private int progressbarStepDuration;
+
+    protected override void OnInit()
+    {
+      showProgressBar = toaster.Configuration.ShowProgressBar;
+      showCloseIcon = toaster.Configuration.ShowCloseIcon;
+      maximumOpacity = Convert.ToInt32(toaster.Configuration.MaximumOpacity * 100);
+
+      showTransitionDuration = toaster.Configuration.ShowTransitionDuration;
+      showStepDuration = toaster.Configuration.ShowStepDuration;
+      visibleStateDuration = toaster.Configuration.VisibleStateDuration;
+      hideTransitionDuration = toaster.Configuration.HideTransitionDuration;
+      hideStepDuration = toaster.Configuration.HideStepDuration;
+      progressbarStepDuration = toaster.Configuration.VisibleStepDuration;
+    }
+
+    public void Show(ToastType type)
+    {
+      toaster.Add(type, message, title, config =>
+      {
+        config.ShowCloseIcon = showCloseIcon;
+        config.ShowProgressBar = showProgressBar;
+        config.MaximumOpacity = Convert.ToDecimal(maximumOpacity) / 100;
+
+        config.ShowTransitionDuration = showTransitionDuration;
+        config.ShowStepDuration = showStepDuration;
+        config.VisibleStateDuration = visibleStateDuration;
+        config.HideTransitionDuration = hideTransitionDuration;
+        config.HideStepDuration = hideStepDuration;
+        config.VisibleStepDuration = progressbarStepDuration;
+
+        if (actionOnClick)
+        {
+          config.Onclick = toast => Console.WriteLine($"Title: \"{toast.Title}\"; message: \"{toast.Message}\"; Type: {toast.Options.Type}");
+        }
+      });
+    }
 }
 

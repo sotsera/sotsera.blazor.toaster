@@ -16,6 +16,7 @@ namespace Sotsera.Blazor.Toaster
         void Info(string message, string title = null, Action<ToastOptions> configure = null);
         void Success(string message, string title = null, Action<ToastOptions> configure = null);
         void Warning(string message, string title = null, Action<ToastOptions> configure = null);
+        void Add(ToastType type, string message, string title, Action<ToastOptions> configure);
 
         void Clear();
         void Remove(Toast toast);

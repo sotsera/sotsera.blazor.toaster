@@ -37,6 +37,28 @@ namespace Sotsera.Blazor.Toaster.Core
             Add(ToastType.Error, message, title, configure);
         }
 
+        public void Add(ToastType type, string message, string title, Action<ToastOptions> configure)
+        {
+            if (message.IsEmpty()) return;
+
+            message = message.Trimmed();
+            title = title.Trimmed();
+
+            if (Configuration.PreventDuplicates && ToastAlreadyPresent(message, title, type))
+            {
+                return;
+            }
+
+            var options = new ToastOptions(type, Configuration);
+            configure?.Invoke(options);
+
+            var toast = new Toast(title, message, options);
+            toast.OnClose += Remove;
+            Toasts.Add(toast);
+
+            OnToastsUpdated?.Invoke();
+        }
+
         public void Clear()
         {
             var toasts = Toasts;
@@ -51,28 +73,6 @@ namespace Sotsera.Blazor.Toaster.Core
             Toasts.Remove(toast);
             OnToastsUpdated?.Invoke();
             toast.Dispose();
-        }
-
-        private void Add(ToastType type, string message, string title, Action<ToastOptions> configure)
-        {
-            if (message.IsEmpty()) return;
-
-            message = message.Trimmed();
-            title = title.Trimmed();
-
-            if (Configuration.PreventDuplicates  && ToastAlreadyPresent(message, title, type))
-            {
-                return;
-            }
-
-            var options = new ToastOptions(type, Configuration);
-            configure?.Invoke(options);
-
-            var toast = new Toast(title, message, options);
-            toast.OnClose += Remove;
-            Toasts.Add(toast);
-
-            OnToastsUpdated?.Invoke();
         }
 
         private bool ToastAlreadyPresent(string message, string title, ToastType type)
