@@ -56,7 +56,7 @@ namespace Sotsera.Blazor.Toaster.Core.Models
         public ToasterConfiguration()
         {
             PositionClass = Defaults.Classes.Position.TopRight;
-            NewestOnTop = true;
+            NewestOnTop = false;
             PreventDuplicates = true;
             MaxDisplayedToasts = 5;
         }
