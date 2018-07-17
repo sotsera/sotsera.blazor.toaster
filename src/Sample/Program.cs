@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Blazor.Browser.Rendering;
 using Microsoft.AspNetCore.Blazor.Browser.Services;
 using Microsoft.Extensions.DependencyInjection;
-using System;
+using Sotsera.Blazor.Toaster.Core.Models;
 
 namespace Sample
 {
@@ -11,7 +11,12 @@ namespace Sample
         {
             var serviceProvider = new BrowserServiceProvider(services =>
             {
-                services.AddToaster(config => { config.NewestOnTop = true; });
+                services.AddToaster(config =>
+                {
+                    config.PositionClass = Defaults.Classes.Position.TopRight;
+                    config.PreventDuplicates = true;
+                    config.NewestOnTop = false;
+                });
             });
 
             new BrowserRenderer(serviceProvider).AddComponent<App>("app");
