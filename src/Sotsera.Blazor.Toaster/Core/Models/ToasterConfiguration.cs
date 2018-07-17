@@ -2,6 +2,9 @@
 
 namespace Sotsera.Blazor.Toaster.Core.Models
 {
+    /// <summary>
+    /// Represents the global <see cref="ToasterConfiguration"/> instance
+    /// </summary>
     public class ToasterConfiguration : CommonToastOptions
     {
         private bool _newestOnTop;
@@ -11,6 +14,9 @@ namespace Sotsera.Blazor.Toaster.Core.Models
 
         internal event Action OnUpdate;
 
+        /// <summary>
+        /// Drives the toast display sequence: when true the newest displayable toast will be on top. Otherwise it will be on the bottom. Defaults to true.
+        /// </summary>
         public bool NewestOnTop
         {
             get => _newestOnTop;
@@ -21,6 +27,9 @@ namespace Sotsera.Blazor.Toaster.Core.Models
             }
         }
 
+        /// <summary>
+        /// When true, a new toast with the same type, title and message of an already present toast will be ignored. Defaults to true.
+        /// </summary>
         public bool PreventDuplicates
         {
             get => _preventDuplicates;
@@ -31,6 +40,9 @@ namespace Sotsera.Blazor.Toaster.Core.Models
             }
         }
 
+        /// <summary>
+        /// The maximum number of toasts to be displayed at the same time. Defaults to 5
+        /// </summary>
         public int MaxDisplayedToasts
         {
             get => _maxDisplayedToasts;
@@ -41,6 +53,9 @@ namespace Sotsera.Blazor.Toaster.Core.Models
             }
         }
 
+        /// <summary>
+        /// The css class driving the toast position in the screen. The predefined positions are contained in <see cref="Defaults.Classes.Position"/>. Defaults to <see cref="Defaults.Classes.Position.TopRight"/>
+        /// </summary>
         public string PositionClass
         {
             get => _positionClass;
@@ -51,12 +66,15 @@ namespace Sotsera.Blazor.Toaster.Core.Models
             }
         }
 
+        /// <summary>
+        ///  An <see cref="ToastIconClasses"/> containing css classes to be used for the <see cref="ToastState"/>
+        /// </summary>
         public ToastIconClasses IconClasses = new ToastIconClasses();
 
         public ToasterConfiguration()
         {
             PositionClass = Defaults.Classes.Position.TopRight;
-            NewestOnTop = false;
+            NewestOnTop = true;
             PreventDuplicates = true;
             MaxDisplayedToasts = 5;
         }

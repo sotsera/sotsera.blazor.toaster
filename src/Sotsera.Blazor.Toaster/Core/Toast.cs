@@ -3,6 +3,10 @@ using Sotsera.Blazor.Toaster.Core.Models;
 
 namespace Sotsera.Blazor.Toaster.Core
 {
+    /// <summary>
+    /// Represents an instance of a Toast
+    /// It handles the user interactions and orchestrates the the state transitions
+    /// </summary>
     public class Toast : IDisposable
     {
         public ToastState State { get; set; }

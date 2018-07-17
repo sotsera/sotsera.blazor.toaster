@@ -5,6 +5,7 @@ using Sotsera.Blazor.Toaster.Core.Models;
 
 namespace Sotsera.Blazor.Toaster.Core
 {
+    /// <inheritdoc />
     public class Toaster : IToaster
     {
         public ToasterConfiguration Configuration { get; }
