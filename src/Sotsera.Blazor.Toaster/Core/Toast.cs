@@ -90,18 +90,19 @@ namespace Sotsera.Blazor.Toaster.Core
             {
                 case ToastState.Showing:
                     ResetPercentage(0);
-                    Timer.Start(Options.ShowTransitionDuration, Options.ShowStepDuration);
+                    if (Options.ShowTransitionDuration <= 0) TransitionTo(ToastState.Visible);
+                    else Timer.Start(Options.ShowTransitionDuration, Options.ShowStepDuration);
                     break;
                 case ToastState.Visible:
                     ResetPercentage(100);
-                    if(Options.ShowProgressBar)
-                        Timer.Start(Options.VisibleStateDuration, Options.VisibleStepDuration);
-                    else
-                        Timer.Start(Options.VisibleStateDuration);
+                    if (Options.VisibleStateDuration <= 0) TransitionTo(ToastState.Hiding);
+                    else if (Options.ShowProgressBar) Timer.Start(Options.VisibleStateDuration, Options.VisibleStepDuration);
+                    else Timer.Start(Options.VisibleStateDuration);
                     break;
                 case ToastState.Hiding:
                     ResetPercentage(100);
-                    Timer.Start(Options.HideTransitionDuration, Options.HideStepDuration);
+                    if (Options.HideTransitionDuration <= 0) OnClose?.Invoke(this);
+                    else Timer.Start(Options.HideTransitionDuration, Options.HideStepDuration);
                     break;
                 case ToastState.MouseOver:
                     ResetPercentage(100);

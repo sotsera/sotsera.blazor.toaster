@@ -36,7 +36,7 @@ namespace Sotsera.Blazor.Toaster.Core
         {
             DueTime = DateTime.Now.AddMilliseconds(totalDuration);
             TotalDuration = totalDuration;
-            StepDuration = stepDuration;
+            StepDuration = stepDuration < totalDuration ? stepDuration : totalDuration;
             
             Step();
         }
