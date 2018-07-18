@@ -1,5 +1,4 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace Sotsera.Blazor.Toaster.Core.Models
 {
@@ -10,7 +9,9 @@ namespace Sotsera.Blazor.Toaster.Core.Models
 
         public Opacity(decimal max)
         {
-            Max = max;
+            if (max >= 100) Max = 1;
+            else if (max <= 0) Max = 0;
+            else Max = max / 100;
         }
 
         public void SetPercentage(decimal percentage)

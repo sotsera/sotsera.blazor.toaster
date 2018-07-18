@@ -151,7 +151,7 @@
     {
       showProgressBar = toaster.Configuration.ShowProgressBar;
       showCloseIcon = toaster.Configuration.ShowCloseIcon;
-      maximumOpacity = Convert.ToInt32(toaster.Configuration.MaximumOpacity * 100);
+      maximumOpacity = toaster.Configuration.MaximumOpacity;
 
       showTransitionDuration = toaster.Configuration.ShowTransitionDuration;
       showStepDuration = toaster.Configuration.ShowStepDuration;
@@ -167,7 +167,7 @@
       {
         config.ShowCloseIcon = showCloseIcon;
         config.ShowProgressBar = showProgressBar;
-        config.MaximumOpacity = Convert.ToDecimal(maximumOpacity) / 100;
+        config.MaximumOpacity = maximumOpacity;
 
         config.ShowTransitionDuration = showTransitionDuration;
         config.ShowStepDuration = showStepDuration;

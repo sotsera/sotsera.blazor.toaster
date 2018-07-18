@@ -8,9 +8,9 @@
         public string ToastClass { get; set; } = Defaults.Classes.Toast;
 
         /// <summary>
-        /// The maximum opacity for a toast in the <see cref="ToastState.Visible"/> state. Defaults to 0.8 (80%) where 0 means completely hidden and 1 means solid color.
+        /// The maximum opacity expressed as an integer percentage for a toast in the <see cref="ToastState.Visible"/> state. Defaults to 80% where 0 means completely hidden and 100 means solid color.
         /// </summary>
-        public decimal MaximumOpacity { get; set; } = 0.8m;
+        public int MaximumOpacity { get; set; } = 80;
 
         /// <summary>
         /// How long the showing transition takes to bring a toast to the <see cref="MaximumOpacity"/> and set it to the <see cref="ToastState.Visible"/> state. Defaults to 1000 ms.
@@ -46,6 +46,10 @@
         /// States if a progressbar has to be shown during the toast <see cref="ToastState.Visible"/> state. Defaults to true.
         /// </summary>
         public bool ShowProgressBar { get; set; } = true;
+
+        /// <summary>
+        /// The css class for the progress bar. Defaults to <see cref="Defaults.Classes.ProgressBarClass"/>.
+        /// </summary>
         public string ProgressBarClass { get; set; } = Defaults.Classes.ProgressBarClass;
 
         /// <summary>
@@ -54,7 +58,7 @@
         public bool ShowCloseIcon { get; set; } = true;
 
         /// <summary>
-        /// The css class for the close icon. Defaults to <see cref="Defaults.Classes.CloseIconClass"/>
+        /// The css class for the close icon. Defaults to <see cref="Defaults.Classes.CloseIconClass"/>.
         /// </summary>
         public string CloseIconClass { get; set; } = Defaults.Classes.CloseIconClass;
     }
