@@ -18,7 +18,7 @@ namespace Sotsera.Blazor.Toaster.Core.Models
         public ToastType Type { get; }
 
         /// <summary>
-        /// The css class representing it's state
+        /// The css class representing the toast state
         /// </summary>
         public string ToastTypeClass { get; set; }
 
@@ -34,12 +34,12 @@ namespace Sotsera.Blazor.Toaster.Core.Models
             ShowStepDuration = configuration.ShowStepDuration;
 
             VisibleStateDuration = configuration.VisibleStateDuration;
-            VisibleStepDuration = configuration.VisibleStepDuration;
 
             HideTransitionDuration = configuration.HideTransitionDuration;
             HideStepDuration = configuration.HideStepDuration;
 
             ShowProgressBar = configuration.ShowProgressBar;
+            ProgressBarStepDuration = configuration.ProgressBarStepDuration;
             ProgressBarClass = configuration.ProgressBarClass;
 
             ShowCloseIcon = configuration.ShowCloseIcon;

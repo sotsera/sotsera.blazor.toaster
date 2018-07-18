@@ -67,7 +67,7 @@ namespace Sotsera.Blazor.Toaster.Core.Models
         }
 
         /// <summary>
-        ///  An <see cref="ToastIconClasses"/> containing css classes to be used for the <see cref="ToastState"/>
+        ///  A <see cref="ToastIconClasses"/> instance containing the css classes for all the <see cref="ToastState"/> states.
         /// </summary>
         public ToastIconClasses IconClasses = new ToastIconClasses();
 

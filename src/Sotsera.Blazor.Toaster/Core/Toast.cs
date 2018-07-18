@@ -96,7 +96,7 @@ namespace Sotsera.Blazor.Toaster.Core
                 case ToastState.Visible:
                     ResetPercentage(100);
                     if (Options.VisibleStateDuration <= 0) TransitionTo(ToastState.Hiding);
-                    else if (Options.ShowProgressBar) Timer.Start(Options.VisibleStateDuration, Options.VisibleStepDuration);
+                    else if (Options.ShowProgressBar) Timer.Start(Options.VisibleStateDuration, Options.ProgressBarStepDuration);
                     else Timer.Start(Options.VisibleStateDuration);
                     break;
                 case ToastState.Hiding:

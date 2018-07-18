@@ -158,7 +158,7 @@
       visibleStateDuration = toaster.Configuration.VisibleStateDuration;
       hideTransitionDuration = toaster.Configuration.HideTransitionDuration;
       hideStepDuration = toaster.Configuration.HideStepDuration;
-      progressbarStepDuration = toaster.Configuration.VisibleStepDuration;
+      progressbarStepDuration = toaster.Configuration.ProgressBarStepDuration;
     }
 
     public void Show(ToastType type)
@@ -174,7 +174,7 @@
         config.VisibleStateDuration = visibleStateDuration;
         config.HideTransitionDuration = hideTransitionDuration;
         config.HideStepDuration = hideStepDuration;
-        config.VisibleStepDuration = progressbarStepDuration;
+        config.ProgressBarStepDuration = progressbarStepDuration;
 
         if (actionOnClick)
         {

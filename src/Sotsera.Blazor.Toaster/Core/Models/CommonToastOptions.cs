@@ -8,12 +8,12 @@
         public string ToastClass { get; set; } = Defaults.Classes.Toast;
 
         /// <summary>
-        /// The maximum opacity expressed as an integer percentage for a toast in the <see cref="ToastState.Visible"/> state. Defaults to 80% where 0 means completely hidden and 100 means solid color.
+        /// The maximum opacity expressed as an integer percentage for a toast in the Visible state. Defaults to 80% where 0 means completely hidden and 100 means solid color.
         /// </summary>
         public int MaximumOpacity { get; set; } = 80;
 
         /// <summary>
-        /// How long the showing transition takes to bring a toast to the <see cref="MaximumOpacity"/> and set it to the <see cref="ToastState.Visible"/> state. Defaults to 1000 ms.
+        /// How long the showing transition takes to bring a toast to the MaximumOpacity and set it to the Visible state. Defaults to 1000 ms.
         /// </summary>
         public int ShowTransitionDuration { get; set; } = 1000;
 
@@ -28,11 +28,6 @@
         public int VisibleStateDuration { get; set; } = 5000;
 
         /// <summary>
-        /// Interval between component repaint during the Visible state: it's used only it the progressbar is shown. Defaults to 50 ms.
-        /// </summary>
-        public int VisibleStepDuration { get; set; } = 50;
-
-        /// <summary>
         /// How long the hiding transition takes to make a toast disappear. Defaults to 2000 ms.
         /// </summary>
         public int HideTransitionDuration { get; set; } = 2000;
@@ -43,9 +38,14 @@
         public int HideStepDuration { get; set; } = 100;
 
         /// <summary>
-        /// States if a progressbar has to be shown during the toast <see cref="ToastState.Visible"/> state. Defaults to true.
+        /// States if a progressbar has to be shown during the toast Visible state. Defaults to true.
         /// </summary>
         public bool ShowProgressBar { get; set; } = true;
+
+        /// <summary>
+        /// Interval between component repaint during the Visible state: it's used only if ShowProgressBar is true. Defaults to 50 ms.
+        /// </summary>
+        public int ProgressBarStepDuration { get; set; } = 50;
 
         /// <summary>
         /// The css class for the progress bar. Defaults to <see cref="Defaults.Classes.ProgressBarClass"/>.
