@@ -3,17 +3,30 @@ A Blazor port of [Toastr.js](https://github.com/CodeSeven/toastr/). If there is 
 
 The sample project has been published [here](https://sotsera.github.io/sotsera.blazor.toaster/).
 
+The transitions are implemented using `System.Threading.Timer` instances (at least for now) and no javascript is involved.
+
+## Changes
+- version 0.4.0
+    - **MaxDisplayedToasts** is now an integer ranging from 0 to 100
+    - The **VisibleStepDuration** option has been renamed to **ProgressBarStepDuration**
+  
+
 ## Configuration
 
-Add reference to the package.
+`Install-Package Sotsera.Blazor.Toaster`
 
-Configure dependency injection
+Configure the dependency injection 
 
 ```c#
-services.AddToaster((options) => { ... });
+services.AddToaster(config =>
+{
+    config.PositionClass = Defaults.Classes.Position.TopRight;
+    config.PreventDuplicates = true;
+    config.NewestOnTop = false;
+});
 ```
 
-In App.cshtml
+and add the toast container to `App.cshtml` (or to another component always loaded in the application)
 
 ```c#
 @addTagHelper *, Sotsera.Blazor.Toaster
