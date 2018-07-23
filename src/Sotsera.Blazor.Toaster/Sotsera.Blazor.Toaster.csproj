@@ -5,6 +5,9 @@
     <OutputType>Library</OutputType>
     <IsPackable>true</IsPackable>
     <BlazorLinkOnBuild>false</BlazorLinkOnBuild>
+    <RestoreAdditionalProjectSources>
+      https://dotnet.myget.org/f/blazor-dev/api/v3/index.json;
+    </RestoreAdditionalProjectSources>
     <LangVersion>7.3</LangVersion>
     <AssemblyName>Sotsera.Blazor.Toaster</AssemblyName>
     <RootNamespace>Sotsera.Blazor.Toaster</RootNamespace>
@@ -28,8 +31,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Blazor.Browser" Version="0.4.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="0.4.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Browser" Version="0.5.0-preview1-10354" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="0.5.0-preview1-10354" />
   </ItemGroup>
 
 </Project>
