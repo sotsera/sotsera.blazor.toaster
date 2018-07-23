@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Sotsera.Blazor.Toaster;
 using Sotsera.Blazor.Toaster.Core;
 using Sotsera.Blazor.Toaster.Core.Models;
@@ -7,7 +8,7 @@ using Sotsera.Blazor.Toaster.Core.Models;
 namespace Microsoft.Extensions.DependencyInjection
 {
     /// <summary>
-    /// Provides the <see cref="Toaster" configuration entry points/>
+    /// Provides the <see cref="Toaster"/> configuration entry points
     /// </summary>
     public static class BlazorExtensions
     {
@@ -17,7 +18,8 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddToaster(this IServiceCollection services, ToasterConfiguration configuration)
         {
             if(configuration == null) throw new ArgumentNullException(nameof(configuration));
-            return services.AddSingleton<IToaster>(new Toaster(configuration));
+            services.TryAddSingleton<IToaster>(new Toaster(configuration));
+            return services;
         }
 
         /// <summary>
