@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using Sotsera.Blazor.Toaster.Core.Models;
 
 namespace Sotsera.Blazor.Toaster.Core
@@ -22,7 +23,7 @@ namespace Sotsera.Blazor.Toaster.Core
         
         public string ContainerClass => $"{Options.ToastClass} {Options.ToastTypeClass}";
         public string ContainerStyle => $"opacity: {Opacity};";
-        public string ProgressBarStyle => $"width: {100 - TransitionPercentage}%;";
+        public string ProgressBarStyle => $"width: {(100 - TransitionPercentage).ToString("0.00", CultureInfo.InvariantCulture)}%;";
 
         public Toast(string title, string message, ToastOptions options)
         {

@@ -23,7 +23,7 @@ namespace Sotsera.Blazor.Toaster.Core.Models
 
         public override string ToString()
         {
-            return Value.ToString(CultureInfo.InvariantCulture);
+            return Value.ToString("0.00", CultureInfo.InvariantCulture);
         }
     }
 }
