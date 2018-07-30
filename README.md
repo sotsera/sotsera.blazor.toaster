@@ -8,6 +8,12 @@ The transitions are implemented using `System.Threading.Timer` instances (at lea
 
 ## Changes
 
+- version 0.5.2
+  - upgraded to blazor 0.5.1
+
+- version 0.5.1
+  - upgraded to blazor 0.5.0 
+
 - version 0.4.0
   - **MaxDisplayedToasts** is now an integer ranging from 0 to 100
   - The **VisibleStepDuration** option has been renamed to **ProgressBarStepDuration**

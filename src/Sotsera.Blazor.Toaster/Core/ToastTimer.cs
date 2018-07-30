@@ -5,7 +5,7 @@ namespace Sotsera.Blazor.Toaster.Core
 {
     public class TransitionTimer : IDisposable
     {
-        private Action<decimal> Callback { get; }
+        private Action<decimal> Callback { get; set; }
         private Timer Timer { get; set; }
         private DateTime DueTime { get; set; }
         private int TotalDuration { get; set; }
@@ -24,7 +24,7 @@ namespace Sotsera.Blazor.Toaster.Core
 
             var percentage = dueMilliseconds <= 0 || ratio >= 0.99 ? 100m : Convert.ToDecimal((1 - ratio) * 100);
 
-            Callback(percentage);
+            Callback?.Invoke(percentage);
         }
 
         public void Start(int totalDuration)
@@ -56,6 +56,7 @@ namespace Sotsera.Blazor.Toaster.Core
             Stop();
             Timer.Dispose();
             Timer = null;
+            Callback = null;
         }
     }
 }
