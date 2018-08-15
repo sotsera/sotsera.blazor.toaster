@@ -10,10 +10,13 @@ namespace Sotsera.Blazor.Toaster.Core
     /// </summary>
     public class Toast : IDisposable
     {
+        public decimal TransitionPercentage { get; set; }
+        private bool UserHasInteracted { get; set; }
+        private bool RequiresInteraction => Options.VisibleStateDuration == 0;
+
+        private TransitionTimer Timer { get; }
         public ToastState State { get; set; }
         private Opacity Opacity { get; set; }
-        public decimal TransitionPercentage { get; set; }
-        private TransitionTimer Timer { get; }
 
         public ToastOptions Options { get; }
         public string Title { get; }
@@ -64,6 +67,7 @@ namespace Sotsera.Blazor.Toaster.Core
         public void MouseLeave()
         {
             if (State == ToastState.Hiding) return;
+            if (RequiresInteraction && !UserHasInteracted) return; 
             TransitionTo(ToastState.Hiding);
         }
 
@@ -73,6 +77,7 @@ namespace Sotsera.Blazor.Toaster.Core
 
             if (fromCloseIcon || !Options.ShowCloseIcon)
             {
+                UserHasInteracted = true;
                 TransitionTo(ToastState.Hiding);
             }
         }
@@ -96,7 +101,8 @@ namespace Sotsera.Blazor.Toaster.Core
                     break;
                 case ToastState.Visible:
                     ResetPercentage(100);
-                    if (Options.VisibleStateDuration <= 0) TransitionTo(ToastState.Hiding);
+                    if (RequiresInteraction) break;
+                    if (Options.VisibleStateDuration < 0) TransitionTo(ToastState.Hiding);
                     else if (Options.ShowProgressBar) Timer.Start(Options.VisibleStateDuration, Options.ProgressBarStepDuration);
                     else Timer.Start(Options.VisibleStateDuration);
                     break;

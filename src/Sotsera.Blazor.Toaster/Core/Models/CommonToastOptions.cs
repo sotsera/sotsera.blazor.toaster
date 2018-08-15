@@ -23,7 +23,7 @@
         public int ShowStepDuration { get; set; } = 100;
 
         /// <summary>
-        /// How long the toast remain visible without user interaction. Defaults to 5000 ms.
+        /// How long the toast remain visible without user interaction. A value of 0 disables the auto hide and forces the user to interact with the toast. Defaults to 5000 ms.
         /// </summary>
         public int VisibleStateDuration { get; set; } = 5000;
 
