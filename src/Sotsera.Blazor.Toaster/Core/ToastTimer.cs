@@ -22,7 +22,7 @@ namespace Sotsera.Blazor.Toaster.Core
             var dueMilliseconds = (DueTime - DateTime.Now).TotalMilliseconds;
             var ratio = dueMilliseconds / TotalDuration;
 
-            var percentage = dueMilliseconds <= 0 || ratio >= 0.99 ? 100m : Convert.ToDecimal((1 - ratio) * 100);
+            var percentage = dueMilliseconds <= 0 || ratio >= 1 ? 100m : Convert.ToDecimal((1 - ratio) * 100);
 
             Callback?.Invoke(percentage);
         }
