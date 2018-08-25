@@ -9,7 +9,8 @@ The transitions are implemented using `System.Threading.Timer` instances (at lea
 ## Changes
 
 - version 0.5.3
-  - Setting **VisibleStepDuration** to zero disables the toast auto fade out
+  - removed global.json files
+  - the new **RequireInteraction** option disables the toast auto fade out
 
 - version 0.5.2
   - upgraded to blazor 0.5.1
