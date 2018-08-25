@@ -73,6 +73,12 @@
       </div>
     </div>
     <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="requireInteraction" bind="@requireInteraction" />
+      <label class="form-check-label" for="requireInteraction">
+        Require interaction <span style="color: red;">(new)</span>
+      </label>
+    </div>
+    <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="showProgressbar" bind="@showProgressBar" />
       <label class="form-check-label" for="showProgressbar">
         Progress bar
@@ -146,6 +152,8 @@
     private int hideStepDuration;
     private int progressbarStepDuration;
 
+    private bool requireInteraction;
+
     protected override void OnInit()
     {
       showProgressBar = toaster.Configuration.ShowProgressBar;
@@ -158,6 +166,8 @@
       hideTransitionDuration = toaster.Configuration.HideTransitionDuration;
       hideStepDuration = toaster.Configuration.HideStepDuration;
       progressbarStepDuration = toaster.Configuration.ProgressBarStepDuration;
+
+      requireInteraction = toaster.Configuration.RequireInteraction;
     }
 
     public void Show(ToastType type)
@@ -174,6 +184,8 @@
         config.HideTransitionDuration = hideTransitionDuration;
         config.HideStepDuration = hideStepDuration;
         config.ProgressBarStepDuration = progressbarStepDuration;
+
+        config.RequireInteraction = requireInteraction;
 
         if (actionOnClick)
         {

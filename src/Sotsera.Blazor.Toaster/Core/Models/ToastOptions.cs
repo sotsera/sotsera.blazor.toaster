@@ -44,6 +44,8 @@ namespace Sotsera.Blazor.Toaster.Core.Models
 
             ShowCloseIcon = configuration.ShowCloseIcon;
             CloseIconClass = configuration.CloseIconClass;
+
+            RequireInteraction = configuration.RequireInteraction;
         }
     }
 }

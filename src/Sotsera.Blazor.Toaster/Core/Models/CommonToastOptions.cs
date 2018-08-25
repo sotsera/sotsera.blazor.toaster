@@ -23,7 +23,7 @@
         public int ShowStepDuration { get; set; } = 100;
 
         /// <summary>
-        /// How long the toast remain visible without user interaction. A value of 0 disables the auto hide and forces the user to interact with the toast. Defaults to 5000 ms.
+        /// How long the toast remain visible without user interaction. A value less than 1 triggers the hiding immediately. Defaults to 5000 ms.
         /// </summary>
         public int VisibleStateDuration { get; set; } = 5000;
 
@@ -61,5 +61,10 @@
         /// The css class for the close icon. Defaults to <see cref="Defaults.Classes.CloseIconClass"/>.
         /// </summary>
         public string CloseIconClass { get; set; } = Defaults.Classes.CloseIconClass;
+
+        /// <summary>
+        /// When true it disables the auto hiding and forces the user to interact with the toast for closing it. Defaults to false.
+        /// </summary>
+        public bool RequireInteraction { get; set; } = false;
     }
 }

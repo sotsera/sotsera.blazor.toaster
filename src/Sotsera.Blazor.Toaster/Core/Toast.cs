@@ -12,7 +12,6 @@ namespace Sotsera.Blazor.Toaster.Core
     {
         public decimal TransitionPercentage { get; set; }
         private bool UserHasInteracted { get; set; }
-        private bool RequiresInteraction => Options.VisibleStateDuration == 0;
 
         private TransitionTimer Timer { get; }
         public ToastState State { get; set; }
@@ -67,7 +66,7 @@ namespace Sotsera.Blazor.Toaster.Core
         public void MouseLeave()
         {
             if (State == ToastState.Hiding) return;
-            if (RequiresInteraction && !UserHasInteracted) return; 
+            if (Options.RequireInteraction && !UserHasInteracted) return; 
             TransitionTo(ToastState.Hiding);
         }
 
@@ -101,7 +100,7 @@ namespace Sotsera.Blazor.Toaster.Core
                     break;
                 case ToastState.Visible:
                     ResetPercentage(100);
-                    if (RequiresInteraction) break;
+                    if (Options.RequireInteraction) break;
                     if (Options.VisibleStateDuration < 0) TransitionTo(ToastState.Hiding);
                     else if (Options.ShowProgressBar) Timer.Start(Options.VisibleStateDuration, Options.ProgressBarStepDuration);
                     else Timer.Start(Options.VisibleStateDuration);
