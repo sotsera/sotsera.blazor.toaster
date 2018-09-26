@@ -23,7 +23,7 @@ namespace Sotsera.Blazor.Toaster.Core
         public event Action<Toast> OnClose;
         public event Action OnUpdate;
         
-        public string ContainerClass => $"{Options.ToastClass} {Options.ToastTypeClass}";
+        public string ContainerClass => $"{Options.ToastClass} {Options.ToastTypeClass}{(Options.ShowCloseIcon ? "" : " force-cursor")}";
         public string ContainerStyle => $"opacity: {Opacity};";
         public string ProgressBarStyle => $"width: {(100 - TransitionPercentage).ToString("0.00", CultureInfo.InvariantCulture)}%;";
 
