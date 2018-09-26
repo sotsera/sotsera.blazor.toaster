@@ -1,5 +1,7 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
-  <a class="navbar-brand" href="">Toaster (0.5.3)</a>
+﻿@inject Sotsera.Blazor.Toaster.IToaster toaster;
+
+<div class="top-row pl-4 navbar navbar-dark">
+  <a class="navbar-brand" href="">Toaster (@toaster.Version)</a>
   <button class="navbar-toggler" onclick=@ToggleNavMenu>
     <span class="navbar-toggler-icon"></span>
   </button>

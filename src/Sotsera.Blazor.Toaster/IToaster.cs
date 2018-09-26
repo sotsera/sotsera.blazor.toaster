@@ -20,9 +20,14 @@ namespace Sotsera.Blazor.Toaster
         /// The global <see cref="ToasterConfiguration"/> 
         /// </summary>
         ToasterConfiguration Configuration { get; }
+        
+        /// <summary>
+        /// Returns the Toaster library version
+        /// </summary>
+        string Version { get; }
 
         /// <summary>
-        /// An event raised when the list of toasts changes or a global gonfiguration setting is modified
+        /// An event raised when the list of toasts changes or a global configuration setting is modified
         /// </summary>
         event Action OnToastsUpdated;
         

@@ -11,11 +11,13 @@ namespace Sotsera.Blazor.Toaster.Core
         public ToasterConfiguration Configuration { get; }
         public event Action OnToastsUpdated;
         public IList<Toast> Toasts { get; private set; } = new List<Toast>();
+        public string Version { get; }
 
         public Toaster(ToasterConfiguration configuration)
         {
             Configuration = configuration;
             Configuration.OnUpdate += ConfigurationUpdated;
+            Version = GetType().InformationalVersion();
         }
 
         public void Info(string message, string title = null, Action<ToastOptions> configure = null)
