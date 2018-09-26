@@ -8,6 +8,10 @@ The transitions are implemented using `System.Threading.Timer` instances (at lea
 
 ## Changes
 
+- version 0.6.0-preview1
+  - upgraded to blazor 0.6.0-preview1-final
+  - css cursor forced to **pointer** on toast's outer div in order to allow them to be tappable on safari (ios)
+
 - version 0.5.3
   - removed global.json files
   - the new **RequireInteraction** option disables the toast auto fade out
