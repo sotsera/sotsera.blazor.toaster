@@ -18,9 +18,6 @@
     <PackageLicenseUrl>https://github.com/sotsera/sotsera.blazor.toaster/blob/master/LICENSE</PackageLicenseUrl>
     <PackageTags>toastr toastr.js blazor toaster blazor.toastr</PackageTags>
     <RepositoryType>git</RepositoryType>
-    <RestoreAdditionalProjectSources>
-      https://dotnet.myget.org/f/blazor-dev/api/v3/index.json;
-    </RestoreAdditionalProjectSources>
   </PropertyGroup>
 
   <ItemGroup>
@@ -31,8 +28,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Blazor.Browser" Version="0.6.0-preview1-final" />
-    <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="0.6.0-preview1-final" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Browser" Version="0.6.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="0.6.0" PrivateAssets="all" />
   </ItemGroup>
 
 </Project>
