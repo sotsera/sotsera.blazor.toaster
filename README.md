@@ -59,8 +59,8 @@ In a component
 In a class
 
 ```c#
-[inject]
-Sotsera.Blazor.Toaster.IToaster toaster;
+[Inject] 
+protected Sotsera.Blazor.Toaster.IToaster Toaster { set; get; }
 ```
 
 then call one of the display methods:
