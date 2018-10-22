@@ -4,9 +4,12 @@ A Blazor port of [Toastr.js](https://github.com/CodeSeven/toastr/) in pure .Net.
 
 The sample project has been published [here](https://sotsera.github.io/sotsera.blazor.toaster/).
 
-The transitions are implemented using `System.Threading.Timer` instances (at least for now) and no javascript is involved.
+The transitions are implemented using `System.Threading.Timer` so this library should be used only by client side blazor (webassembly).
 
 ## Changes
+
+- version 0.6.0
+  - upgraded to blazor 0.6.0
 
 - version 0.6.0-preview1
   - upgraded to blazor 0.6.0-preview1-final
@@ -60,7 +63,7 @@ In a class
 
 ```c#
 [Inject] 
-protected Sotsera.Blazor.Toaster.IToaster Toaster { set; get; }
+protected Sotsera.Blazor.Toaster.IToaster Toaster { get; set; }
 ```
 
 then call one of the display methods:
