@@ -60,7 +60,7 @@ In a class
 
 ```c#
 [Inject] 
-protected Sotsera.Blazor.Toaster.IToaster toaster { set; get; }
+protected Sotsera.Blazor.Toaster.IToaster Toaster { set; get; }
 ```
 
 then call one of the display methods:
