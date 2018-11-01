@@ -56,7 +56,7 @@ and add the toast container to `App.cshtml` (or to another component always load
 In a component
 
 ```c#
-@inject Sotsera.Blazor.Toaster.IToaster toaster;
+@inject Sotsera.Blazor.Toaster.IToaster toaster
 ```
 
 In a class
