@@ -1,11 +1,10 @@
 using System;
-using Microsoft.AspNetCore.Blazor;
-using Microsoft.AspNetCore.Blazor.Components;
+using Microsoft.AspNetCore.Components;
 using Sotsera.Blazor.Toaster.Core.Models;
 
 namespace Sotsera.Blazor.Toaster.Core
 {
-    public class ToastElementModel : BlazorComponent, IDisposable
+    public class ToastElementModel : ComponentBase, IDisposable
     {
         [Parameter]
         private Toast Toast { get; set; }

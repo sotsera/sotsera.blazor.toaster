@@ -2,11 +2,16 @@
 
 A Blazor port of [Toastr.js](https://github.com/CodeSeven/toastr/) in pure .Net. If there is any credit here it should go to the authors of the original library.
 
-The sample project has been published [here](https://sotsera.github.io/sotsera.blazor.toaster/).
+The sample project has been published [here](https://blazor-toaster.sotsera.com/).
 
 The transitions are implemented using `System.Threading.Timer` so this library should be used only by client side blazor (webassembly).
 
 ## Changes
+
+- version 0.8.0-preview-1
+  - upgraded to blazor 0.8.0 (0.8.0-preview-19104-04)
+  - sample moved to https://blazor-toaster.sotsera.com/
+  - csp headers
 
 - version 0.6.0
   - upgraded to blazor 0.6.0
@@ -91,6 +96,9 @@ toaster.Info("toast body text", "toast title", options =>
 This is a simple attempt to port [Toastr.js](https://github.com/CodeSeven/toastr/) to Blazor.
 
 Currently the [css styles](https://github.com/CodeSeven/toastr/blob/50092cc604850a16c985520b63df184d3e0b4086/build/toastr.min.css) used are literally COPIED from Toastr.js.
+
+The [logo](https://www.flaticon.com/free-icon/breakfast_1381870) has been made by [Freepik](https://www.freepik.com/) from [Flaticon](https://www.flaticon.com/) and is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
+
 
 ## License
 

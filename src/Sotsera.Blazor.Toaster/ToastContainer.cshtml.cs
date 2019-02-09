@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNetCore.Blazor.Components;
+using Microsoft.AspNetCore.Components;
 using Sotsera.Blazor.Toaster.Core;
 using Sotsera.Blazor.Toaster.Core.Models;
 
 namespace Sotsera.Blazor.Toaster
 {
-    public class ToastContainerModel : BlazorComponent, IDisposable
+    public class ToastContainerModel : ComponentBase, IDisposable
     {
         [Inject]
         private IToaster Toaster { get; set; }

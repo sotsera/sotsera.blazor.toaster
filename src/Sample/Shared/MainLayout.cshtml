@@ -1,15 +1,20 @@
-@inherits BlazorLayoutComponent
+@inherits LayoutComponentBase
 
 <div class="sidebar">
     <NavMenu />
 </div>
 
 <div class="main">
-  <div class="top-row px-4">
-    <a href="https://codeseven.github.io/toastr/" target="_blank" class="pr-1">Toastr.js</a>
-    port to Blazor (<u>all credits should go to them</u>)
-  <a href="https://github.com/sotsera/sotsera.blazor.toaster" target="_blank" class="ml-md-auto">Github</a>
-</div>
+    <div class="top-row px-4">
+        <div class="credits">
+            <a href="https://codeseven.github.io/toastr/" target="_blank">Toastr.js</a> port to Blazor (<u>all credits should go to them</u>)
+            - 
+            Logo by <a href="https://www.freepik.com/" title="Freepik" target="_blank">Freepik</a>
+            from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a>
+            is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank" class="pr-1 pl-1">CC 3.0 BY</a>
+        </div>
+        <a href="https://github.com/sotsera/sotsera.blazor.toaster" target="_blank" class="ml-md-auto">Github</a>
+    </div>
 
     <div class="content px-4">
         @Body
