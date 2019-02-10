@@ -11,7 +11,7 @@ The transitions are implemented using `System.Threading.Timer` so this library s
 - version 0.8.0-preview-1
   - upgraded to blazor 0.8.0 (0.8.0-preview-19104-04)
   - sample moved to https://blazor-toaster.sotsera.com/
-  - csp headers
+  - csp headers for the sample project
 
 - version 0.6.0
   - upgraded to blazor 0.6.0
