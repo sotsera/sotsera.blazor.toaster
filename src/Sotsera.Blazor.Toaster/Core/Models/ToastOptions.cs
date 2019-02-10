@@ -31,15 +31,12 @@ namespace Sotsera.Blazor.Toaster.Core.Models
             MaximumOpacity = configuration.MaximumOpacity;
 
             ShowTransitionDuration = configuration.ShowTransitionDuration;
-            ShowStepDuration = configuration.ShowStepDuration;
 
             VisibleStateDuration = configuration.VisibleStateDuration;
 
             HideTransitionDuration = configuration.HideTransitionDuration;
-            HideStepDuration = configuration.HideStepDuration;
 
             ShowProgressBar = configuration.ShowProgressBar;
-            ProgressBarStepDuration = configuration.ProgressBarStepDuration;
             ProgressBarClass = configuration.ProgressBarClass;
 
             ShowCloseIcon = configuration.ShowCloseIcon;

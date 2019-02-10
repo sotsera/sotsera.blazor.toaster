@@ -18,7 +18,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddToaster(this IServiceCollection services, ToasterConfiguration configuration)
         {
             if(configuration == null) throw new ArgumentNullException(nameof(configuration));
-            services.TryAddSingleton<IToaster>(new Toaster(configuration));
+            services.TryAddScoped<IToaster>(builder => new Toaster(configuration));
             return services;
         }
 

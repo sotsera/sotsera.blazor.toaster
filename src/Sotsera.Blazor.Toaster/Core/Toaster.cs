@@ -74,13 +74,18 @@ namespace Sotsera.Blazor.Toaster.Core
         {
             toast.OnClose -= Remove;
             Toasts.Remove(toast);
+            
             OnToastsUpdated?.Invoke();
             toast.Dispose();
         }
 
         private bool ToastAlreadyPresent(string message, string title, ToastType type)
         {
-            return Toasts.Any(t => string.Equals(t.Message, message) && string.Equals(t.Title, title) && type.Equals(t.Options.Type));
+            return Toasts.Any(t =>
+                message.Equals(t.Message) &&
+                title.Equals(t.Title) &&
+                type.Equals(t.Options.Type)
+            );
         }
 
         private void ConfigurationUpdated()

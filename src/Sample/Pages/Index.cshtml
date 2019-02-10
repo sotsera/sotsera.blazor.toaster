@@ -6,11 +6,11 @@
 <div class="form-row mb-3">
   <div class="form-group col-4">
     <label for="title">Title</label>
-    <input id="title" class="form-control" bind="@title" />
+    <input id="title" class="form-control" bind="@_title" />
   </div>
   <div class="form-group col-6">
     <label for="message">Message</label>
-    <input id="message" class="form-control" bind="@message" />
+    <input id="message" class="form-control" bind="@_message" />
   </div>
 </div>
 
@@ -67,31 +67,31 @@
   <div class="col-4">
     <h5>Toast options</h5>
     <div class="form-group row">
-      <label for="maximumOpacity" class="col-sm-5 col-form-label">Max opacity (%)</label>
-      <div class="col-sm-3">
-        <input type="number" class="form-control form-control-sm" id="maximumOpacity" bind="@maximumOpacity" />
+      <label for="maximumOpacity" class="col-sm-7 col-form-label">Max opacity (%)</label>
+      <div class="col-sm-4">
+        <input type="number" class="form-control form-control-sm" id="maximumOpacity" bind="@_maximumOpacity" />
       </div>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="requireInteraction" bind="@requireInteraction" />
+      <input class="form-check-input" type="checkbox" value="" id="requireInteraction" bind="@_requireInteraction" />
       <label class="form-check-label" for="requireInteraction">
         Require interaction
       </label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="showProgressbar" bind="@showProgressBar" />
+      <input class="form-check-input" type="checkbox" value="" id="showProgressbar" bind="@_showProgressBar" />
       <label class="form-check-label" for="showProgressbar">
         Progress bar
       </label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="showCloseIcon" bind="@showCloseIcon" />
+      <input class="form-check-input" type="checkbox" value="" id="showCloseIcon" bind="@_showCloseIcon" />
       <label class="form-check-label" for="showCloseIcon">
         Close icon
       </label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="actionOnClick" bind="@actionOnClick" />
+      <input class="form-check-input" type="checkbox" value="" id="actionOnClick" bind="@_actionOnClick" />
       <label class="form-check-label" for="actionOnClick">
         Action on click (message in console)
       </label>
@@ -101,97 +101,70 @@
     <h5>Toast transitions</h5>
     <div class="form-group row">
       <label for="showTransitionDuration" class="col-sm-7 col-form-label">Show duration</label>
-      <div class="col-sm-3">
-        <input type="number" class="form-control form-control-sm" id="showTransitionDuration" bind="@showTransitionDuration" />
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="showStepDuration" class="col-sm-7 col-form-label">Show step duration</label>
-      <div class="col-sm-3">
-        <input type="number" class="form-control form-control-sm" id="showStepDuration" bind="@showStepDuration" />
+      <div class="col-sm-4">
+        <input type="number" class="form-control form-control-sm" id="showTransitionDuration" bind="@_showTransitionDuration" />
       </div>
     </div>
     <div class="form-group row">
       <label for="visibleStateDuration" class="col-sm-7 col-form-label">Visible duration</label>
-      <div class="col-sm-3">
-        <input type="number" class="form-control form-control-sm" id="visibleStateDuration" bind="@visibleStateDuration" />
+      <div class="col-sm-4">
+        <input type="number" class="form-control form-control-sm" id="visibleStateDuration" bind="@_visibleStateDuration" />
       </div>
     </div>
     <div class="form-group row">
       <label for="hideTransitionDuration" class="col-sm-7 col-form-label">Hide duration</label>
-      <div class="col-sm-3">
-        <input type="number" class="form-control form-control-sm" id="hideTransitionDuration" bind="@hideTransitionDuration" />
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="hideStepDuration" class="col-sm-7 col-form-label">Hide step duration</label>
-      <div class="col-sm-3">
-        <input type="number" class="form-control form-control-sm" id="hideStepDuration" bind="@hideStepDuration" />
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="progressbarStepDuration" class="col-sm-7 col-form-label">Progress bar step duration</label>
-      <div class="col-sm-3">
-        <input type="number" class="form-control form-control-sm" id="progressbarStepDuration" bind="@progressbarStepDuration" />
+      <div class="col-sm-4">
+        <input type="number" class="form-control form-control-sm" id="hideTransitionDuration" bind="@_hideTransitionDuration" />
       </div>
     </div>
   </div>
 </div>
 @functions {
-    private string title = "Test Title";
-    private string message = "Test Message";
-    private bool showProgressBar;
-    private bool showCloseIcon;
-    private bool actionOnClick;
-    private int maximumOpacity;
+    private string _title = "Test Title";
+    private string _message = "Test Message";
+    private bool _showProgressBar;
+    private bool _showCloseIcon;
+    private bool _actionOnClick;
+    private int _maximumOpacity;
 
-    private int showTransitionDuration;
-    private int showStepDuration;
-    private int visibleStateDuration;
-    private int hideTransitionDuration;
-    private int hideStepDuration;
-    private int progressbarStepDuration;
+    private int _showTransitionDuration;
+    private int _visibleStateDuration;
+    private int _hideTransitionDuration;
 
-    private bool requireInteraction;
+    private bool _requireInteraction;
 
     protected override void OnInit()
     {
-      showProgressBar = toaster.Configuration.ShowProgressBar;
-      showCloseIcon = toaster.Configuration.ShowCloseIcon;
-      maximumOpacity = toaster.Configuration.MaximumOpacity;
+        _showProgressBar = toaster.Configuration.ShowProgressBar;
+        _showCloseIcon = toaster.Configuration.ShowCloseIcon;
+        _maximumOpacity = toaster.Configuration.MaximumOpacity;
 
-      showTransitionDuration = toaster.Configuration.ShowTransitionDuration;
-      showStepDuration = toaster.Configuration.ShowStepDuration;
-      visibleStateDuration = toaster.Configuration.VisibleStateDuration;
-      hideTransitionDuration = toaster.Configuration.HideTransitionDuration;
-      hideStepDuration = toaster.Configuration.HideStepDuration;
-      progressbarStepDuration = toaster.Configuration.ProgressBarStepDuration;
+        _showTransitionDuration = toaster.Configuration.ShowTransitionDuration;
+        _visibleStateDuration = toaster.Configuration.VisibleStateDuration;
+        _hideTransitionDuration = toaster.Configuration.HideTransitionDuration;
 
-      requireInteraction = toaster.Configuration.RequireInteraction;
+        _requireInteraction = toaster.Configuration.RequireInteraction;
     }
 
     public void Show(ToastType type)
     {
-      toaster.Add(type, message, title, config =>
-      {
-        config.ShowCloseIcon = showCloseIcon;
-        config.ShowProgressBar = showProgressBar;
-        config.MaximumOpacity = maximumOpacity;
-
-        config.ShowTransitionDuration = showTransitionDuration;
-        config.ShowStepDuration = showStepDuration;
-        config.VisibleStateDuration = visibleStateDuration;
-        config.HideTransitionDuration = hideTransitionDuration;
-        config.HideStepDuration = hideStepDuration;
-        config.ProgressBarStepDuration = progressbarStepDuration;
-
-        config.RequireInteraction = requireInteraction;
-
-        if (actionOnClick)
+        toaster.Add(type, _message, _title, config =>
         {
-          config.Onclick = toast => Console.WriteLine($"Title: \"{toast.Title}\"; message: \"{toast.Message}\"; Type: {toast.Options.Type}");
-        }
-      });
+            config.ShowCloseIcon = _showCloseIcon;
+            config.ShowProgressBar = _showProgressBar;
+            config.MaximumOpacity = _maximumOpacity;
+
+            config.ShowTransitionDuration = _showTransitionDuration;
+            config.VisibleStateDuration = _visibleStateDuration;
+            config.HideTransitionDuration = _hideTransitionDuration;
+
+            config.RequireInteraction = _requireInteraction;
+
+            if (_actionOnClick)
+            {
+                config.Onclick = toast => Console.WriteLine($"Title: \"{toast.Title}\"; message: \"{toast.Message}\"; Type: {toast.Options.Type}");
+            }
+        });
     }
 }
 

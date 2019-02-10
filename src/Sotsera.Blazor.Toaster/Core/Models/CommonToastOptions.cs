@@ -18,11 +18,6 @@
         public int ShowTransitionDuration { get; set; } = 1000;
 
         /// <summary>
-        /// Interval between component repaint during the showing trantition. Defaults to 100 ms.
-        /// </summary>
-        public int ShowStepDuration { get; set; } = 100;
-
-        /// <summary>
         /// How long the toast remain visible without user interaction. A value less than 1 triggers the hiding immediately. Defaults to 5000 ms.
         /// </summary>
         public int VisibleStateDuration { get; set; } = 5000;
@@ -33,19 +28,9 @@
         public int HideTransitionDuration { get; set; } = 2000;
 
         /// <summary>
-        /// Interval between component repaint during the hiding trantition. Defaults to 100 ms.
-        /// </summary>
-        public int HideStepDuration { get; set; } = 100;
-
-        /// <summary>
         /// States if a progressbar has to be shown during the toast Visible state. Defaults to true.
         /// </summary>
         public bool ShowProgressBar { get; set; } = true;
-
-        /// <summary>
-        /// Interval between component repaint during the Visible state: it's used only if ShowProgressBar is true. Defaults to 50 ms.
-        /// </summary>
-        public int ProgressBarStepDuration { get; set; } = 50;
 
         /// <summary>
         /// The css class for the progress bar. Defaults to <see cref="Defaults.Classes.ProgressBarClass"/>.

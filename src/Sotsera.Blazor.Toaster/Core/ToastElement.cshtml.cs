@@ -1,20 +1,14 @@
 using System;
 using Microsoft.AspNetCore.Components;
-using Sotsera.Blazor.Toaster.Core.Models;
 
 namespace Sotsera.Blazor.Toaster.Core
 {
     public class ToastElementModel : ComponentBase, IDisposable
     {
         [Parameter]
-        private Toast Toast { get; set; }
-        public string ContainerClass => Toast.ContainerClass;
-        public string ContainerStyle => Toast.ContainerStyle;
-        public bool ShowCloseIcon => Toast.Options.ShowCloseIcon;
-        public string CloseIconClass => Toast.Options.CloseIconClass;
-        public bool ShowProgressBar => Toast.Options.ShowProgressBar && Toast.State == ToastState.Visible;
-        public string ProgressBarClass => Toast.Options.ProgressBarClass;
-        public string ProgressBarStyle => Toast.ProgressBarStyle;
+        protected Toast Toast { get; set; }
+        protected RenderFragment Css;
+
         public string Title => Toast.Title;
         public string Message => Toast.Message;
 
@@ -25,9 +19,18 @@ namespace Sotsera.Blazor.Toaster.Core
 
         protected override void OnParametersSet()
         {
-            base.OnParametersSet();
             Toast.OnUpdate += ToastUpdated;
             Toast.EnsureInitialized();
+
+            Css = builder =>
+            {
+                var transitionClass = Toast.TransitionClass;
+                if (transitionClass.IsEmpty()) return;
+
+                builder.OpenElement(1, "style");
+                builder.AddContent(2, transitionClass);
+                builder.CloseElement();
+            };
         }
 
         private void ToastUpdated() => StateHasChanged();
