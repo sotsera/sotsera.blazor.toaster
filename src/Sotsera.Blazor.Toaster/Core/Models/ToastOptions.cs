@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Sotsera.Blazor.Toaster.Core.Models
 {
@@ -8,9 +9,9 @@ namespace Sotsera.Blazor.Toaster.Core.Models
     public class ToastOptions : CommonToastOptions
     {
         /// <summary>
-        /// The <see cref="Action"/> to be called on user click
+        /// The async <see cref="Func{Toast,Task}"/> to be called on user click
         /// </summary>
-        public Action<Toast> Onclick { get; set; }
+        public Func<Toast, Task> Onclick { get; set; }
 
         /// <summary>
         /// The <see cref="ToastType"/>
