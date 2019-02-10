@@ -8,6 +8,14 @@ The transitions are implemented using `System.Threading.Timer` so this library s
 
 ## Changes
 
+- version 0.8.0-preview-2 __breaking changes__
+  - transitions handled with CSS animations
+  - IToaster service registered as scoped service instead of singleton
+  - options removed because only used by the old c# transitions
+	- ShowStepDuration
+	- HideStepDuration
+	- ProgressBarStepDuration
+
 - version 0.8.0-preview-1
   - upgraded to blazor 0.8.0 (0.8.0-preview-19104-04)
   - sample moved to https://blazor-toaster.sotsera.com/
