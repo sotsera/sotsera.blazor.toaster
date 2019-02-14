@@ -14,6 +14,7 @@ The transitions are implemented using `System.Threading.Timer` so this library s
 
 - version 0.8.0-preview-3
   - fix for razor components
+  - OnClick method made async __(breaking change)__
 
 - version 0.8.0-preview-2 __breaking changes__
   - transitions handled with CSS animations
