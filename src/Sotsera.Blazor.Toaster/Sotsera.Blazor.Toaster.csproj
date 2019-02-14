@@ -8,7 +8,7 @@
     <LangVersion>7.3</LangVersion>
     <AssemblyName>Sotsera.Blazor.Toaster</AssemblyName>
     <RootNamespace>Sotsera.Blazor.Toaster</RootNamespace>
-    <Version>0.8.0-preview-3</Version>
+    <Version>0.8.0-preview-4</Version>
     <Authors>Alessandro Ghidini</Authors>
     <Company></Company>
     <Description>Toastr.js port to Blazor - no javascript involved</Description>
