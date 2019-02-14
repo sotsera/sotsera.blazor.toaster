@@ -12,7 +12,7 @@ The transitions are implemented using `System.Threading.Timer` so this library s
 
 ## Changes
 
-See the project [RELEASE-NOTES](https://raw.githubusercontent.com/sotsera/sotsera.blazor.toaster/master/RELEASE-NOTES.md)
+See the [RELEASE-NOTES](https://raw.githubusercontent.com/sotsera/sotsera.blazor.toaster/master/RELEASE-NOTES.md)
 
 ## Configuration
 
