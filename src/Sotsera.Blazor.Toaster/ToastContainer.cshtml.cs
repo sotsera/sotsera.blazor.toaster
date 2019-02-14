@@ -29,7 +29,7 @@ namespace Sotsera.Blazor.Toaster
         protected override void OnInit()
         {
             base.OnInit();
-            Toaster.OnToastsUpdated += StateHasChanged;
+            Toaster.OnToastsUpdated += () => Invoke(StateHasChanged);
         }
 
         public void Dispose()
