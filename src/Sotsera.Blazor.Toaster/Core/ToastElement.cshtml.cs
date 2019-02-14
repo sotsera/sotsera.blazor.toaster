@@ -33,7 +33,10 @@ namespace Sotsera.Blazor.Toaster.Core
             };
         }
 
-        private void ToastUpdated() => StateHasChanged();
+        private void ToastUpdated()
+        {
+            Invoke(StateHasChanged);
+        }
 
         public void Dispose()
         {
