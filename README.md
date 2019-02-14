@@ -1,12 +1,19 @@
 # Sotsera.Blazor.Toaster
 
-A Blazor port of [Toastr.js](https://github.com/CodeSeven/toastr/) in pure .Net. If there is any credit here it should go to the authors of the original library.
+A Blazor port of [Toastr.js](https://github.com/CodeSeven/toastr/) in pure .Net. 
+
+__Razor components__ currently [cannot reference static assets from component libraries](https://blogs.msdn.microsoft.com/webdev/2019/01/29/aspnet-core-3-preview-2/#sharing-component-libraries).
+As a temporary workaround the [css](https://raw.githubusercontent.com/sotsera/sotsera.blazor.toaster/master/src/Sotsera.Blazor.Toaster/Content/toastr.min.css)
+can be saved into the server project wwwroot and loaded by the index.html with something like `<link href="toastr.min.css" rel="stylesheet"/>`.
 
 The sample project has been published [here](https://blazor-toaster.sotsera.com/).
 
 The transitions are implemented using `System.Threading.Timer` so this library should be used only by client side blazor (webassembly).
 
 ## Changes
+
+- version 0.8.0-preview-3
+  - fix for razor components
 
 - version 0.8.0-preview-2 __breaking changes__
   - transitions handled with CSS animations
