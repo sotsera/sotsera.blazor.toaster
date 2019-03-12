@@ -8,7 +8,7 @@
     <LangVersion>7.3</LangVersion>
     <AssemblyName>Sotsera.Blazor.Toaster</AssemblyName>
     <RootNamespace>Sotsera.Blazor.Toaster</RootNamespace>
-    <Version>0.8.0-preview-4</Version>
+    <Version>0.8.0-preview-5</Version>
     <Authors>Alessandro Ghidini</Authors>
     <Company></Company>
     <Description>Toastr.js port to Blazor - no javascript involved</Description>
@@ -28,8 +28,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Browser" Version="3.0.0-preview-19075-0444" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Build" Version="3.0.0-preview-19075-0444" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Browser" Version="3.0.0-preview3-19153-02" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Build" Version="0.9.0-preview3-19154-02" PrivateAssets="all" />  
   </ItemGroup>
 
   <ItemGroup>
