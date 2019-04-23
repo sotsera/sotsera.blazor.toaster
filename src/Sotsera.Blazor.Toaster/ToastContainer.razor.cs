@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Components;
 using Sotsera.Blazor.Toaster.Core;
-using Sotsera.Blazor.Toaster.Core.Models;
 
 namespace Sotsera.Blazor.Toaster
 {
     public class ToastContainerModel : ComponentBase, IDisposable
     {
         [Inject]
-        private IToaster Toaster { get; set; }
+        protected IToaster Toaster { get; set; }
 
         public IEnumerable<Toast> Toasts
         {

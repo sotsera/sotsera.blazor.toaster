@@ -1,0 +1,8 @@
+﻿@inherits ToastContainerModel
+@using Sotsera.Blazor.Toaster.Core
+<div id="toast-container" class="@Class">
+    @foreach (var toast in Toasts)
+    {
+        <ToastElement Toast="toast"></ToastElement>
+    }
+</div>

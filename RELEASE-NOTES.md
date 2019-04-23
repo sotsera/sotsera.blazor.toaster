@@ -1,7 +1,7 @@
 # Sotsera.Blazor.Toaster
 ## Changes
 
-- version 0.8.0-preview-5
+- version 0.9.0-preview-1
   - update to blazor 0.9.0-preview3-19154-02
 
 - version 0.8.0-preview-4

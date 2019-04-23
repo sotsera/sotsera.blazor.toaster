@@ -2,23 +2,29 @@
 
 A Blazor port of [Toastr.js](https://github.com/CodeSeven/toastr/) in pure .Net. 
 
+The transitions are implemented using `System.Threading.Timer` so this library __should be used only by client side blazor (webassembly)__.
+
 __Razor components__ currently [cannot reference static assets from component libraries](https://blogs.msdn.microsoft.com/webdev/2019/01/29/aspnet-core-3-preview-2/#sharing-component-libraries).
 As a temporary workaround the [css](https://raw.githubusercontent.com/sotsera/sotsera.blazor.toaster/master/src/Sotsera.Blazor.Toaster/Content/toastr.min.css)
 can be saved into the server project wwwroot and loaded by the index.html with something like `<link href="toastr.min.css" rel="stylesheet"/>`.
 
 The sample project has been published [here](https://blazor-toaster.sotsera.com/).
 
-The transitions are implemented using `System.Threading.Timer` so this library should be used only by client side blazor (webassembly).
-
 ## Changes
 
-See the [RELEASE-NOTES](https://github.com/sotsera/sotsera.blazor.toaster/blob/master/RELEASE-NOTES.md)
+__version 0.9.0-preview-2__
+- update to 3.0.0-preview4-19216-03
+- __updated instructions__ on how to [include the ToastContainer component](#main-toaster-component)
+
+See the [RELEASE-NOTES](https://github.com/sotsera/sotsera.blazor.toaster/blob/master/RELEASE-NOTES.md) for the previous versions.
 
 ## Configuration
 
+### Installation
+
 `Install-Package Sotsera.Blazor.Toaster`
 
-Configure the dependency injection
+### Dependency injection configuration
 
 ```c#
 services.AddToaster(config =>
@@ -29,11 +35,13 @@ services.AddToaster(config =>
 });
 ```
 
-and add the toast container to `App.cshtml` (or to another component always loaded in the application)
+### Main toaster component 
+
+The toast container must be added to the `App.razor` component or to another component always loaded in the application like `MainLayout.razor`. It is important to have exactly one instance of this component rendered in the application tree at any given time.
 
 ```c#
-@addTagHelper *, Sotsera.Blazor.Toaster
-<toastContainer />
+@using Sotsera.Blazor.Toaster
+<ToastContainer />
 ```
 
 ## Usage
