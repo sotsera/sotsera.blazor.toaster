@@ -12,6 +12,9 @@ The sample project has been published [here](https://blazor-toaster.sotsera.com/
 
 ## Changes
 
+__version 0.9.0-preview-3__
+- fixes issue #19 - exclude razor files from the nuget package
+
 __version 0.9.0-preview-2__
 - update to 3.0.0-preview4-19216-03
 - __updated instructions__ on how to [include the ToastContainer component](#main-toaster-component)
@@ -29,6 +32,7 @@ See the [RELEASE-NOTES](https://github.com/sotsera/sotsera.blazor.toaster/blob/m
 ```c#
 services.AddToaster(config =>
 {
+    //example customizations
     config.PositionClass = Defaults.Classes.Position.TopRight;
     config.PreventDuplicates = true;
     config.NewestOnTop = false;
@@ -49,7 +53,7 @@ The toast container must be added to the `App.razor` component or to another com
 In a component
 
 ```c#
-@inject Sotsera.Blazor.Toaster.IToaster toaster
+@inject Sotsera.Blazor.Toaster.IToaster Toaster
 ```
 
 In a class
@@ -62,18 +66,18 @@ protected Sotsera.Blazor.Toaster.IToaster Toaster { get; set; }
 then call one of the display methods:
 
 ```c#
-toaster.Info("toast body text");
-toaster.Success("toast body text");
-toaster.Warning("toast body text");
-toaster.Error("toast body text");
+Toaster.Info("toast body text");
+Toaster.Success("toast body text");
+Toaster.Warning("toast body text");
+Toaster.Error("toast body text");
 ```
 
 Each of these methods can accept a title and an action for the toast specific configuration
 
 ```c#
-toaster.Info("toast body text");
-toaster.Info("toast body text", "toast title");
-toaster.Info("toast body text", "toast title", options =>
+Toaster.Info("toast body text");
+Toaster.Info("toast body text", "toast title");
+Toaster.Info("toast body text", "toast title", options =>
 {
     options.Clicked += toast => Console.WriteLine($"Toast '{toast.Message}' Clicked!");
 });
