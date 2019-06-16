@@ -20,10 +20,10 @@ namespace Sotsera.Blazor.Toaster.Core
         protected void MouseEnter(UIEventArgs args) => Toast.MouseEnter();
         protected void MouseLeave(UIEventArgs args) => Toast.MouseLeave();
 
-        protected override void OnParametersSet()
+        protected override void OnInit()
         {
             Toast.OnUpdate += ToastUpdated;
-            Toast.EnsureInitialized();
+            Toast.Init();
 
             Css = builder =>
             {

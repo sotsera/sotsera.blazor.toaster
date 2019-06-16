@@ -7,6 +7,6 @@
 <div id="toast-container" class="@Class">
     @foreach (var toast in Toasts)
     {
-        <ToastElement Toast="toast"></ToastElement>
+        <ToastElement @key="toast" Toast="@toast"></ToastElement>
     }
 </div>

@@ -13,6 +13,7 @@ namespace Sotsera.Blazor.Toaster.Core
     /// </summary>
     public class Toast : IDisposable
     {
+        private Guid Id { get; }
         private string AnimationId { get; }
 
         private bool UserHasInteracted { get; set; }
@@ -27,9 +28,9 @@ namespace Sotsera.Blazor.Toaster.Core
         public event Action<Toast> OnClose;
         public event Action OnUpdate;
 
-        public bool ShowProgressBar => Options.ShowProgressBar && State == ToastState.Visible;
+        internal bool ShowProgressBar => Options.ShowProgressBar && State == ToastState.Visible;
 
-        public string ContainerClass
+        internal string ContainerClass
         {
             get
             {
@@ -38,7 +39,7 @@ namespace Sotsera.Blazor.Toaster.Core
             }
         }
 
-        public string ProgressBarStyle
+        internal string ProgressBarStyle
         {
             get
             {
@@ -48,7 +49,7 @@ namespace Sotsera.Blazor.Toaster.Core
             }
         }
 
-        public string AnimationStyle
+        internal string AnimationStyle
         {
             get
             {
@@ -69,7 +70,7 @@ namespace Sotsera.Blazor.Toaster.Core
             }
         }
         
-        public string TransitionClass
+        internal string TransitionClass
         {
             get
             {
@@ -89,13 +90,14 @@ namespace Sotsera.Blazor.Toaster.Core
             }
         }
 
-        public Toast(string title, string message, ToastOptions options)
+        internal Toast(string title, string message, ToastOptions options)
         {
+            Id = Guid.NewGuid();
             Title = title;
             Message = message;
             Options = options;
 
-            AnimationId = $"toaster-{Guid.NewGuid()}";
+            AnimationId = $"toaster-{Id}";
 
             State = ToastState.Init;
             Timer = new TransitionTimer(TimerElapsed);
@@ -117,16 +119,16 @@ namespace Sotsera.Blazor.Toaster.Core
             }
         }
 
-        public void MouseEnter() => TransitionTo(ToastState.MouseOver);
+        internal void MouseEnter() => TransitionTo(ToastState.MouseOver);
 
-        public void MouseLeave()
+        internal void MouseLeave()
         {
             if (State == ToastState.Hiding) return;
             if (Options.RequireInteraction && !UserHasInteracted) return; 
             TransitionTo(ToastState.Hiding);
         }
 
-        public void Clicked(bool fromCloseIcon)
+        internal void Clicked(bool fromCloseIcon)
         {
             Options.Onclick?.Invoke(this);
 
@@ -137,10 +139,9 @@ namespace Sotsera.Blazor.Toaster.Core
             }
         }
 
-        public void EnsureInitialized()
+        internal void Init()
         {
-            if (State == ToastState.Init) TransitionTo(ToastState.Showing);
-            else UpdateTransitionState();
+            TransitionTo(ToastState.Showing);
         }
 
         private void UpdateTransitionState()
