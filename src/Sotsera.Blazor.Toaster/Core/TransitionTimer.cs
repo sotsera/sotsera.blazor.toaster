@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Copyright (c) Alessandro Ghidini. All rights reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
+using System;
 using System.Threading;
 
 namespace Sotsera.Blazor.Toaster.Core
@@ -7,7 +10,7 @@ namespace Sotsera.Blazor.Toaster.Core
     {
         private Action Callback { get; set; }
         private DateTime DueTime { get; set; }
-        public int Duration { get; set; }
+        public int Duration { get; private set; }
         private Timer Timer { get; set; }
 
         public double RemainingMilliseconds

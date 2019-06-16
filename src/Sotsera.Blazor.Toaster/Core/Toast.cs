@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Copyright (c) Alessandro Ghidini. All rights reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
+using System;
 using Sotsera.Blazor.Toaster.Core.Models;
 
 namespace Sotsera.Blazor.Toaster.Core
@@ -16,7 +19,7 @@ namespace Sotsera.Blazor.Toaster.Core
 
         private TransitionTimer Timer { get; }
         private TransitionState TransitionState { get; set; }
-        public ToastState State { get; set; }
+        private ToastState State { get; set; }
 
         public ToastOptions Options { get; }
         public string Title { get; }

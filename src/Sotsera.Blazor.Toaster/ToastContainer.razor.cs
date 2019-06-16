@@ -1,3 +1,6 @@
+// Copyright (c) Alessandro Ghidini. All rights reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +11,9 @@ namespace Sotsera.Blazor.Toaster
 {
     public class ToastContainerModel : ComponentBase, IDisposable
     {
-        [Inject]
-        protected IToaster Toaster { get; set; }
+        [Inject] private IToaster Toaster { get; set; }
 
-        public IEnumerable<Toast> Toasts
+        protected IEnumerable<Toast> Toasts
         {
             get
             {
@@ -23,7 +25,7 @@ namespace Sotsera.Blazor.Toaster
             }
         }
 
-        public string Class => Toaster.Configuration.PositionClass;
+        protected string Class => Toaster.Configuration.PositionClass;
 
         protected override void OnInit()
         {

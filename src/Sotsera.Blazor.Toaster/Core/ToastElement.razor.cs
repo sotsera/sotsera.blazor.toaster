@@ -1,3 +1,6 @@
+// Copyright (c) Alessandro Ghidini. All rights reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
 using System;
 using Microsoft.AspNetCore.Components;
 
@@ -9,13 +12,13 @@ namespace Sotsera.Blazor.Toaster.Core
         protected Toast Toast { get; set; }
         protected RenderFragment Css;
 
-        public string Title => Toast.Title;
-        public string Message => Toast.Message;
+        protected string Title => Toast.Title;
+        protected string Message => Toast.Message;
 
-        public void Clicked(UIEventArgs args) => Toast.Clicked(false);
-        public void CloseIconClicked(UIEventArgs args) => Toast.Clicked(true);
-        public void MouseEnter(UIEventArgs args) => Toast.MouseEnter();
-        public void MouseLeave(UIEventArgs args) => Toast.MouseLeave();
+        protected void Clicked(UIEventArgs args) => Toast.Clicked(false);
+        protected void CloseIconClicked(UIEventArgs args) => Toast.Clicked(true);
+        protected void MouseEnter(UIEventArgs args) => Toast.MouseEnter();
+        protected void MouseLeave(UIEventArgs args) => Toast.MouseLeave();
 
         protected override void OnParametersSet()
         {
