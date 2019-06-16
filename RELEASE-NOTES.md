@@ -1,5 +1,5 @@
 # Sotsera.Blazor.Toaster
-## Changes
+## Previous changes
 
 __version 0.9.0-preview-3__
 - fixes issue #19 - exclude razor files from the nuget package

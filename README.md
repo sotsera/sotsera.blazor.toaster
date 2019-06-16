@@ -12,7 +12,7 @@ The sample project has been published [here](https://blazor-toaster.sotsera.com/
 
 ## Changes
 
-__version 0.10.0
+__version 0.10.0__
 - update to 3.0.0-preview6.19307.2
 - simplified transition management thanks to the @key binding in the toast container
 
