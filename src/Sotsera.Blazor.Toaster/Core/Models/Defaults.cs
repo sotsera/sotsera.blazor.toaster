@@ -3,15 +3,15 @@
 
 namespace Sotsera.Blazor.Toaster.Core.Models
 {
-    public class Defaults
+    public static class Defaults
     {
-        public class Classes
+        public static class Classes
         {
             public const string Toast = "toast";
             public const string CloseIconClass = "toast-close-button";
             public const string ProgressBarClass = "toast-progress";
 
-            public class Position
+            public static class Position
             {
                 public const string TopCenter = "toast-top-center";
                 public const string BottomCenter = "toast-bottom-center";
@@ -23,7 +23,7 @@ namespace Sotsera.Blazor.Toaster.Core.Models
                 public const string BottomLeft = "toast-bottom-left";
             }
 
-            public class Icons
+            public static class Icons
             {
                 public const string Info = "toast-info";
                 public const string Success = "toast-success";

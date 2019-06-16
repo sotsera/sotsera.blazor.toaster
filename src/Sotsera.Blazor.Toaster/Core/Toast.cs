@@ -6,106 +6,84 @@ using Sotsera.Blazor.Toaster.Core.Models;
 
 namespace Sotsera.Blazor.Toaster.Core
 {
-    /// <inheritdoc />
     /// <summary>
     /// Represents an instance of a Toast
     /// It handles the user interactions and orchestrates the the state transitions
     /// </summary>
     public class Toast : IDisposable
     {
-        private Guid Id { get; }
-        private string AnimationId { get; }
-
-        private bool UserHasInteracted { get; set; }
-
         private TransitionTimer Timer { get; }
-        private TransitionState TransitionState { get; set; }
-        private ToastState State { get; set; }
+        internal State State { get; }
 
-        public ToastOptions Options { get; }
         public string Title { get; }
         public string Message { get; }
         public event Action<Toast> OnClose;
         public event Action OnUpdate;
-
-        internal bool ShowProgressBar => Options.ShowProgressBar && State == ToastState.Visible;
-
-        internal string ContainerClass
-        {
-            get
-            {
-                var forceCursor = (Options.ShowCloseIcon ? "" : " force-cursor");
-                return $"{Options.ToastClass} {Options.ToastTypeClass}{forceCursor}";
-            }
-        }
-
-        internal string ProgressBarStyle
-        {
-            get
-            {
-                var percentage = TransitionState.ProgressPercentage;
-                var milliseconds = TransitionState.RemainingMilliseconds;
-                return $"width: {percentage}; animation: {AnimationId} {milliseconds}ms;";
-            }
-        }
-
-        internal string AnimationStyle
-        {
-            get
-            {
-                switch (State)
-                {
-                    case ToastState.Showing:
-                        var opacity = Options.MaximumOpacity;
-                        var showDuration = Options.ShowTransitionDuration;
-                        return $"opacity: {opacity}; animation: {showDuration}ms linear {AnimationId};";
-                    case ToastState.Visible:
-                        return $"opacity: {TransitionState.Opacity};";
-                    case ToastState.Hiding:
-                        var hideDuration = Options.HideTransitionDuration;
-                        return $"opacity: 0; animation: {hideDuration}ms linear {AnimationId};";
-                    default:
-                        return string.Empty;
-                }
-            }
-        }
-        
-        internal string TransitionClass
-        {
-            get
-            {
-                var template = "@keyframes " + AnimationId + " {{from{{ {0}: {1}; }} to{{ {0}: {2}; }}}}";
-
-                switch (State)
-                {
-                    case ToastState.Showing:
-                        return string.Format(template, "opacity", 0, TransitionState.Opacity);
-                    case ToastState.Hiding:
-                        return string.Format(template, "opacity", TransitionState.Opacity, 0);
-                    case ToastState.Visible:
-                        return string.Format(template, "width", $"{TransitionState.ProgressPercentage}%", "0%");
-                    default:
-                        return string.Empty;
-                }
-            }
-        }
+        public ToastOptions Options => State.Options;
 
         internal Toast(string title, string message, ToastOptions options)
         {
-            Id = Guid.NewGuid();
             Title = title;
             Message = message;
-            Options = options;
-
-            AnimationId = $"toaster-{Id}";
-
-            State = ToastState.Init;
+            State = new State(options);
             Timer = new TransitionTimer(TimerElapsed);
+        }
+
+        internal void Init() => TransitionTo(ToastState.Showing);
+
+        internal void MouseEnter() => TransitionTo(ToastState.MouseOver);
+
+        internal void MouseLeave()
+        {
+            if (State.ToastState.IsHiding()) return;
+            if (State.Options.RequireInteraction && !State.UserHasInteracted) 
+                TransitionTo(ToastState.Visible);
+            else
+                TransitionTo(ToastState.Hiding);
+        }
+
+        internal void Clicked(bool fromCloseIcon)
+        {
+            if (!fromCloseIcon)
+            {
+                // Execute the click action only if it's not from the close icon
+                State.Options.Onclick?.Invoke(this);
+                // If the close icon is show do not start the hiding transition
+                if (State.Options.ShowCloseIcon) return;
+            }
+
+            State.UserHasInteracted = true;
+            TransitionTo(ToastState.Hiding);
+        }
+
+        private void TransitionTo(ToastState state)
+        {
+            Timer.Stop();
+            State.ToastState = state;
+            var options = State.Options;
+
+            if (state.IsShowing())
+            {
+                if (options.ShowTransitionDuration <= 0) TransitionTo(ToastState.Visible);
+                else Timer.Start(options.ShowTransitionDuration);
+            }
+            else if (state.IsVisible() && !options.RequireInteraction)
+            {
+                if (options.VisibleStateDuration <= 0) TransitionTo(ToastState.Hiding);
+                else Timer.Start(options.VisibleStateDuration);
+            }
+            else if (state.IsHiding())
+            {
+                if (options.HideTransitionDuration <= 0) OnClose?.Invoke(this);
+                else Timer.Start(options.HideTransitionDuration);
+            }
+
+            OnUpdate?.Invoke();
         }
 
         private void TimerElapsed()
         {
-            switch (State)
+            switch (State.ToastState)
             {
                 case ToastState.Showing:
                     TransitionTo(ToastState.Visible);
@@ -117,75 +95,6 @@ namespace Sotsera.Blazor.Toaster.Core
                     OnClose?.Invoke(this);
                     break;
             }
-        }
-
-        internal void MouseEnter() => TransitionTo(ToastState.MouseOver);
-
-        internal void MouseLeave()
-        {
-            if (State == ToastState.Hiding) return;
-            if (Options.RequireInteraction && !UserHasInteracted) return; 
-            TransitionTo(ToastState.Hiding);
-        }
-
-        internal void Clicked(bool fromCloseIcon)
-        {
-            Options.Onclick?.Invoke(this);
-
-            if (fromCloseIcon || !Options.ShowCloseIcon)
-            {
-                UserHasInteracted = true;
-                TransitionTo(ToastState.Hiding);
-            }
-        }
-
-        internal void Init()
-        {
-            TransitionTo(ToastState.Showing);
-        }
-
-        private void UpdateTransitionState()
-        {
-            TransitionState = State == ToastState.Visible && Options.RequireInteraction
-                ? TransitionState.ForRequiredInteraction(Options.MaximumOpacity)
-                : new TransitionState(Timer, Options.MaximumOpacity);
-        }
-
-        private void TransitionTo(ToastState state)
-        {
-            Timer.Stop();
-            State = state;
-            
-            switch (state)
-            {
-                case ToastState.Showing:
-                    if (Options.ShowTransitionDuration <= 0) TransitionTo(ToastState.Visible);
-                    else Timer.Start(Options.ShowTransitionDuration);
-                    break;
-                case ToastState.Visible:
-                    if (Options.RequireInteraction)
-                    {
-                        TransitionState = TransitionState.ForRequiredInteraction(Options.MaximumOpacity);
-                        OnUpdate?.Invoke();
-                        return;
-                    }
-                    else if (Options.VisibleStateDuration < 0) TransitionTo(ToastState.Hiding);
-                    else Timer.Start(Options.VisibleStateDuration);
-                    break;
-                case ToastState.Hiding:
-                    if (Options.HideTransitionDuration <= 0)
-                    {
-                        OnClose?.Invoke(this);
-                        return;
-                    }
-                    else Timer.Start(Options.HideTransitionDuration);
-                    break;
-                case ToastState.MouseOver:
-                    break;
-            }
-
-            UpdateTransitionState();
-            OnUpdate?.Invoke();
         }
 
         public void Dispose()

@@ -4,15 +4,16 @@
 *@
 @inherits ToastElementModel
 @Css
-<div class="@Toast.ContainerClass" style="@Toast.AnimationStyle" onmouseenter="@MouseEnter" onmouseleave="@MouseLeave" onclick="@Clicked">
+<div class="@Toast.State.ContainerClass" style="@Toast.State.AnimationStyle" 
+     onmouseenter="@MouseEnter" onmouseleave="@MouseLeave" onclick="@Clicked">
     <div class="toast-message">
-        @if (Toast.ShowProgressBar)
+        @if (Toast.State.ShowProgressBar)
         {
-            <div class="@Toast.Options.ProgressBarClass" style="@Toast.ProgressBarStyle"></div>
+            <div class="@Toast.State.ProgressBarClass" style="@Toast.State.ProgressBarStyle"></div>
         }
-        @if (Toast.Options.ShowCloseIcon)
+        @if (Toast.State.ShowCloseIcon)
         {
-            <button type="button" class="@Toast.Options.CloseIconClass" role="button" @onclick="@CloseIconClicked">×</button>
+            <button type="button" class="@Toast.State.CloseIconClass" role="button" @onclick="@CloseIconClicked">×</button>
         }
         @if (Title.IsNonEmpty())
         {

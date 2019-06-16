@@ -9,18 +9,7 @@ namespace Sotsera.Blazor.Toaster.Core
     public class TransitionTimer : IDisposable
     {
         private Action Callback { get; set; }
-        private DateTime DueTime { get; set; }
-        public int Duration { get; private set; }
         private Timer Timer { get; set; }
-
-        public double RemainingMilliseconds
-        {
-            get
-            {
-                var milliseconds = (DueTime - DateTime.Now).TotalMilliseconds;
-                return milliseconds > 0 ? milliseconds : 0;
-            }
-        }
 
         public TransitionTimer(Action callback)
         {
@@ -30,16 +19,12 @@ namespace Sotsera.Blazor.Toaster.Core
 
         public void Start(int duration)
         {
-            Duration = duration <= 0 ? 0 : duration;
-            DueTime = DateTime.Now.AddMilliseconds(Duration);
-
-            if (duration == 0) Callback?.Invoke();
-            else Timer?.Change(Duration, Timeout.Infinite);
+            if (duration <= 0) Callback?.Invoke();
+            else Timer?.Change(duration, Timeout.Infinite);
         }
 
         public void Stop()
         {
-            Duration = 0;
             Timer?.Change(Timeout.Infinite, Timeout.Infinite);
         }
 

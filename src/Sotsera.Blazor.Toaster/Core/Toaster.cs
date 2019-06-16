@@ -50,10 +50,7 @@ namespace Sotsera.Blazor.Toaster.Core
             message = message.Trimmed();
             title = title.Trimmed();
 
-            if (Configuration.PreventDuplicates && ToastAlreadyPresent(message, title, type))
-            {
-                return;
-            }
+            if (Configuration.PreventDuplicates && ToastAlreadyPresent(message, title, type)) return;
 
             var options = new ToastOptions(type, Configuration);
             configure?.Invoke(options);
@@ -84,10 +81,10 @@ namespace Sotsera.Blazor.Toaster.Core
 
         private bool ToastAlreadyPresent(string message, string title, ToastType type)
         {
-            return Toasts.Any(t =>
-                message.Equals(t.Message) &&
-                title.Equals(t.Title) &&
-                type.Equals(t.Options.Type)
+            return Toasts.Any(toast =>
+                message.Equals(toast.Message) &&
+                title.Equals(toast.Title) &&
+                type.Equals(toast.State.Options.Type)
             );
         }
 

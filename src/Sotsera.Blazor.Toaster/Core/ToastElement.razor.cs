@@ -27,7 +27,7 @@ namespace Sotsera.Blazor.Toaster.Core
 
             Css = builder =>
             {
-                var transitionClass = Toast.TransitionClass;
+                var transitionClass = Toast.State.TransitionClass;
                 if (transitionClass.IsEmpty()) return;
 
                 builder.OpenElement(1, "style");
