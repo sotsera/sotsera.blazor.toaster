@@ -1,6 +1,13 @@
 # Sotsera.Blazor.Toaster
 ## Changes
 
+__version 0.9.0-preview-3__
+- fixes issue #19 - exclude razor files from the nuget package
+
+__version 0.9.0-preview-2__
+- update to 3.0.0-preview4-19216-03
+- __updated instructions__ on how to [include the ToastContainer component](#main-toaster-component)
+
 - version 0.9.0-preview-1
   - update to blazor 0.9.0-preview3-19154-02
 

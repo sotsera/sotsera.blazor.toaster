@@ -12,12 +12,9 @@ The sample project has been published [here](https://blazor-toaster.sotsera.com/
 
 ## Changes
 
-__version 0.9.0-preview-3__
-- fixes issue #19 - exclude razor files from the nuget package
-
-__version 0.9.0-preview-2__
-- update to 3.0.0-preview4-19216-03
-- __updated instructions__ on how to [include the ToastContainer component](#main-toaster-component)
+__version 0.10.0
+- update to 3.0.0-preview6.19307.2
+- simplified transition management thanks to the @key binding in the toast container
 
 See the [RELEASE-NOTES](https://github.com/sotsera/sotsera.blazor.toaster/blob/master/RELEASE-NOTES.md) for the previous versions.
 
