@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using System;
+using System.Threading;
 using Sotsera.Blazor.Toaster.Core.Models;
 
 namespace Sotsera.Blazor.Toaster.Core
@@ -12,7 +13,7 @@ namespace Sotsera.Blazor.Toaster.Core
     /// </summary>
     public class Toast : IDisposable
     {
-        private TransitionTimer Timer { get; }
+        private Timer Timer { get; }
         internal State State { get; }
 
         public string Title { get; }
@@ -26,7 +27,7 @@ namespace Sotsera.Blazor.Toaster.Core
             Title = title;
             Message = message;
             State = new State(options);
-            Timer = new TransitionTimer(TimerElapsed);
+            Timer = new Timer(TimerElapsed, null, Timeout.Infinite, Timeout.Infinite);
         }
 
         internal void Init() => TransitionTo(ToastState.Showing);
@@ -58,30 +59,30 @@ namespace Sotsera.Blazor.Toaster.Core
 
         private void TransitionTo(ToastState state)
         {
-            Timer.Stop();
+            StopTimer();
             State.ToastState = state;
             var options = State.Options;
 
             if (state.IsShowing())
             {
                 if (options.ShowTransitionDuration <= 0) TransitionTo(ToastState.Visible);
-                else Timer.Start(options.ShowTransitionDuration);
+                else StartTimer(options.ShowTransitionDuration);
             }
             else if (state.IsVisible() && !options.RequireInteraction)
             {
                 if (options.VisibleStateDuration <= 0) TransitionTo(ToastState.Hiding);
-                else Timer.Start(options.VisibleStateDuration);
+                else StartTimer(options.VisibleStateDuration);
             }
             else if (state.IsHiding())
             {
                 if (options.HideTransitionDuration <= 0) OnClose?.Invoke(this);
-                else Timer.Start(options.HideTransitionDuration);
+                else StartTimer(options.HideTransitionDuration);
             }
 
             OnUpdate?.Invoke();
         }
 
-        private void TimerElapsed()
+        private void TimerElapsed(object state)
         {
             switch (State.ToastState)
             {
@@ -97,8 +98,20 @@ namespace Sotsera.Blazor.Toaster.Core
             }
         }
 
+        private void StartTimer(int duration)
+        {
+            if (duration <= 0) TimerElapsed(null);
+            else Timer?.Change(duration, Timeout.Infinite);
+        }
+
+        private void StopTimer()
+        {
+            Timer?.Change(Timeout.Infinite, Timeout.Infinite);
+        }
+
         public void Dispose()
         {
+            StopTimer();
             Timer.Dispose();
         }
     }
