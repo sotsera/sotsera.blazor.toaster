@@ -6,11 +6,11 @@
 <div class="form-row mb-3">
     <div class="form-group col-4">
         <label for="title">Title</label>
-        <input id="title" class="form-control" bind="@_title" />
+        <input id="title" class="form-control" @bind="_title" />
     </div>
     <div class="form-group col-6">
         <label for="message">Message</label>
-        <input id="message" class="form-control" bind="@_message" />
+        <input id="message" class="form-control" @bind="_message" />
     </div>
 </div>
 
@@ -33,7 +33,7 @@
         <div class="form-group row">
             <label for="position" class="col-sm-6 col-form-label">Position</label>
             <div class="col-sm-5">
-                <select id="position" class="form-control form-control-sm" bind="@toaster.Configuration.PositionClass">
+                <select id="position" class="form-control form-control-sm" @bind="toaster.Configuration.PositionClass">
                     <option value="toast-top-left">Top left</option>
                     <option value="toast-top-center">Top center</option>
                     <option value="toast-top-right">Top right</option>
@@ -48,17 +48,17 @@
         <div class="form-group row">
             <label for="maxDisplayedToasts" class="col-sm-6 col-form-label">Max visible toasts</label>
             <div class="col-sm-5">
-                <input type="number" class="form-control form-control-sm" id="maxDisplayedToasts" bind="@toaster.Configuration.MaxDisplayedToasts" />
+                <input type="number" class="form-control form-control-sm" id="maxDisplayedToasts" @bind="toaster.Configuration.MaxDisplayedToasts" />
             </div>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="NewestOnTop" bind="@toaster.Configuration.NewestOnTop" />
+            <input class="form-check-input" type="checkbox" value="" id="NewestOnTop" @bind="toaster.Configuration.NewestOnTop" />
             <label class="form-check-label" for="NewestOnTop">
                 Newest on top
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="PreventDuplicates" bind="@toaster.Configuration.PreventDuplicates" />
+            <input class="form-check-input" type="checkbox" value="" id="PreventDuplicates" @bind="toaster.Configuration.PreventDuplicates" />
             <label class="form-check-label" for="PreventDuplicates">
                 Prevent duplicates
             </label>
@@ -69,29 +69,29 @@
         <div class="form-group row">
             <label for="maximumOpacity" class="col-sm-7 col-form-label">Max opacity (%)</label>
             <div class="col-sm-4">
-                <input type="number" class="form-control form-control-sm" id="maximumOpacity" bind="@_maximumOpacity" />
+                <input type="number" class="form-control form-control-sm" id="maximumOpacity" @bind="_maximumOpacity" />
             </div>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="requireInteraction" bind="@_requireInteraction" />
+            <input class="form-check-input" type="checkbox" value="" id="requireInteraction" @bind="_requireInteraction" />
             <label class="form-check-label" for="requireInteraction">
                 Require interaction
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="showProgressbar" bind="@_showProgressBar" />
+            <input class="form-check-input" type="checkbox" value="" id="showProgressbar" @bind="_showProgressBar" />
             <label class="form-check-label" for="showProgressbar">
                 Progress bar
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="showCloseIcon" bind="@_showCloseIcon" />
+            <input class="form-check-input" type="checkbox" value="" id="showCloseIcon" @bind="_showCloseIcon" />
             <label class="form-check-label" for="showCloseIcon">
                 Close icon
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="actionOnClick" bind="@_actionOnClick" />
+            <input class="form-check-input" type="checkbox" value="" id="actionOnClick" @bind="_actionOnClick" />
             <label class="form-check-label" for="actionOnClick">
                 Action on click (message in console)
             </label>
@@ -102,19 +102,19 @@
         <div class="form-group row">
             <label for="showTransitionDuration" class="col-sm-7 col-form-label">Show duration</label>
             <div class="col-sm-4">
-                <input type="number" class="form-control form-control-sm" id="showTransitionDuration" bind="@_showTransitionDuration" />
+                <input type="number" class="form-control form-control-sm" id="showTransitionDuration" @bind="_showTransitionDuration" />
             </div>
         </div>
         <div class="form-group row">
             <label for="visibleStateDuration" class="col-sm-7 col-form-label">Visible duration</label>
             <div class="col-sm-4">
-                <input type="number" class="form-control form-control-sm" id="visibleStateDuration" bind="@_visibleStateDuration" />
+                <input type="number" class="form-control form-control-sm" id="visibleStateDuration" @bind="_visibleStateDuration" />
             </div>
         </div>
         <div class="form-group row">
             <label for="hideTransitionDuration" class="col-sm-7 col-form-label">Hide duration</label>
             <div class="col-sm-4">
-                <input type="number" class="form-control form-control-sm" id="hideTransitionDuration" bind="@_hideTransitionDuration" />
+                <input type="number" class="form-control form-control-sm" id="hideTransitionDuration" @bind="_hideTransitionDuration" />
             </div>
         </div>
     </div>
