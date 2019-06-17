@@ -1,10 +1,12 @@
 ﻿@page "/validation"
+@using Sotsera.Blazor.Toaster
+@inject IToaster Toaster
 
-<h3>New Ship Entry Form</h3>
+<h3>New user</h3>
 
 <EditForm Model="@testModel" OnValidSubmit="@HandleValidSubmit">
     <DataAnnotationsValidator />
-    <ValidationSummary />
+    <ToasterValidationSummary FormName ="New user form" DisplayMode="@DisplayMode.Individual" />
 
     <div class="form-group row">
         <label for="name" class="col-sm-1 col-form-label">Name: </label>
@@ -38,6 +40,6 @@
 
     private void HandleValidSubmit()
     {
-        Console.WriteLine("OnValidSubmit");
+        Toaster.Success("The form is valid!");
     }
 }
