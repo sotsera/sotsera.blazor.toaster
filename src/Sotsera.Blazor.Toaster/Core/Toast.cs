@@ -2,6 +2,8 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Threading;
 using Sotsera.Blazor.Toaster.Core.Models;
 
@@ -17,15 +19,15 @@ namespace Sotsera.Blazor.Toaster.Core
         internal State State { get; }
 
         public string Title { get; }
-        public string Message { get; }
+        public IList<string> Messages { get; }
         public event Action<Toast> OnClose;
         public event Action OnUpdate;
         public ToastOptions Options => State.Options;
 
-        internal Toast(string title, string message, ToastOptions options)
+        internal Toast(string title, IList<string> messages, ToastOptions options)
         {
             Title = title;
-            Message = message;
+            Messages = messages;
             State = new State(options);
             Timer = new Timer(TimerElapsed, null, Timeout.Infinite, Timeout.Infinite);
         }

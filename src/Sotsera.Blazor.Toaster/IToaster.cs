@@ -37,43 +37,84 @@ namespace Sotsera.Blazor.Toaster
         /// <summary>
         /// Displays an info toast
         /// </summary>
-        /// <param name="message">The toast main message</param>
-        /// <param name="title">The optional toast tile</param>
-        /// <param name="configure">An action for configuring a <see cref="ToastOptions"/> instance already containing the globally configured settings</param>
+        /// <param name="message">The info message</param>
+        /// <param name="title">The optional title</param>
+        /// <param name="configure">An optional action for configuring a <see cref="ToastOptions"/> instance already containing the globally configured settings</param>
         void Info(string message, string title = null, Action<ToastOptions> configure = null);
+        
+        /// <summary>
+        /// Displays an info toast with a list of messages
+        /// </summary>
+        /// <param name="messages">The info messages</param>
+        /// <param name="title">The optional title</param>
+        /// <param name="configure">An optional action for configuring a <see cref="ToastOptions"/> instance already containing the globally configured settings</param>
+        void Info(IList<string> messages, string title = null, Action<ToastOptions> configure = null);
 
         /// <summary>
         /// Displays a success toast
         /// </summary>
-        /// <param name="message">The toast main message</param>
-        /// <param name="title">The optional toast tile</param>
-        /// <param name="configure">An action for configuring a <see cref="ToastOptions"/> instance already containing the globally configured settings</param>
+        /// <param name="message">The success message</param>
+        /// <param name="title">The optional title</param>
+        /// <param name="configure">An optional action for configuring a <see cref="ToastOptions"/> instance already containing the globally configured settings</param>
         void Success(string message, string title = null, Action<ToastOptions> configure = null);
-        
-        /// <summary>
-        /// Displays a warning info toast
-        /// </summary>
-        /// <param name="message">The toast main message</param>
-        /// <param name="title">The optional toast tile</param>
-        /// <param name="configure">An action for configuring a <see cref="ToastOptions"/> instance already containing the globally configured settings</param>
-        void Warning(string message, string title = null, Action<ToastOptions> configure = null);
 
         /// <summary>
-        /// Displays an error info toast
+        /// Displays a success toast with a list of messages
         /// </summary>
-        /// <param name="message">The toast main message</param>
-        /// <param name="title">The optional toast tile</param>
-        /// <param name="configure">An action for configuring a <see cref="ToastOptions"/> instance already containing the globally configured settings</param>
+        /// <param name="messages">The success messages</param>
+        /// <param name="title">The optional title</param>
+        /// <param name="configure">An optional action for configuring a <see cref="ToastOptions"/> instance already containing the globally configured settings</param>
+        void Success(IList<string> messages, string title = null, Action<ToastOptions> configure = null);
+        
+        /// <summary>
+        /// Displays a warning toast
+        /// </summary>
+        /// <param name="message">The warning message</param>
+        /// <param name="title">The optional title</param>
+        /// <param name="configure">An optional action for configuring a <see cref="ToastOptions"/> instance already containing the globally configured settings</param>
+        void Warning(string message, string title = null, Action<ToastOptions> configure = null);
+        
+        /// <summary>
+        /// Displays a warning toast with a list of messages
+        /// </summary>
+        /// <param name="messages">The warning messages</param>
+        /// <param name="title">The optional title</param>
+        /// <param name="configure">An optional action for configuring a <see cref="ToastOptions"/> instance already containing the globally configured settings</param>
+        void Warning(IList<string> messages, string title = null, Action<ToastOptions> configure = null);
+
+        /// <summary>
+        /// Displays an error toast
+        /// </summary>
+        /// <param name="message">The error message</param>
+        /// <param name="title">The optional title</param>
+        /// <param name="configure">An optional action for configuring a <see cref="ToastOptions"/> instance already containing the globally configured settings</param>
         void Error(string message, string title = null, Action<ToastOptions> configure = null);
+
+        /// <summary>
+        /// Displays an error toast with a list of messages
+        /// </summary>
+        /// <param name="messages">The error messages</param>
+        /// <param name="title">The optional title</param>
+        /// <param name="configure">An optional action for configuring a <see cref="ToastOptions"/> instance already containing the globally configured settings</param>
+        void Error(IList<string> messages, string title = null, Action<ToastOptions> configure = null);
 
         /// <summary>
         /// Displays a toast with the specified <see cref="ToastType" />
         /// </summary>
         /// <param name="type">The toast <see cref="ToastType"/></param>
-        /// <param name="message">The toast main message</param>
-        /// <param name="title">The optional toast tile</param>
-        /// <param name="configure">An action for configuring a <see cref="ToastOptions"/> instance already containing the globally configured settings</param>
+        /// <param name="message">The toast message</param>
+        /// <param name="title">The optional title</param>
+        /// <param name="configure">An optional action for configuring a <see cref="ToastOptions"/> instance already containing the globally configured settings</param>
         void Add(ToastType type, string message, string title, Action<ToastOptions> configure);
+
+        /// <summary>
+        /// Displays a toast with the specified <see cref="ToastType" />
+        /// </summary>
+        /// <param name="type">The toast <see cref="ToastType"/></param>
+        /// <param name="messages">The toast messages</param>
+        /// <param name="title">The optional title</param>
+        /// <param name="configure">An optional action for configuring a <see cref="ToastOptions"/> instance already containing the globally configured settings</param>
+        void Add(ToastType type, IList<string> messages, string title, Action<ToastOptions> configure);
 
         /// <summary>
         /// Hides all the toasts, including the ones waiting to be displayed

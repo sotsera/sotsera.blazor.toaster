@@ -164,7 +164,7 @@
             {
                 config.Onclick = toast =>
                 {
-                    Console.WriteLine($"Title: \"{toast.Title}\"; message: \"{toast.Message}\"; Type: {toast.Options.Type}");
+                    Console.WriteLine($"Title: \"{toast.Title}\"; message: \"{string.Join(" - ",toast. Messages)}\"; Type: {toast.Options.Type}");
                     return Task.CompletedTask;
                 };
             }

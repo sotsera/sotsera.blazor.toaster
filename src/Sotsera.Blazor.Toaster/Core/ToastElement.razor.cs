@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Components;
 
 namespace Sotsera.Blazor.Toaster.Core
@@ -13,7 +14,7 @@ namespace Sotsera.Blazor.Toaster.Core
         protected RenderFragment Css;
 
         protected string Title => Toast.Title;
-        protected string Message => Toast.Message;
+        protected IList<string> Messages => Toast.Messages;
 
         protected void Clicked(UIEventArgs args) => Toast.Clicked(false);
         protected void CloseIconClicked(UIEventArgs args) => Toast.Clicked(true);

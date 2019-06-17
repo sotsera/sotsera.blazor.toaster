@@ -19,9 +19,18 @@
         {
             <div class="toast-title">@Title</div>
         }
-        @if (Message.IsNonEmpty())
+        @if (Messages.Count == 1)
         {
-            <div class="toast-message">@Message</div>
+            <div class="toast-message">@Messages[0]</div>
+        }
+        else
+        {
+            <ul>
+                @foreach (var message in Messages)
+                {
+                    <li>@message</li>
+                }
+            </ul>
         }
     </div>
 </div>
