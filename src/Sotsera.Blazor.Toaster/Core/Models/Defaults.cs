@@ -7,7 +7,7 @@ namespace Sotsera.Blazor.Toaster.Core.Models
     {
         public static class Classes
         {
-            public const string Toast = "toast";
+            public const string Toast = "toaster";
             public const string CloseIconClass = "toast-close-button";
             public const string ProgressBarClass = "toast-progress";
 
