@@ -8,7 +8,7 @@
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <AssemblyName>Sotsera.Blazor.Toaster</AssemblyName>
     <RootNamespace>Sotsera.Blazor.Toaster</RootNamespace>
-    <Version>0.10.0</Version>
+    <Version>0.10.1</Version>
     <Authors>Alessandro Ghidini</Authors>
     <Company></Company>
     <Description>Toastr.js port to Blazor - no javascript involved</Description>

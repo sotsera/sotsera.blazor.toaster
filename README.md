@@ -12,6 +12,10 @@ The sample project has been published [here](https://blazor-toaster.sotsera.com/
 
 ## Changes
 
+__version 0.10.1__
+- fix for bootstrap version >= 4.2
+- sample updated to boostrap v4.3.1 and fix for position initial value thanks to [@peterblazejewicz]( https://github.com/sotsera/sotsera.blazor.toaster/pull/22 )
+
 __version 0.10.0__
 - update to 3.0.0-preview6.19307.2
 - simplified transition management thanks to the @key binding in the toast container
