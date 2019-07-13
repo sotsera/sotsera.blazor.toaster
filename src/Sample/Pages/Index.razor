@@ -34,9 +34,9 @@
             <label for="position" class="col-sm-6 col-form-label">Position</label>
             <div class="col-sm-5">
                 <select id="position" class="form-control form-control-sm" @bind="_positionClass">
-                    <option value="toast-top-left" selected>Top left</option>
+                    <option value="toast-top-left">Top left</option>
                     <option value="toast-top-center">Top center</option>
-                    <option value="toast-top-right">Top right</option>
+                    <option value="toast-top-right" selected>Top right</option>
                     <option value="toast-top-full-width">Top full width</option>
                     <option value="toast-bottom-right">Bottom right</option>
                     <option value="toast-bottom-center">Bottom center</option>
@@ -140,6 +140,7 @@
         _showProgressBar = toaster.Configuration.ShowProgressBar;
         _showCloseIcon = toaster.Configuration.ShowCloseIcon;
         _maximumOpacity = toaster.Configuration.MaximumOpacity;
+        _positionClass = toaster.Configuration.PositionClass;
 
         _showTransitionDuration = toaster.Configuration.ShowTransitionDuration;
         _visibleStateDuration = toaster.Configuration.VisibleStateDuration;
@@ -150,7 +151,6 @@
 
     public void Show(ToastType type)
     {
-        toaster.Configuration.PositionClass = _positionClass;
         toaster.Add(type, _message, _title, config =>
         {
             config.ShowCloseIcon = _showCloseIcon;
