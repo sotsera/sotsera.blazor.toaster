@@ -3,21 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28606.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample", "src\Sample\Sample.csproj", "{152B34B2-3D9C-4EE1-9701-21C5C0049B2B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B99D4A6C-A1C4-4836-9910-CA27427EFDBA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sotsera.Blazor.Toaster", "src\Sotsera.Blazor.Toaster\Sotsera.Blazor.Toaster.csproj", "{107A1F3F-883D-4963-8405-FF980AC20652}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{812AA185-0A08-42D9-A9EC-C373F6567258}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_solution", "_solution", "{812AA185-0A08-42D9-A9EC-C373F6567258}"
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		Directory.Build.props = Directory.Build.props
-		LICENSE = LICENSE
+		LICENSE.txt = LICENSE.txt
+		NuGet.config = NuGet.config
 		README.md = README.md
 		RELEASE-NOTES.md = RELEASE-NOTES.md
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{A25A21DA-7456-4A28-BC8A-0207E64D4024}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientSide", "samples\ClientSide\ClientSide.csproj", "{780A60D2-E399-4847-889D-7DC6089C22C4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerSide", "samples\ServerSide\ServerSide.csproj", "{F3B8E6AD-DF63-4E8D-B949-0293C694C9CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,21 +30,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{152B34B2-3D9C-4EE1-9701-21C5C0049B2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{152B34B2-3D9C-4EE1-9701-21C5C0049B2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{152B34B2-3D9C-4EE1-9701-21C5C0049B2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{152B34B2-3D9C-4EE1-9701-21C5C0049B2B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{107A1F3F-883D-4963-8405-FF980AC20652}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{107A1F3F-883D-4963-8405-FF980AC20652}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{107A1F3F-883D-4963-8405-FF980AC20652}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{107A1F3F-883D-4963-8405-FF980AC20652}.Release|Any CPU.Build.0 = Release|Any CPU
+		{780A60D2-E399-4847-889D-7DC6089C22C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{780A60D2-E399-4847-889D-7DC6089C22C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{780A60D2-E399-4847-889D-7DC6089C22C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{780A60D2-E399-4847-889D-7DC6089C22C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3B8E6AD-DF63-4E8D-B949-0293C694C9CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3B8E6AD-DF63-4E8D-B949-0293C694C9CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3B8E6AD-DF63-4E8D-B949-0293C694C9CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3B8E6AD-DF63-4E8D-B949-0293C694C9CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{152B34B2-3D9C-4EE1-9701-21C5C0049B2B} = {B99D4A6C-A1C4-4836-9910-CA27427EFDBA}
 		{107A1F3F-883D-4963-8405-FF980AC20652} = {B99D4A6C-A1C4-4836-9910-CA27427EFDBA}
+		{780A60D2-E399-4847-889D-7DC6089C22C4} = {A25A21DA-7456-4A28-BC8A-0207E64D4024}
+		{F3B8E6AD-DF63-4E8D-B949-0293C694C9CB} = {A25A21DA-7456-4A28-BC8A-0207E64D4024}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {419FC2CD-D7BC-403A-9981-169E0305BC12}

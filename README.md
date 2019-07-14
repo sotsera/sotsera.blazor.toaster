@@ -12,6 +12,12 @@ The sample project has been published [here](https://blazor-toaster.sotsera.com/
 
 ## Changes
 
+__version 0.11.0__
+- moved to Razor Component Library
+- different css inclusion for server and client side
+- __Breaking changes__
+	- option __NewestOnTop__ defaults to false
+
 __version 0.10.1__
 - fix for bootstrap version >= 4.2
 - sample updated to boostrap v4.3.1 and fix for position initial value thanks to [@peterblazejewicz]( https://github.com/sotsera/sotsera.blazor.toaster/pull/22 )
