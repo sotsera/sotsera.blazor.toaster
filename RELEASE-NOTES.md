@@ -1,6 +1,14 @@
 # Sotsera.Blazor.Toaster
 ## Previous changes
 
+__version 0.10.1__
+- fix for bootstrap version >= 4.2
+- sample updated to boostrap v4.3.1 and fix for position initial value thanks to [@peterblazejewicz]( https://github.com/sotsera/sotsera.blazor.toaster/pull/22 )
+
+__version 0.10.0__
+- update to 3.0.0-preview6.19307.2
+- simplified transition management thanks to the @key binding in the toast container
+
 __version 0.9.0-preview-3__
 - fixes issue #19 - exclude razor files from the nuget package
 

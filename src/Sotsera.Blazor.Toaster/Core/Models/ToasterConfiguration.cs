@@ -18,7 +18,7 @@ namespace Sotsera.Blazor.Toaster.Core.Models
         internal event Action OnUpdate;
 
         /// <summary>
-        /// Drives the toast display sequence: when true the newest displayable toast will be on top. Otherwise it will be on the bottom. Defaults to true.
+        /// Drives the toast display sequence: when true the newest displayable toast will be on top. Otherwise it will be on the bottom. Defaults to false.
         /// </summary>
         public bool NewestOnTop
         {
@@ -77,7 +77,7 @@ namespace Sotsera.Blazor.Toaster.Core.Models
         public ToasterConfiguration()
         {
             PositionClass = Defaults.Classes.Position.TopRight;
-            NewestOnTop = true;
+            NewestOnTop = false;
             PreventDuplicates = true;
             MaxDisplayedToasts = 5;
         }

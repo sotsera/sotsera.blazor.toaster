@@ -1,0 +1,32 @@
+﻿@page "/"
+@namespace ServerSide.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="Description" content="This is the server-side sample application page for a native c# port of Toastr.js. The transitions are implemented using `System.Threading.Timer` instances (at least for now) and no javascript is involved." />
+    <meta name="Keywords" content="blazor, toastr.js, blazor.toaster, blazor.toastr, sotsera.blazor.toaster, toastr, toaster" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Sotsera.Blazor.Toaster - A Toastr.js port to Blazor in native c#</title>
+    <base href="~/" />
+    <environment include="Development">
+        <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              asp-fallback-href="css/bootstrap/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
+    </environment>
+    <link href="css/site.css" rel="stylesheet" />
+    <link href="_content/Sotsera.Blazor.Toaster/toastr.min.css" rel="stylesheet" />
+</head>
+<body>
+    <app>@(await Html.RenderComponentAsync<App>())</app>
+
+    <script src="_framework/blazor.server.js"></script>
+</body>
+</html>

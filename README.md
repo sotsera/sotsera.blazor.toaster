@@ -2,23 +2,24 @@
 
 A Blazor port of [Toastr.js](https://github.com/CodeSeven/toastr/) in pure .Net. 
 
-The transitions are implemented using `System.Threading.Timer` so this library __should be used only by client side blazor (webassembly)__.
+The transitions are implemented using `System.Threading.Timer` timers so the resource usage should be closely monitored when using the server-side hosting model.
 
-__Razor components__ currently [cannot reference static assets from component libraries](https://blogs.msdn.microsoft.com/webdev/2019/01/29/aspnet-core-3-preview-2/#sharing-component-libraries).
-As a temporary workaround the [css](https://raw.githubusercontent.com/sotsera/sotsera.blazor.toaster/master/src/Sotsera.Blazor.Toaster/Content/toastr.min.css)
-can be saved into the server project wwwroot and loaded by the index.html with something like `<link href="toastr.min.css" rel="stylesheet"/>`.
+## Css inclusion
+As part of the transition to the __Razor Class Library__ model, the toaster css file can now be included in both client and server side projects adding the following reference to the __index.html__ or ___Host.cshtml__ files:
 
-The sample project has been published [here](https://blazor-toaster.sotsera.com/).
+```html
+<link href="_content/Sotsera.Blazor.Toaster/toastr.min.css" rel="stylesheet" />
+```
+
+The client-side sample project has been published [here](https://blazor-toaster.sotsera.com/).
 
 ## Changes
 
-__version 0.10.1__
-- fix for bootstrap version >= 4.2
-- sample updated to boostrap v4.3.1 and fix for position initial value thanks to [@peterblazejewicz]( https://github.com/sotsera/sotsera.blazor.toaster/pull/22 )
-
-__version 0.10.0__
-- update to 3.0.0-preview6.19307.2
-- simplified transition management thanks to the @key binding in the toast container
+__version 0.11.0__
+- moved to 3.0.0-preview7.19365.7
+- __Breaking changes__
+    - repackaged as __Razor Component Library__: the css must be requested directly by the index html or the host component
+	- option __NewestOnTop__ defaults to false
 
 See the [RELEASE-NOTES](https://github.com/sotsera/sotsera.blazor.toaster/blob/master/RELEASE-NOTES.md) for the previous versions.
 
@@ -38,6 +39,14 @@ services.AddToaster(config =>
     config.PreventDuplicates = true;
     config.NewestOnTop = false;
 });
+```
+
+### Css inclusion
+
+Add the following reference to the toaster css in the client-side __index.html__ file or in the server-side ___Host.cshtml__ file
+
+```c#
+<link href="_content/Sotsera.Blazor.Toaster/toastr.min.css" rel="stylesheet" />
 ```
 
 ### Main toaster component 
