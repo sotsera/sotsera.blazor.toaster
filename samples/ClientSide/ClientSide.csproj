@@ -11,10 +11,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Blazor" Version="$(AspNetCoreVersion)" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="$(AspNetCoreVersion)" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor.DevServer" Version="$(AspNetCoreVersion)" PrivateAssets="all" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Sotsera.Blazor.Toaster\Sotsera.Blazor.Toaster.csproj" />
+    <PackageReference Include="Sotsera.Blazor.Toaster" Version="0.11.1" />
   </ItemGroup>
 
 </Project>
