@@ -9,18 +9,18 @@ namespace Sotsera.Blazor.Toaster.Core
     public class ToastElementModel : ComponentBase, IDisposable
     {
         [Parameter]
-        protected Toast Toast { get; set; }
+        public Toast Toast { get; set; }
         protected RenderFragment Css;
 
         protected string Title => Toast.Title;
         protected string Message => Toast.Message;
 
-        protected void Clicked(UIEventArgs args) => Toast.Clicked(false);
-        protected void CloseIconClicked(UIEventArgs args) => Toast.Clicked(true);
-        protected void MouseEnter(UIEventArgs args) => Toast.MouseEnter();
-        protected void MouseLeave(UIEventArgs args) => Toast.MouseLeave();
+        protected void Clicked() => Toast.Clicked(false);
+        protected void CloseIconClicked() => Toast.Clicked(true);
+        protected void MouseEnter() => Toast.MouseEnter();
+        protected void MouseLeave() => Toast.MouseLeave();
 
-        protected override void OnInit()
+        protected override void OnInitialized()
         {
             Toast.OnUpdate += ToastUpdated;
             Toast.Init();
@@ -38,7 +38,7 @@ namespace Sotsera.Blazor.Toaster.Core
 
         private void ToastUpdated()
         {
-            Invoke(StateHasChanged);
+            InvokeAsync(StateHasChanged);
         }
 
         public void Dispose()

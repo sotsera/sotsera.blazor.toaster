@@ -27,10 +27,10 @@ namespace Sotsera.Blazor.Toaster
 
         protected string Class => Toaster.Configuration.PositionClass;
 
-        protected override void OnInit()
+        protected override void OnInitialized()
         {
-            base.OnInit();
-            Toaster.OnToastsUpdated += () => Invoke(StateHasChanged);
+            base.OnInitialized();
+            Toaster.OnToastsUpdated += () => InvokeAsync(StateHasChanged);
         }
 
         public void Dispose()

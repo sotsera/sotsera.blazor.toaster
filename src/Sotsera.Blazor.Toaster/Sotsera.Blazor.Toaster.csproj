@@ -7,7 +7,7 @@
     <RazorLangVersion>3.0</RazorLangVersion>
     <AssemblyName>Sotsera.Blazor.Toaster</AssemblyName>
     <RootNamespace>Sotsera.Blazor.Toaster</RootNamespace>
-    <Version>0.11.1</Version>
+    <Version>1.0.0-preview-8.1</Version>
     <Authors>Alessandro Ghidini</Authors>
     <Company></Company>
     <Description>Toastr.js port to Blazor - no javascript involved</Description>
@@ -20,7 +20,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Browser" Version="$(AspNetCoreVersion)" />
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="$(AspNetCoreVersion)" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="$(AspNetCoreVersion)" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,13 +29,6 @@
       <Pack>false</Pack>
     </Content>
     <None Include="../../LICENSE.txt" Pack="true" PackagePath="" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <!-- .js/.css files will be referenced via <script>/<link> tags; other content files will just be included in the app's 'dist' directory without any tags referencing them -->
-    <EmbeddedResource Include="wwwroot\**\*.js" LogicalName="blazor:js:%(RecursiveDir)%(Filename)%(Extension)" />
-    <EmbeddedResource Include="wwwroot\**\*.css" LogicalName="blazor:css:%(RecursiveDir)%(Filename)%(Extension)" />
-    <EmbeddedResource Include="wwwroot\**" Exclude="**\*.js;**\*.css" LogicalName="blazor:file:%(RecursiveDir)%(Filename)%(Extension)" />
   </ItemGroup>
 
 </Project>

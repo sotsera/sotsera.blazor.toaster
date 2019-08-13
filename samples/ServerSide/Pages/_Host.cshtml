@@ -25,7 +25,10 @@
     <link href="_content/Sotsera.Blazor.Toaster/toastr.min.css" rel="stylesheet" />
 </head>
 <body>
-    <app>@(await Html.RenderComponentAsync<App>())</app>
+    <app>
+        @* Remove the following line of code to disable prerendering *@
+        @(await Html.RenderStaticComponentAsync<App>())
+    </app>
 
     <script src="_framework/blazor.server.js"></script>
 </body>
