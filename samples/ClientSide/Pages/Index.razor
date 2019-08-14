@@ -1,5 +1,5 @@
 ﻿@page "/"
-@inject IToaster toaster
+@inject IToaster Toaster
 
 <h3>Data</h3>
 <div class="form-row mb-3">
@@ -29,7 +29,7 @@
         <div class="form-group row">
             <label for="position" class="col-sm-6 col-form-label">Position</label>
             <div class="col-sm-5">
-                <select id="position" class="form-control form-control-sm" @bind="toaster.Configuration.PositionClass">
+                <select id="position" class="form-control form-control-sm" @bind="Toaster.Configuration.PositionClass">
                     <option value="toast-top-left">Top left</option>
                     <option value="toast-top-center">Top center</option>
                     <option value="toast-top-right">Top right</option>
@@ -44,17 +44,17 @@
         <div class="form-group row">
             <label for="maxDisplayedToasts" class="col-sm-6 col-form-label">Max visible toasts</label>
             <div class="col-sm-5">
-                <input type="number" class="form-control form-control-sm" id="maxDisplayedToasts" @bind="toaster.Configuration.MaxDisplayedToasts" />
+                <input type="number" class="form-control form-control-sm" id="maxDisplayedToasts" @bind="Toaster.Configuration.MaxDisplayedToasts" />
             </div>
         </div>
         <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="NewestOnTop" @bind="toaster.Configuration.NewestOnTop" />
+            <input type="checkbox" class="form-check-input" id="NewestOnTop" @bind="Toaster.Configuration.NewestOnTop" />
             <label class="form-check-label" for="NewestOnTop">
                 Newest on top
             </label>
         </div>
         <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="PreventDuplicates" @bind="toaster.Configuration.PreventDuplicates" />
+            <input type="checkbox" class="form-check-input" id="PreventDuplicates" @bind="Toaster.Configuration.PreventDuplicates" />
             <label class="form-check-label" for="PreventDuplicates">
                 Prevent duplicates
             </label>
@@ -137,20 +137,20 @@
     {
         base.OnParametersSet();
     
-        maximumOpacity = toaster.Configuration.MaximumOpacity;
-        requireInteraction = toaster.Configuration.RequireInteraction;
-        showProgressBar = toaster.Configuration.ShowProgressBar;
-        showCloseIcon = toaster.Configuration.ShowCloseIcon;
+        maximumOpacity = Toaster.Configuration.MaximumOpacity;
+        requireInteraction = Toaster.Configuration.RequireInteraction;
+        showProgressBar = Toaster.Configuration.ShowProgressBar;
+        showCloseIcon = Toaster.Configuration.ShowCloseIcon;
 
-        showTransitionDuration = toaster.Configuration.ShowTransitionDuration;
-        visibleStateDuration = toaster.Configuration.VisibleStateDuration;
-        hideTransitionDuration = toaster.Configuration.HideTransitionDuration;
+        showTransitionDuration = Toaster.Configuration.ShowTransitionDuration;
+        visibleStateDuration = Toaster.Configuration.VisibleStateDuration;
+        hideTransitionDuration = Toaster.Configuration.HideTransitionDuration;
 
     }
 
     void Show(ToastType type)
     {
-        toaster.Add(type, title, message, config =>
+        Toaster.Add(type, title, message, config =>
         {
             config.MaximumOpacity = maximumOpacity;
             config.RequireInteraction = requireInteraction;

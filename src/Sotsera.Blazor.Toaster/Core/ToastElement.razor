@@ -5,8 +5,7 @@
 @inherits ToastElementModel
 @Css
 <div class="@Toast.State.ContainerClass" style="@Toast.State.AnimationStyle"
-        @onclick="Clicked">
-    @*onmouseenter="MouseEnter" onmouseleave="MouseLeave" removed until supported by blazor*@
+     @onmouseenter="MouseEnter" @onmouseleave="MouseLeave" @onclick="Clicked">
     <div class="toast-message">
         @if (Toast.State.ShowProgressBar)
         {

@@ -7,7 +7,7 @@
     <RazorLangVersion>3.0</RazorLangVersion>
     <AssemblyName>Sotsera.Blazor.Toaster</AssemblyName>
     <RootNamespace>Sotsera.Blazor.Toaster</RootNamespace>
-    <Version>1.0.0-preview-8.1</Version>
+    <Version>1.0.0-preview.8.1</Version>
     <Authors>Alessandro Ghidini</Authors>
     <Company></Company>
     <Description>Toastr.js port to Blazor - no javascript involved</Description>
@@ -25,9 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Properties/launchSettings.json">
-      <Pack>false</Pack>
-    </Content>
     <None Include="../../LICENSE.txt" Pack="true" PackagePath="" />
   </ItemGroup>
 

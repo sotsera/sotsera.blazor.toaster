@@ -1,11 +1,11 @@
 # Sotsera.Blazor.Toaster
 
-A Blazor port of [Toastr.js](https://github.com/CodeSeven/toastr/) in pure .Net. 
+A Blazor port of [Toastr.js](https://github.com/CodeSeven/toastr/) to Server and Webassembly Blazor Apps.
 
 The transitions are implemented using `System.Threading.Timer` timers so the resource usage should be closely monitored when using the server-side hosting model.
 
-## Css inclusion for Blazor Server Apps
-While on client-side projects the css file is still loaded automatically, on server side projects the following reference must be added to the ___Host.cshtml__ file:
+## Css inclusion for bot Blazor Server and Blazor Webassembly (client) Apps
+The following reference must be added to the ___Host.cshtml__ or the __index.html__ files:
 
 ```html
 <link href="_content/Sotsera.Blazor.Toaster/toastr.min.css" rel="stylesheet" />
@@ -14,6 +14,11 @@ While on client-side projects the css file is still loaded automatically, on ser
 The client-side sample project has been published [here](https://blazor-toaster.sotsera.com/).
 
 ## Changes
+
+__version 1.0.0-preview.8.1__
+- moved to 3.0.0-preview8.19405.7 and to SemVer 2.0.0
+- __Breaking changes__
+    - the reference to the css file must be explicitly added also in client-side apps
 
 __version 0.11.0__
 - moved to 3.0.0-preview7.19365.7
@@ -43,7 +48,7 @@ services.AddToaster(config =>
 
 ### Css inclusion
 
-Only for Blazor Server Apps, add the following reference to the toaster css in the ___Host.cshtml__ component
+Add the following reference to the toaster css in the ___Host.cshtml__ component for server side-apps or in the __index.html__ file for client side-apps:
 
 ```c#
 <link href="_content/Sotsera.Blazor.Toaster/toastr.min.css" rel="stylesheet" />
