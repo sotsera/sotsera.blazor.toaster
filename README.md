@@ -1,16 +1,30 @@
 # Sotsera.Blazor.Toaster
 
-A Blazor port of [Toastr.js](https://github.com/CodeSeven/toastr/) to Server and Webassembly Blazor Apps.
+## A Blazor port of [Toastr.js](https://github.com/CodeSeven/toastr/) to Server and Webassembly Blazor Apps.
 
 The transitions are implemented using `System.Threading.Timer` timers so the resource usage should be closely monitored when using the server-side hosting model.
 
-## Css inclusion for bot Blazor Server and Blazor Webassembly (client) Apps
+## Css inclusion for both Blazor Server and Blazor Webassembly (client) Apps
 The following reference must be added to the ___Host.cshtml__ or the __index.html__ files:
 
 ```html
 <link href="_content/Sotsera.Blazor.Toaster/toastr.min.css" rel="stylesheet" />
 ```
 
+### Only for __server-side__ projects
+The static assets from Razor Component Libraries are available by default [only on __Development__ mode](https://github.com/aspnet/AspNetCore/issues/13190#issuecomment-522066404). They can be anabled on __Production__  using the `UseStaticWebAssets()` method in the `Program.cs` file as in the following example:
+
+```c#
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+	Host.CreateDefaultBuilder(args)
+		.ConfigureWebHostDefaults(webBuilder =>
+		{
+			webBuilder.UseStaticWebAssets();
+			webBuilder.UseStartup<Startup>();
+		});
+```
+
+## Sample
 The client-side sample project has been published [here](https://blazor-toaster.sotsera.com/).
 
 ## Changes
