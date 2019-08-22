@@ -46,7 +46,11 @@ See the [RELEASE-NOTES](https://github.com/sotsera/sotsera.blazor.toaster/blob/m
 
 ### Installation
 
-`Install-Package Sotsera.Blazor.Toaster`
+`Install-Package Sotsera.Blazor.Toaster -Pre`
+
+or 
+
+`dotnet add package Sotsera.Blazor.Toaster --version 1.0.0-preview.8.1`
 
 ### Dependency injection configuration
 
