@@ -29,6 +29,9 @@ The client-side sample project has been published [here](https://blazor-toaster.
 
 ## Changes
 
+__version 1.0.0-preview9.1__
+- moved to 3.0.0-preview9.19424.4
+
 __version 1.0.0-preview.8.1__
 - moved to 3.0.0-preview8.19405.7 and to SemVer 2.0.0
 - __Breaking changes__
@@ -50,18 +53,27 @@ See the [RELEASE-NOTES](https://github.com/sotsera/sotsera.blazor.toaster/blob/m
 
 or 
 
-`dotnet add package Sotsera.Blazor.Toaster --version 1.0.0-preview.8.1`
+`dotnet add package Sotsera.Blazor.Toaster --version 1.0.0-preview9.1`
 
 ### Dependency injection configuration
 
 ```c#
-services.AddToaster(config =>
+using Sotsera.Blazor.Toaster.Core.Models; // Needed for the configuration objects
+
+public class Startup
 {
-    //example customizations
-    config.PositionClass = Defaults.Classes.Position.TopRight;
-    config.PreventDuplicates = true;
-    config.NewestOnTop = false;
-});
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // Add the library to the DI system
+        services.AddToaster(config =>
+        {
+            //example customizations
+            config.PositionClass = Defaults.Classes.Position.TopRight;
+            config.PreventDuplicates = true;
+            config.NewestOnTop = false;
+        });
+    }
+}
 ```
 
 ### Css inclusion
