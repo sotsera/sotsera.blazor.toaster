@@ -136,7 +136,7 @@
     protected override void OnParametersSet()
     {
         base.OnParametersSet();
-    
+
         maximumOpacity = Toaster.Configuration.MaximumOpacity;
         requireInteraction = Toaster.Configuration.RequireInteraction;
         showProgressBar = Toaster.Configuration.ShowProgressBar;
@@ -157,7 +157,7 @@
             config.ShowProgressBar = showProgressBar;
             config.ShowCloseIcon = showCloseIcon;
 
-            if(actionOnClick)
+            if (actionOnClick)
             {
                 config.Onclick = toast =>
                 {
@@ -165,7 +165,7 @@
                     return Task.CompletedTask;
                 };
             }
-            
+
             config.ShowTransitionDuration = showTransitionDuration;
             config.VisibleStateDuration = visibleStateDuration;
             config.HideTransitionDuration = hideTransitionDuration;
