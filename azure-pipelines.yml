@@ -26,7 +26,7 @@ stages:
         command: buildAndPush
         repository: sotsera-demos/blazor-toaster
         dockerfile: '**/dockerfile'
-        containerRegistry: 'Docker Hub Ghidello'
+        containerRegistry: Docker
         tags: |
           $(Build.BuildId)
           latest
