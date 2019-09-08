@@ -12,7 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_solution", "_solution", "{
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		Directory.Build.props = Directory.Build.props
+		dockerfile = dockerfile
+		global.json = global.json
 		LICENSE.txt = LICENSE.txt
+		nginx.conf = nginx.conf
 		README.md = README.md
 		RELEASE-NOTES.md = RELEASE-NOTES.md
 	EndProjectSection
