@@ -24,7 +24,7 @@ stages:
       displayName: Build and push image to container registry
       inputs:
         command: buildAndPush
-        repository: sotsera-demos/blazor-toaster
+        repository: ghidello/sotsera-blazor-toaster
         dockerfile: '**/dockerfile'
         containerRegistry: Docker
         tags: |
