@@ -12,7 +12,7 @@ The following reference must be added to the ___Host.cshtml__ or the __index.htm
 ```
 
 ### Only for __server-side__ projects
-The static assets from Razor Component Libraries are available by default [only on __Development__ mode](https://github.com/aspnet/AspNetCore/issues/13190#issuecomment-522066404). They can be enabled on __Production__  using the `UseStaticWebAssets()` method in the `Program.cs` file as in the following example:
+The static assets from Razor Component Libraries are available by default [only in __Development__ mode](https://github.com/aspnet/AspNetCore/issues/13190#issuecomment-522066404). They can be enabled on __Production__  using the `UseStaticWebAssets()` method in the `Program.cs` file as in the following example:
 
 ```c#
 public static IHostBuilder CreateHostBuilder(string[] args) =>
