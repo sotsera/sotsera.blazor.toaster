@@ -4,13 +4,6 @@
 
 The transitions are implemented using `System.Threading.Timer` timers so the resource usage should be closely monitored when using the server-side hosting model.
 
-## Css inclusion for both Blazor Server and Blazor Webassembly (client) Apps
-The following reference must be added to the ___Host.cshtml__ or the __index.html__ files:
-
-```html
-<link href="_content/Sotsera.Blazor.Toaster/toastr.min.css" rel="stylesheet" />
-```
-
 ### Only for __server-side__ projects
 The static assets from Razor Component Libraries are available by default [only in __Development__ mode](https://github.com/aspnet/AspNetCore/issues/13190#issuecomment-522066404). They can be enabled on __Production__  using the `UseStaticWebAssets()` method in the `Program.cs` file as in the following example:
 
@@ -29,19 +22,8 @@ The client-side sample project has been published [here](https://blazor-toaster.
 
 ## Changes
 
-__version 1.0.0-preview9.1__
-- moved to 3.0.0-preview9.19424.4
-
-__version 1.0.0-preview.8.1__
-- moved to 3.0.0-preview8.19405.7 and to SemVer 2.0.0
-- __Breaking changes__
-    - the reference to the css file must be explicitly added also in client-side apps
-
-__version 0.11.0__
-- moved to 3.0.0-preview7.19365.7
-- __Breaking changes__
-    - repackaged as __Razor Component Library__: on server-side projects the css must be referenced explicitly by the host component
-	- option __NewestOnTop__ defaults to false
+__version 1.0.0
+- updated to Asp.Net Core 3.0.0
 
 See the [RELEASE-NOTES](https://github.com/sotsera/sotsera.blazor.toaster/blob/master/RELEASE-NOTES.md) for the previous versions.
 

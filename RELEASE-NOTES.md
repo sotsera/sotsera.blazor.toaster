@@ -1,6 +1,20 @@
 # Sotsera.Blazor.Toaster
 ## Previous changes
 
+__version 1.0.0-preview9.1__
+- moved to 3.0.0-preview9.19424.4
+
+__version 1.0.0-preview.8.1__
+- moved to 3.0.0-preview8.19405.7 and to SemVer 2.0.0
+- __Breaking changes__
+    - the reference to the css file must be explicitly added also in client-side apps
+
+__version 0.11.0__
+- moved to 3.0.0-preview7.19365.7
+- __Breaking changes__
+    - repackaged as __Razor Component Library__: on server-side projects the css must be referenced explicitly by the host component
+	- option __NewestOnTop__ defaults to false
+
 __version 0.10.1__
 - fix for bootstrap version >= 4.2
 - sample updated to boostrap v4.3.1 and fix for position initial value thanks to [@peterblazejewicz]( https://github.com/sotsera/sotsera.blazor.toaster/pull/22 )
