@@ -31,11 +31,9 @@ See the [RELEASE-NOTES](https://github.com/sotsera/sotsera.blazor.toaster/blob/m
 
 ### Installation
 
-`Install-Package Sotsera.Blazor.Toaster -Pre`
+Add a reference to the library from [![NuGet](https://img.shields.io/nuget/v/Sotsera.Blazor.Toaster.svg)](https://www.nuget.org/packages/Sotsera.Blazor.Toaster/)
 
-or 
 
-`dotnet add package Sotsera.Blazor.Toaster --version 1.0.0-preview9.1`
 
 ### Dependency injection configuration
 
