@@ -13,7 +13,7 @@
         }
         @if (Toast.State.ShowCloseIcon)
         {
-            <button type="button" class="@Toast.State.CloseIconClass" role="button" @onclick="CloseIconClicked">×</button>
+            <button type="button" class="@Toast.State.CloseIconClass" @onclick="CloseIconClicked">×</button>
         }
         @if (Title.IsNonEmpty())
         {
