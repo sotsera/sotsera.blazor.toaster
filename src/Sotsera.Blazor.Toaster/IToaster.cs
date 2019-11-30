@@ -15,9 +15,9 @@ namespace Sotsera.Blazor.Toaster
     public interface IToaster : IDisposable
     {
         /// <summary>
-        /// The current list of toasts (either displayed or waiting to be shown)
+        /// The current list of displayed toasts
         /// </summary>
-        IList<Toast> Toasts { get; }
+        IEnumerable<Toast> ShownToasts { get; }
 
         /// <summary>
         /// The global <see cref="ToasterConfiguration"/> 

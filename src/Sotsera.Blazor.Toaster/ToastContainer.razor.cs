@@ -13,17 +13,9 @@ namespace Sotsera.Blazor.Toaster
     {
         [Inject] private IToaster Toaster { get; set; }
 
-        protected IEnumerable<Toast> Toasts
-        {
-            get
-            {
-                var toasts = Toaster.Toasts.Take(Toaster.Configuration.MaxDisplayedToasts);
-
-                return Toaster.Configuration.NewestOnTop
-                    ? toasts.Reverse()
-                    : toasts;
-            }
-        }
+        protected IEnumerable<Toast> Toasts => Toaster.Configuration.NewestOnTop
+                ? Toaster.ShownToasts.Reverse()
+                : Toaster.ShownToasts;
 
         protected string Class => Toaster.Configuration.PositionClass;
 

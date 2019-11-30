@@ -4,22 +4,28 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Sotsera.Blazor.Toaster.Core.Models;
 
 namespace Sotsera.Blazor.Toaster.Core
 {
     /// <inheritdoc />
-    public class Toaster : IToaster
+    internal class Toaster : IToaster
     {
         public ToasterConfiguration Configuration { get; }
         public event Action OnToastsUpdated;
-        public IList<Toast> Toasts { get; private set; } = new List<Toast>();
         public string Version { get; }
+
+        private ReaderWriterLockSlim ToastLock { get; }
+        private IList<Toast> Toasts { get; }
 
         public Toaster(ToasterConfiguration configuration)
         {
             Configuration = configuration;
             Configuration.OnUpdate += ConfigurationUpdated;
+
+            ToastLock = new ReaderWriterLockSlim();
+            Toasts = new List<Toast>();
             Version = GetType().InformationalVersion();
         }
 
@@ -43,6 +49,22 @@ namespace Sotsera.Blazor.Toaster.Core
             Add(ToastType.Error, message, title, configure);
         }
 
+        public IEnumerable<Toast> ShownToasts
+        {
+            get
+            {
+                ToastLock.EnterReadLock();
+                try
+                {
+                    return Toasts.Take(Configuration.MaxDisplayedToasts);
+                }
+                finally
+                {
+                    ToastLock.ExitReadLock();
+                }
+            }
+        }
+
         public void Add(ToastType type, string message, string title, Action<ToastOptions> configure)
         {
             if (message.IsEmpty()) return;
@@ -50,41 +72,67 @@ namespace Sotsera.Blazor.Toaster.Core
             message = message.Trimmed();
             title = title.Trimmed();
 
-            if (Configuration.PreventDuplicates && ToastAlreadyPresent(message, title, type)) return;
-
             var options = new ToastOptions(type, Configuration);
             configure?.Invoke(options);
 
             var toast = new Toast(title, message, options);
-            toast.OnClose += Remove;
-            Toasts.Add(toast);
+
+            ToastLock.EnterWriteLock();
+            try
+            {
+                if (Configuration.PreventDuplicates && ToastAlreadyPresent(toast)) return;
+                toast.OnClose += Remove;
+                Toasts.Add(toast);
+            }
+            finally
+            {
+                ToastLock.ExitWriteLock();
+            }
 
             OnToastsUpdated?.Invoke();
         }
 
         public void Clear()
         {
-            var toasts = Toasts;
-            Toasts = new List<Toast>();
+            ToastLock.EnterWriteLock();
+            try
+            {
+                RemoveAllToasts(Toasts);
+            }
+            finally
+            {
+                ToastLock.ExitWriteLock();
+            }
+
             OnToastsUpdated?.Invoke();
-            DisposeToasts(toasts);
         }
 
         public void Remove(Toast toast)
         {
-            toast.OnClose -= Remove;
-            Toasts.Remove(toast);
-            
-            OnToastsUpdated?.Invoke();
             toast.Dispose();
+            toast.OnClose -= Remove;
+
+            ToastLock.EnterWriteLock();
+            try
+            {
+                var index = Toasts.IndexOf(toast);
+                if (index < 0) return;
+                Toasts.RemoveAt(index);
+            }
+            finally
+            {
+                ToastLock.ExitWriteLock();
+            }
+
+            OnToastsUpdated?.Invoke();
         }
 
-        private bool ToastAlreadyPresent(string message, string title, ToastType type)
+        private bool ToastAlreadyPresent(Toast newToast)
         {
             return Toasts.Any(toast =>
-                message.Equals(toast.Message) &&
-                title.Equals(toast.Title) &&
-                type.Equals(toast.State.Options.Type)
+                newToast.Message.Equals(toast.Message) &&
+                newToast.Title.Equals(toast.Title) &&
+                newToast.Options.Type.Equals(toast.State.Options.Type)
             );
         }
 
@@ -96,16 +144,20 @@ namespace Sotsera.Blazor.Toaster.Core
         public void Dispose()
         {
             Configuration.OnUpdate -= ConfigurationUpdated;
-            DisposeToasts(Toasts);
+            RemoveAllToasts(Toasts);
         }
 
-        private void DisposeToasts(IEnumerable<Toast> toasts)
+        private void RemoveAllToasts(IEnumerable<Toast> toasts)
         {
+            if (Toasts.Count == 0) return;
+
             foreach (var toast in toasts)
             {
                 toast.OnClose -= Remove;
                 toast.Dispose();
             }
+
+            Toasts.Clear();
         }
     }
 }

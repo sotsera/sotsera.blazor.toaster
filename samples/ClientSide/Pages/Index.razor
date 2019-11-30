@@ -19,6 +19,7 @@
         <button class="btn btn-success" @onclick="@(() => Show(ToastType.Success))">Success</button>
         <button class="btn btn-warning" @onclick="@(() => Show(ToastType.Warning))">Warning</button>
         <button class="btn btn-danger" @onclick="@(() => Show(ToastType.Error))">Error</button>
+        <button class="btn btn-dark" @onclick="@(() => Toaster.Clear())">Clear</button>
     </div>
 </div>
 <div class="form-row mt-3 configuration">
