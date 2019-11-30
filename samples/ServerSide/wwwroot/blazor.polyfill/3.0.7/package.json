@@ -1,0 +1,51 @@
+{
+  "_from": "blazor.polyfill@^3.0.7",
+  "_id": "blazor.polyfill@3.0.7",
+  "_inBundle": false,
+  "_integrity": "sha512-ymnuySZy6UcGYwY4VWXWvCD9cIw8lK8zK13zGE2KNH76ghyr72vwFuhBvD08ypMG4+YVDlRmRv3bpUeXzMpQyQ==",
+  "_location": "/blazor.polyfill",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "blazor.polyfill@^3.0.7",
+    "name": "blazor.polyfill",
+    "escapedName": "blazor.polyfill",
+    "rawSpec": "^3.0.7",
+    "saveSpec": null,
+    "fetchSpec": "^3.0.7"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/blazor.polyfill/-/blazor.polyfill-3.0.7.tgz",
+  "_shasum": "81014688442e6fc031135c8fc5674fbf808016f9",
+  "_spec": "blazor.polyfill@^3.0.7",
+  "_where": "E:\\Sources\\Npm",
+  "author": {
+    "name": "Guillaume ZAHRA"
+  },
+  "bugs": {
+    "url": "https://github.com/Daddoon/Blazor.Polyfill/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Polyfills for Blazor and fixes for Internet Explorer 11 support with server-side mode.",
+  "homepage": "https://github.com/Daddoon/Blazor.Polyfill#readme",
+  "keywords": [
+    "blazor",
+    "polyfill"
+  ],
+  "license": "MIT",
+  "main": "blazor.polyfill.min.js",
+  "name": "blazor.polyfill",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daddoon/Blazor.Polyfill.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "3.0.7"
+}
