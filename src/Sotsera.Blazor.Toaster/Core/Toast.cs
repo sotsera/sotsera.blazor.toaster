@@ -100,8 +100,8 @@ namespace Sotsera.Blazor.Toaster.Core
 
         private void StartTimer(int duration)
         {
-            if (duration <= 0) TimerElapsed(null);
-            else Timer?.Change(duration, Timeout.Infinite);
+            State.TransitionStartTime = DateTime.Now;
+            Timer?.Change(duration, Timeout.Infinite);
         }
 
         private void StopTimer()

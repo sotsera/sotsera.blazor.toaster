@@ -11,6 +11,7 @@ namespace Sotsera.Blazor.Toaster.Core.Models
         public bool UserHasInteracted { get; set; }
         public ToastOptions Options { get; }
         public ToastState ToastState { get; set; }
+        public DateTime TransitionStartTime { get; set; }
 
         public State(ToastOptions options)
         {
@@ -26,7 +27,14 @@ namespace Sotsera.Blazor.Toaster.Core.Models
         
         public bool ShowProgressBar => Options.ShowProgressBar && ToastState.IsVisible() && !Options.RequireInteraction;
 
-        public string ProgressBarStyle => $"width:100;animation:{AnimationId} {Options.VisibleStateDuration}ms;";
+        public string ProgressBarStyle
+        {
+            get
+            {
+                var duration = RemainingTransitionMilliseconds(Options.VisibleStateDuration);
+                return $"width:100;animation:{AnimationId} {duration}ms;";
+            }
+        }
 
         public string AnimationStyle
         {
@@ -36,9 +44,11 @@ namespace Sotsera.Blazor.Toaster.Core.Models
                 switch (ToastState)
                 {
                     case ToastState.Showing:
-                        return string.Format(template, Opacity, Options.ShowTransitionDuration, AnimationId);
+                        var showingDuration = RemainingTransitionMilliseconds(Options.ShowTransitionDuration);
+                        return string.Format(template, Opacity, showingDuration, AnimationId);
                     case ToastState.Hiding:
-                        return string.Format(template, 0, Options.HideTransitionDuration, AnimationId);
+                        var hidingDuration = RemainingTransitionMilliseconds(Options.HideTransitionDuration);
+                        return string.Format(template, 0, hidingDuration, AnimationId);
                     case ToastState.MouseOver:
                         return "opacity: 1;";
                     case ToastState.Visible:
@@ -76,6 +86,12 @@ namespace Sotsera.Blazor.Toaster.Core.Models
                         return string.Empty;
                 }
             }
+        }
+
+        private int RemainingTransitionMilliseconds(int transitionDuration)
+        {
+            var duration = transitionDuration - (TransitionStartTime - DateTime.Now).Milliseconds;
+            return duration >= 0 ? duration : 0;
         }
     }
 }
