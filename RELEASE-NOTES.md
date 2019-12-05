@@ -1,6 +1,9 @@
 # Sotsera.Blazor.Toaster
 ## Previous changes
 
+__version 1.0.0
+- updated to Asp.Net Core 3.0.0
+
 __version 1.0.0-preview9.1__
 - moved to 3.0.0-preview9.19424.4
 

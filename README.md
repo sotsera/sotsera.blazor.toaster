@@ -22,13 +22,13 @@ The client-side sample project has been published [here](https://blazor-toaster.
 
 ## Changes
 
+__version 2.0.0
+- update to asp.net core 3.1.100
+
 __version 2.0.0-beta1
 - thread safety controls on the Toasts list
 - __Breaking changes__
     - IToaster.Toasts property removed in favor of the __ShownToasts__ property
-
-__version 1.0.0
-- updated to Asp.Net Core 3.0.0
 
 See the [RELEASE-NOTES](https://github.com/sotsera/sotsera.blazor.toaster/blob/master/RELEASE-NOTES.md) for the previous versions.
 
