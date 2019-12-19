@@ -4,7 +4,7 @@
 *@
 @inherits ToastElementModel
 @Css
-<div class="@Toast.State.ContainerClass" style="@Toast.State.AnimationStyle" @onmouseenter="MouseEnter" @onmouseleave="MouseLeave" @onclick="Clicked">
+<div class="@Toast.State.ToastClass" style="@Toast.State.AnimationStyle" @onmouseenter="MouseEnter" @onmouseleave="MouseLeave" @onclick="Clicked">
     @if (Toast.State.ShowProgressBar)
     {
         <div class="@Toast.State.ProgressBarClass" style="@Toast.State.ProgressBarStyle"></div>
@@ -15,10 +15,10 @@
     }
     @if (Title.IsNonEmpty())
     {
-        <div class="toast-title">@Title</div>
+        <div class="@Toast.Options.ToastTitleClass">@Title</div>
     }
     @if (Message.IsNonEmpty())
     {
-        <div class="toast-message">@Message</div>
+        <div class="@Toast.Options.ToastMessageClass">@Message</div>
     }
 </div>

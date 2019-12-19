@@ -59,7 +59,7 @@ namespace Sotsera.Blazor.Toaster.Core.Models
             }
         }
 
-        public string ContainerClass
+        public string ToastClass
         {
             get
             {

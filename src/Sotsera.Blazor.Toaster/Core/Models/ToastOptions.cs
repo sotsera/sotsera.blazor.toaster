@@ -32,6 +32,8 @@ namespace Sotsera.Blazor.Toaster.Core.Models
             ToastTypeClass = configuration.ToastTypeClass(type);
 
             ToastClass = configuration.ToastClass;
+            ToastTitleClass = configuration.ToastTitleClass;
+            ToastMessageClass = configuration.ToastMessageClass;
             MaximumOpacity = configuration.MaximumOpacity;
 
             ShowTransitionDuration = configuration.ShowTransitionDuration;

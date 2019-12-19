@@ -11,6 +11,16 @@ namespace Sotsera.Blazor.Toaster.Core.Models
         public string ToastClass { get; set; } = Defaults.Classes.Toast;
 
         /// <summary>
+        /// The css class for the title. Defaults to <see cref="Defaults.Classes.ToastTitle"/>.
+        /// </summary>
+        public string ToastTitleClass { get; set; } = Defaults.Classes.ToastTitle;
+
+        /// <summary>
+        /// The css class for the message. Defaults to <see cref="Defaults.Classes.ToastMessage"/>.
+        /// </summary>
+        public string ToastMessageClass { get; set; } = Defaults.Classes.ToastMessage;
+
+        /// <summary>
         /// The maximum opacity expressed as an integer percentage for a toast in the Visible state. Defaults to 80% where 0 means completely hidden and 100 means solid color.
         /// </summary>
         public int MaximumOpacity { get; set; } = 80;
