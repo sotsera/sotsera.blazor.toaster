@@ -151,7 +151,7 @@
 
     void Show(ToastType type)
     {
-        Toaster.Add(type, title, message, config =>
+        Toaster.Add(type, message, title, config =>
         {
             config.MaximumOpacity = maximumOpacity;
             config.RequireInteraction = requireInteraction;
