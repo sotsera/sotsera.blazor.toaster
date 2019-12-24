@@ -43,6 +43,26 @@
             </div>
         </div>
         <div class="form-group row">
+            <label for="position" class="col-sm-6 col-form-label">Title Text Position</label>
+            <div class="col-sm-5">
+                <select id="position" class="form-control form-control-sm" @bind="Toaster.Configuration.ToastTitleClass">
+                    <option value="toast-title text-left">Left</option>
+                    <option value="toast-title text-center">Center</option>
+                    <option value="toast-title text-right">Right</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="position" class="col-sm-6 col-form-label">Message Text Position</label>
+            <div class="col-sm-5">
+                <select id="position" class="form-control form-control-sm" @bind="Toaster.Configuration.ToastMessageClass">
+                    <option value="toast-message text-left">Left</option>
+                    <option value="toast-message text-center">Center</option>
+                    <option value="toast-message text-right">Right</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
             <label for="maxDisplayedToasts" class="col-sm-6 col-form-label">Max visible toasts</label>
             <div class="col-sm-5">
                 <input type="number" class="form-control form-control-sm" id="maxDisplayedToasts" @bind="Toaster.Configuration.MaxDisplayedToasts" />
