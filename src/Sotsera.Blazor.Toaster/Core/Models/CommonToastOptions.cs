@@ -11,7 +11,7 @@ namespace Sotsera.Blazor.Toaster.Core.Models
         public string ToastClass { get; set; } = Defaults.Classes.Toast;
 
         /// <summary>
-        /// This variable applies to the title and message. If false HTML will be implemented, else HTML markup will be shown. />.
+        /// This variable applies to the title and message. If false the rendered HTML will be shown, else the escaped HTML markup will be shown. 
         /// </summary>
         public bool EscapeHtml { get; set; } = false;
         /// <summary>
