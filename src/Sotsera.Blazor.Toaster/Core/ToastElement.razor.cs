@@ -43,10 +43,14 @@ namespace Sotsera.Blazor.Toaster.Core
 
         public void Dispose()
         {
-            if (Toast != null)
-            {
-                Toast.OnUpdate -= ToastUpdated;
-            }
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposing || Toast == null) return;
+            Toast.OnUpdate -= ToastUpdated;
         }
     }
 }
