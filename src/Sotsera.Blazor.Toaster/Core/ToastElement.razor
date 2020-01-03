@@ -24,15 +24,12 @@
             <div class="@Toast.State.ToastTitleClass">@((MarkupString)Title)</div>
         }
     }
-    @if (Message.IsNonEmpty())
+    @if (Toast.State.EscapeHtml)
     {
-        if (Toast.State.EscapeHtml)
-        {
-            <div class="@Toast.State.ToastMessageClass">@Message</div>
-        }
-        else
-        {
-            <div class="@Toast.State.ToastMessageClass">@((MarkupString)Message)</div>
-        }
+        <div class="@Toast.State.ToastMessageClass">@Message</div>
+    }
+    else
+    {
+        <div class="@Toast.State.ToastMessageClass">@((MarkupString)Message)</div>
     }
 </div>
