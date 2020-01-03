@@ -22,6 +22,12 @@ The client-side sample project has been published [here](https://blazor-toaster.
 
 ## Changes
 
+__version 3.0.0
+- new configuration options for styling the toast title (__ToastTitleClass__) and message (__ToastTitleClass__) and an example for aligning their text to left, center or right. Thanks to [@bholland314](https://github.com/bholland314)
+- new configuration option (__EscapeHtml__) for allowing raw HTML in title and message. Thanks to [@bholland314](https://github.com/bholland314)
+- __Breaking changes__
+    - Options reference has been removed from the Toast class
+
 __version 2.0.0
 - update to asp.net core 3.1.100
 
