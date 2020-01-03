@@ -42,6 +42,12 @@
                 </select>
             </div>
         </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="escapeHtml" @bind="escapeHtml" />
+            <label class="form-check-label" for="escapeHtml">
+                Escape Html
+            </label>
+        </div>
         <div class="form-group row">
             <label for="position" class="col-sm-6 col-form-label">Title Text Position</label>
             <div class="col-sm-5">
@@ -144,6 +150,7 @@
 
     //toast options
     int maximumOpacity;
+    bool escapeHtml;
     bool requireInteraction;
     bool showProgressBar;
     bool showCloseIcon;
@@ -159,6 +166,7 @@
         base.OnParametersSet();
 
         maximumOpacity = Toaster.Configuration.MaximumOpacity;
+        escapeHtml = Toaster.Configuration.EscapeHtml;
         requireInteraction = Toaster.Configuration.RequireInteraction;
         showProgressBar = Toaster.Configuration.ShowProgressBar;
         showCloseIcon = Toaster.Configuration.ShowCloseIcon;
@@ -174,6 +182,7 @@
         Toaster.Add(type, message, title, config =>
         {
             config.MaximumOpacity = maximumOpacity;
+            config.EscapeHtml = escapeHtml;
             config.RequireInteraction = requireInteraction;
             config.ShowProgressBar = showProgressBar;
             config.ShowCloseIcon = showCloseIcon;
