@@ -132,7 +132,7 @@ namespace Sotsera.Blazor.Toaster.Core
             return Toasts.Any(toast =>
                 newToast.Message.Equals(toast.Message) &&
                 newToast.Title.Equals(toast.Title) &&
-                newToast.Options.Type.Equals(toast.State.Options.Type)
+                newToast.Type.Equals(toast.Type)
             );
         }
 

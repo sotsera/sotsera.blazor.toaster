@@ -15,24 +15,24 @@
     }
     @if (Title.IsNonEmpty())
     {
-        if (Toast.State.Options.EscapeHtml)
+        if (Toast.State.EscapeHtml)
         {
-            <div class="@Toast.Options.ToastTitleClass">@Title</div>
+            <div class="@Toast.State.ToastTitleClass">@Title</div>
         }
         else
         {
-            <div class="@Toast.Options.ToastTitleClass">@((MarkupString)Title)</div>
+            <div class="@Toast.State.ToastTitleClass">@((MarkupString)Title)</div>
         }
     }
     @if (Message.IsNonEmpty())
     {
-        if (Toast.State.Options.EscapeHtml)
+        if (Toast.State.EscapeHtml)
         {
-            <div class="@Toast.Options.ToastMessageClass">@Message</div>
+            <div class="@Toast.State.ToastMessageClass">@Message</div>
         }
         else
         {
-            <div class="@Toast.Options.ToastMessageClass">@((MarkupString)Message)</div>
+            <div class="@Toast.State.ToastMessageClass">@((MarkupString)Message)</div>
         }
     }
 </div>

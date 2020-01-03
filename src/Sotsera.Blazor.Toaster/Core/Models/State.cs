@@ -24,8 +24,11 @@ namespace Sotsera.Blazor.Toaster.Core.Models
         public bool ShowCloseIcon => Options.ShowCloseIcon;
         public string ProgressBarClass => Options.ProgressBarClass;
         public string CloseIconClass => Options.CloseIconClass;
-        
         public bool ShowProgressBar => Options.ShowProgressBar && ToastState.IsVisible() && !Options.RequireInteraction;
+
+        public bool EscapeHtml => Options.EscapeHtml;
+        public string ToastTitleClass => Options.ToastTitleClass;
+        public string ToastMessageClass => Options.ToastMessageClass;
 
         public string ProgressBarStyle
         {

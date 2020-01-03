@@ -20,7 +20,7 @@ namespace Sotsera.Blazor.Toaster.Core
         public string Message { get; }
         public event Action<Toast> OnClose;
         public event Action OnUpdate;
-        public ToastOptions Options => State.Options;
+        public ToastType Type => State.Options.Type;
 
         internal Toast(string title, string message, ToastOptions options)
         {
