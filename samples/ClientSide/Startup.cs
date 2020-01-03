@@ -11,8 +11,8 @@ namespace ClientSide
             services.AddToaster(config =>
             {
                 config.PositionClass = Defaults.Classes.Position.TopRight;
-                config.ToastTitleClass = Defaults.Classes.ToastTitle + " " + Defaults.Classes.TextPosition.Left;
-                config.ToastMessageClass = Defaults.Classes.ToastMessage + " " + Defaults.Classes.TextPosition.Left;
+                config.ToastTitleClass = $"{Defaults.Classes.ToastTitle} {Defaults.Classes.TextPosition.Left}";
+                config.ToastMessageClass = $"{Defaults.Classes.ToastMessage} {Defaults.Classes.TextPosition.Left}";
                 config.PreventDuplicates = true;
                 config.NewestOnTop = false;
             });

@@ -14,6 +14,7 @@ namespace Sotsera.Blazor.Toaster.Core.Models
         /// This variable applies to the title and message. If false the rendered HTML will be shown, else the escaped HTML markup will be shown. 
         /// </summary>
         public bool EscapeHtml { get; set; } = true;
+
         /// <summary>
         /// The css class for the title. Defaults to <see cref="Defaults.Classes.ToastTitle"/>.
         /// </summary>

@@ -12,12 +12,14 @@ namespace Sotsera.Blazor.Toaster.Core.Models
             public const string ToastMessage = "toast-message";
             public const string CloseIconClass = "toast-close-button";
             public const string ProgressBarClass = "toast-progress";
+
             public static class TextPosition
             {
                 public const string Left = "text-left";
                 public const string Center = "text-center";
                 public const string Right = "text-right";
             }
+
             public static class Position
             {
                 public const string TopCenter = "toast-top-center";
